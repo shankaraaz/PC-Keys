@@ -1,0 +1,6 @@
+{
+  "name": "Netlyrakeys - Software Keys Store",
+  "description": "A professional and fully responsive e-commerce website for digital software license keys (Operating Systems, Antiviruses, Office Suites, and Games) with user accounts, order history, shopping cart, and rapid checkout.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

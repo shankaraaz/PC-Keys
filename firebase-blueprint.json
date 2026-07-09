@@ -1,0 +1,103 @@
+{
+  "entities": {
+    "Product": {
+      "title": "Product",
+      "description": "A digital software key product available for purchase with advanced tracking tags.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "category": { "type": "string" },
+        "price": { "type": "number" },
+        "salePrice": { "type": "number" },
+        "imageUrl": { "type": "string" },
+        "thumbnailUrl": { "type": "string" },
+        "galleryImages": { "type": "array" },
+        "description": { "type": "string" },
+        "features": { "type": "array" },
+        "activationGuide": { "type": "string" },
+        "stock": { "type": "number" },
+        "rating": { "type": "number" },
+        "reviewsCount": { "type": "number" },
+        "licenseType": { "type": "string" },
+        "deliveryTime": { "type": "string" },
+        "devices": { "type": "string" },
+        "slug": { "type": "string" },
+        "shortDescription": { "type": "string" },
+        "fullDescription": { "type": "string" },
+        "subcategory": { "type": "string" },
+        "brand": { "type": "string" },
+        "costPrice": { "type": "number" },
+        "currency": { "type": "string" },
+        "validity": { "type": "string" },
+        "deviceLimit": { "type": "string" },
+        "status": { "type": "string" },
+        "seo": { "type": "object" },
+        "trustBadges": { "type": "object" }
+      },
+      "required": ["id", "title", "category", "price", "salePrice", "imageUrl", "description", "features", "stock"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "A customer order containing digital license keys.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "userEmail": { "type": "string" },
+        "userName": { "type": "string" },
+        "userPhone": { "type": "string" },
+        "items": { "type": "array" },
+        "totalAmount": { "type": "number" },
+        "status": { "type": "string" },
+        "paymentMethod": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "paymentDetails": { "type": "object" }
+      },
+      "required": ["id", "userId", "userEmail", "userName", "items", "totalAmount", "status", "paymentMethod", "createdAt"]
+    },
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User account registration and contact information.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "name", "email", "createdAt"]
+    },
+    "SearchLog": {
+      "title": "SearchLog",
+      "description": "Log of user search query analytics.",
+      "type": "object",
+      "properties": {
+        "query": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "userId": { "type": "string" },
+        "resultCount": { "type": "number" }
+      },
+      "required": ["query", "timestamp", "resultCount"]
+    }
+  },
+  "firestore": {
+    "/products/{productId}": {
+      "schema": "Product",
+      "description": "Collection of software license key products."
+    },
+    "/orders/{orderId}": {
+      "schema": "Order",
+      "description": "Collection of digital key purchases and orders."
+    },
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "Collection of registered user profiles."
+    },
+    "/search_logs/{logId}": {
+      "schema": "SearchLog",
+      "description": "Collection of search query analytics logs."
+    }
+  }
+}

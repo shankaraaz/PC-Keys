@@ -1,0 +1,282 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-serif: "Playfair Display", Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  
+  --color-brand-teal: #0EA5B7;
+  --color-brand-purple: #7C3AED;
+  --color-bg-main: #F8FAFC;
+  --color-bg-sec: #FFFFFF;
+  --color-bg-card: #FFFFFF;
+  --color-bg-elevated: #F1F5F9;
+  --color-text-primary: #0F172A;
+  --color-text-secondary: #334155;
+  --color-text-muted: #64748B;
+}
+
+@layer base {
+  body {
+    @apply font-sans antialiased text-[#0F172A] bg-[#F8FAFC];
+  }
+}
+
+.serif-italic {
+  font-family: var(--font-serif);
+  font-style: italic;
+}
+
+/* Light theme Glass Panel */
+.glass-panel {
+  background: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  box-shadow: 0 4px 15px -3px rgba(15, 23, 42, 0.05), 0 4px 6px -4px rgba(15, 23, 42, 0.05) !important;
+}
+
+.glass-panel-elevated {
+  background: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.08) !important;
+}
+
+.brand-gradient-text {
+  background: linear-gradient(135deg, #0EA5B7 0%, #7C3AED 100%);
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+.brand-gradient-bg {
+  background: linear-gradient(135deg, #0EA5B7 0%, #7C3AED 100%) !important;
+}
+
+.brand-gradient-btn {
+  background: linear-gradient(135deg, #0EA5B7 0%, #7C3AED 100%) !important;
+  color: #FFFFFF !important;
+  transition: all 0.2s ease-in-out;
+}
+
+.brand-gradient-btn:hover {
+  filter: brightness(1.05);
+  box-shadow: 0 4px 15px rgba(14, 165, 183, 0.35) !important;
+}
+
+.status-dot {
+  box-shadow: 0 0 8px currentColor;
+}
+
+/* === UNIVERSAL LIGHT THEME COLOR SCHEME MAPPING OVERRIDES === */
+
+/* Overrides for backgrounds */
+.bg-\[\#0B1120\] {
+  background-color: #F8FAFC !important;
+}
+.bg-\[\#111827\] {
+  background-color: #FFFFFF !important;
+}
+.bg-\[\#1E293B\] {
+  background-color: #FFFFFF !important;
+}
+.bg-\[\#263447\] {
+  background-color: #F1F5F9 !important;
+}
+
+/* Transparent card state classes */
+.bg-\[\#1E293B\]\/30 {
+  background-color: #F8FAFC !important;
+}
+.bg-\[\#1E293B\]\/40 {
+  background-color: #F1F5F9 !important;
+}
+.bg-\[\#1E293B\]\/60 {
+  background-color: #FFFFFF !important;
+}
+.hover\:bg-\[\#1E293B\]\/80:hover {
+  background-color: #F8FAFC !important;
+}
+.bg-white\/\[0\.02\] {
+  background-color: #F8FAFC !important;
+}
+.bg-white\/5 {
+  background-color: #F1F5F9 !important;
+}
+.bg-white\/10 {
+  background-color: #E2E8F0 !important;
+}
+
+/* Ensure buttons with explicit bg-1E293B styles adapt to light theme actions */
+button.bg-\[\#1E293B\],
+div.bg-\[\#1E293B\] {
+  background-color: #F1F5F9 !important;
+  color: #0F172A !important;
+  border-color: #E2E8F0 !important;
+}
+button.bg-\[\#1E293B\]:hover {
+  background-color: #E2E8F0 !important;
+}
+
+/* Overrides for text color classes */
+.text-\[\#CBD5E1\] {
+  color: #334155 !important;
+}
+.text-\[\#94A3B8\] {
+  color: #64748B !important;
+}
+
+/* Override text-white where it should be dark text on light backgrounds */
+p.text-white,
+span.text-white,
+h1.text-white,
+h2.text-white,
+h3.text-white,
+h4.text-white,
+h5.text-white,
+h6.text-white,
+div.text-white,
+label.text-white {
+  color: #0F172A !important;
+}
+
+/* Retain white text on actual brand gradient elements or dark buttons/badges */
+.brand-gradient-btn *,
+.brand-gradient-bg *,
+.brand-gradient-btn,
+.brand-gradient-bg,
+.bg-emerald-500 *, .bg-emerald-600 *, .bg-emerald-950 *,
+.bg-[#7C3AED] *, .bg-indigo-600 *, .bg-rose-600 *, .bg-red-600 *, .bg-blue-600 *,
+.bg-cyan-500 *, .bg-fuchsia-500 *, .bg-violet-500 *, .bg-amber-500 *,
+.bg-emerald-500, .bg-emerald-600, .bg-emerald-950,
+.bg-[#7C3AED], .bg-indigo-600, .bg-rose-600, .bg-red-600, .bg-blue-600,
+.bg-cyan-500, .bg-fuchsia-500, .bg-violet-500, .bg-amber-500 {
+  color: #FFFFFF !important;
+}
+
+/* Retain original badge & special text styles */
+.text-emerald-400 {
+  color: #10B981 !important;
+}
+.text-[#0EA5B7] {
+  color: #0EA5B7 !important;
+}
+.text-\[\#0EA5B7\] {
+  color: #0EA5B7 !important;
+}
+.text-rose-400 {
+  color: #F43F5E !important;
+}
+.text-rose-300 {
+  color: #E11D48 !important;
+}
+.text-amber-400 {
+  color: #D97706 !important;
+}
+.text-blue-400 {
+  color: #2563EB !important;
+}
+.text-[#7C3AED] {
+  color: #7C3AED !important;
+}
+
+/* Specific text opacity overrides */
+.text-white\/80 { color: #334155 !important; }
+.text-white\/70 { color: #475569 !important; }
+.text-white\/60 { color: #64748B !important; }
+.text-white\/50 { color: #64748B !important; }
+.text-white\/40 { color: #94A3B8 !important; }
+.text-white\/30 { color: #CBD5E1 !important; }
+.text-white\/20 { color: #E2E8F0 !important; }
+
+/* Overrides for borders */
+.border-white\/\[0\.08\] {
+  border-color: #E2E8F0 !important;
+}
+.border-white\/10 {
+  border-color: #E2E8F0 !important;
+}
+.border-white\/5 {
+  border-color: #F1F5F9 !important;
+}
+.border-white\/20 {
+  border-color: #CBD5E1 !important;
+}
+.border-white\/15 {
+  border-color: #E2E8F0 !important;
+}
+
+/* Autocomplete search inputs and forms */
+input, select, textarea {
+  background-color: #FFFFFF !important;
+  color: #0F172A !important;
+  border-color: #E2E8F0 !important;
+}
+input::placeholder, textarea::placeholder {
+  color: #94A3B8 !important;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: #0EA5B7 !important;
+  box-shadow: 0 0 0 2px rgba(14, 165, 183, 0.1) !important;
+}
+
+/* Category cards background overlays logic to blend with light backgrounds */
+.from-neutral-950 {
+  --tw-gradient-from: #FFFFFF !important;
+}
+.via-neutral-950\/75 {
+  --tw-gradient-via: rgba(255, 255, 255, 0.8) !important;
+}
+.via-neutral-950\/85 {
+  --tw-gradient-via: rgba(255, 255, 255, 0.88) !important;
+}
+
+/* Product Card Images styling */
+.product-image-container {
+  background-image: linear-gradient(to bottom, #F8FAFC, #F1F5F9) !important;
+  border-bottom-color: #E2E8F0 !important;
+}
+.product-image-container:hover {
+  background-image: linear-gradient(to bottom, rgba(14, 165, 183, 0.03), #F1F5F9) !important;
+}
+
+/* Navigation items, search dropdown, and interactive states */
+#autocomplete-dropdown {
+  background-color: #FFFFFF !important;
+  border-color: #E2E8F0 !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1) !important;
+}
+#autocomplete-dropdown button:hover {
+  background-color: #F8FAFC !important;
+}
+
+/* Admin / Support tabs */
+.bg-rose-950\/20 {
+  background-color: #FFE4E6 !important;
+}
+.bg-emerald-950\/20 {
+  background-color: #D1FAE5 !important;
+}
+.border-emerald-500\/20 {
+  border-color: #10B981 !important;
+}
+
+/* Custom print layouts for PDF invoices */
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+  #store-navbar,
+  #store-footer,
+  #toast-notification,
+  #empty-orders-view,
+  button,
+  .print\:hidden {
+    display: none !important;
+  }
+  .print\:shadow-none {
+    box-shadow: none !important;
+  }
+  .print\:border-none {
+    border: none !important;
+  }
+}
