@@ -6,20 +6,20 @@
   --font-serif: "Playfair Display", Georgia, Cambria, "Times New Roman", Times, serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   
-  --color-brand-teal: #0EA5B7;
-  --color-brand-purple: #7C3AED;
-  --color-bg-main: #F8FAFC;
+  --color-brand-teal: #3b82f6;
+  --color-brand-purple: #3b82f6; /* Using teal as primary brand everywhere */
+  --color-bg-main: #EEEEEE;
   --color-bg-sec: #FFFFFF;
   --color-bg-card: #FFFFFF;
-  --color-bg-elevated: #F1F5F9;
-  --color-text-primary: #0F172A;
-  --color-text-secondary: #334155;
-  --color-text-muted: #64748B;
+  --color-bg-elevated: #FFFFFF;
+  --color-text-primary: #222831;
+  --color-text-secondary: #393E46;
+  --color-text-muted: #393E46;
 }
 
 @layer base {
   body {
-    @apply font-sans antialiased text-[#0F172A] bg-[#F8FAFC];
+    @apply font-sans antialiased text-[#222831] bg-[#EEEEEE];
   }
 }
 
@@ -42,24 +42,24 @@
 }
 
 .brand-gradient-text {
-  background: linear-gradient(135deg, #0EA5B7 0%, #7C3AED 100%);
+  background: linear-gradient(135deg, #3b82f6 0%, #3b82f6 100%);
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
 }
 
 .brand-gradient-bg {
-  background: linear-gradient(135deg, #0EA5B7 0%, #7C3AED 100%) !important;
+  background: linear-gradient(135deg, #3b82f6 0%, #3b82f6 100%) !important;
 }
 
 .brand-gradient-btn {
-  background: linear-gradient(135deg, #0EA5B7 0%, #7C3AED 100%) !important;
+  background: linear-gradient(135deg, #3b82f6 0%, #3b82f6 100%) !important;
   color: #FFFFFF !important;
   transition: all 0.2s ease-in-out;
 }
 
 .brand-gradient-btn:hover {
   filter: brightness(1.05);
-  box-shadow: 0 4px 15px rgba(14, 165, 183, 0.35) !important;
+  box-shadow: 0 4px 15px rgba(0, 173, 181, 0.35) !important;
 }
 
 .status-dot {
@@ -108,8 +108,8 @@
 /* Ensure buttons with explicit bg-1E293B styles adapt to light theme actions */
 button.bg-\[\#1E293B\],
 div.bg-\[\#1E293B\] {
-  background-color: #F1F5F9 !important;
-  color: #0F172A !important;
+  background-color: #EEEEEE !important;
+  color: #222831 !important;
   border-color: #E2E8F0 !important;
 }
 button.bg-\[\#1E293B\]:hover {
@@ -118,7 +118,7 @@ button.bg-\[\#1E293B\]:hover {
 
 /* Overrides for text color classes */
 .text-\[\#CBD5E1\] {
-  color: #334155 !important;
+  color: #393E46 !important;
 }
 .text-\[\#94A3B8\] {
   color: #64748B !important;
@@ -135,7 +135,7 @@ h5.text-white,
 h6.text-white,
 div.text-white,
 label.text-white {
-  color: #0F172A !important;
+  color: #222831 !important;
 }
 
 /* Retain white text on actual brand gradient elements or dark buttons/badges */
@@ -144,10 +144,10 @@ label.text-white {
 .brand-gradient-btn,
 .brand-gradient-bg,
 .bg-emerald-500 *, .bg-emerald-600 *, .bg-emerald-950 *,
-.bg-[#7C3AED] *, .bg-indigo-600 *, .bg-rose-600 *, .bg-red-600 *, .bg-blue-600 *,
+.bg-[#393E46] *, .bg-indigo-600 *, .bg-rose-600 *, .bg-red-600 *, .bg-blue-600 *,
 .bg-cyan-500 *, .bg-fuchsia-500 *, .bg-violet-500 *, .bg-amber-500 *,
 .bg-emerald-500, .bg-emerald-600, .bg-emerald-950,
-.bg-[#7C3AED], .bg-indigo-600, .bg-rose-600, .bg-red-600, .bg-blue-600,
+.bg-[#393E46], .bg-indigo-600, .bg-rose-600, .bg-red-600, .bg-blue-600,
 .bg-cyan-500, .bg-fuchsia-500, .bg-violet-500, .bg-amber-500 {
   color: #FFFFFF !important;
 }
@@ -156,11 +156,11 @@ label.text-white {
 .text-emerald-400 {
   color: #10B981 !important;
 }
-.text-[#0EA5B7] {
-  color: #0EA5B7 !important;
+.text-[#3b82f6] {
+  color: #3b82f6 !important;
 }
 .text-\[\#0EA5B7\] {
-  color: #0EA5B7 !important;
+  color: #3b82f6 !important;
 }
 .text-rose-400 {
   color: #F43F5E !important;
@@ -174,8 +174,8 @@ label.text-white {
 .text-blue-400 {
   color: #2563EB !important;
 }
-.text-[#7C3AED] {
-  color: #7C3AED !important;
+.text-[#393E46] {
+  color: #393E46 !important;
 }
 
 /* Specific text opacity overrides */
@@ -207,15 +207,15 @@ label.text-white {
 /* Autocomplete search inputs and forms */
 input, select, textarea {
   background-color: #FFFFFF !important;
-  color: #0F172A !important;
+  color: #222831 !important;
   border-color: #E2E8F0 !important;
 }
 input::placeholder, textarea::placeholder {
-  color: #94A3B8 !important;
+  color: #393E46 !important;
 }
 input:focus, select:focus, textarea:focus {
-  border-color: #0EA5B7 !important;
-  box-shadow: 0 0 0 2px rgba(14, 165, 183, 0.1) !important;
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 2px rgba(0, 173, 181, 0.1) !important;
 }
 
 /* Category cards background overlays logic to blend with light backgrounds */
@@ -323,4 +323,32 @@ input:focus, select:focus, textarea:focus {
 .preserve-3d {
   transform-style: preserve-3d !important;
 }
+
+/* --- STORE FOOTER DARK THEME IMMUNIZATION --- */
+#store-footer .text-white,
+#store-footer span.text-white,
+#store-footer p.text-white,
+#store-footer h1.text-white,
+#store-footer h2.text-white,
+#store-footer h3.text-white,
+#store-footer h4.text-white,
+#store-footer h5.text-white,
+#store-footer h6.text-white,
+#store-footer div.text-white,
+#store-footer label.text-white,
+#store-footer svg.text-white,
+#store-footer a.text-white {
+  color: #ffffff !important;
+}
+
+#store-footer .text-\[\#CBD5E1\] { color: #CBD5E1 !important; }
+#store-footer .text-\[\#94A3B8\] { color: #94A3B8 !important; }
+#store-footer .text-white\/90 { color: rgba(255, 255, 255, 0.9) !important; }
+#store-footer .text-white\/80 { color: rgba(255, 255, 255, 0.8) !important; }
+#store-footer .text-white\/70 { color: rgba(255, 255, 255, 0.7) !important; }
+#store-footer .text-white\/60 { color: rgba(255, 255, 255, 0.6) !important; }
+#store-footer .text-white\/50 { color: rgba(255, 255, 255, 0.5) !important; }
+#store-footer .text-white\/40 { color: rgba(255, 255, 255, 0.4) !important; }
+#store-footer .text-white\/30 { color: rgba(255, 255, 255, 0.3) !important; }
+#store-footer .text-white\/20 { color: rgba(255, 255, 255, 0.2) !important; }
 

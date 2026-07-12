@@ -50,6 +50,8 @@ import CheckoutPage from './components/CheckoutPage';
 import OrdersPage from './components/OrdersPage';
 import AdminPanel from './components/AdminPanel';
 import SupportPage from './components/SupportPage';
+import HeroSection from './components/HeroSection';
+import ChatBotWidget from './components/ChatBotWidget';
 
 // Libs & Types
 import { db, auth, handleFirestoreError, OperationType } from './lib/firebase';
@@ -172,8 +174,8 @@ const DeveloperIllustration = () => (
   <svg className="w-full h-full" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <linearGradient id="devG" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#0f172a" />
-        <stop offset="100%" stopColor="#1e293b" />
+        <stop offset="0%" stopColor="#222831" />
+        <stop offset="100%" stopColor="#FFFFFF" />
       </linearGradient>
       <filter id="devGlow" x="-10%" y="-10%" width="120%" height="120%">
         <feDropShadow dx="3" dy="5" stdDeviation="4" floodColor="#0d9488" floodOpacity="0.2" />
@@ -181,9 +183,9 @@ const DeveloperIllustration = () => (
     </defs>
     <g filter="url(#devGlow)">
       {/* Terminal Window frame */}
-      <rect x="25" y="30" width="70" height="55" rx="6" fill="url(#devG)" stroke="#334155" strokeWidth="1.5" />
+      <rect x="25" y="30" width="70" height="55" rx="6" fill="url(#devG)" stroke="#393E46" strokeWidth="1.5" />
       {/* Header Bar */}
-      <rect x="25" y="30" width="70" height="12" rx="6" fill="#1e293b" />
+      <rect x="25" y="30" width="70" height="12" rx="6" fill="#FFFFFF" />
       {/* Window dots */}
       <circle cx="32" cy="36" r="2" fill="#ef4444" />
       <circle cx="38" cy="36" r="2" fill="#f59e0b" />
@@ -408,27 +410,6 @@ export default function App() {
 
   // Status Alerts
   const [alert, setAlert] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
-
-  // Countdown timer for XBOX Game Pass Flash Deal in Hero Section
-  const [timeLeft, setTimeLeft] = useState({ hours: 3, minutes: 45, seconds: 12 });
-  useEffect(() => {
-    const timer = setInterval(() => {
-      const now = new Date();
-      const endOfDay = new Date();
-      endOfDay.setHours(23, 59, 59, 999);
-      const diff = endOfDay.getTime() - now.getTime();
-
-      if (diff > 0) {
-        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-        const minutes = Math.floor((diff / 1000 / 60) % 60);
-        const seconds = Math.floor((diff / 1000) % 60);
-        setTimeLeft({ hours, minutes, seconds });
-      } else {
-        setTimeLeft({ hours: 23, minutes: 59, seconds: 59 });
-      }
-    }, 1000);
-    return () => clearInterval(timer);
-  }, []);
 
   const handlePromoClick = (categoryName: Category, query?: string) => {
     setSelectedCategory(categoryName);
@@ -934,7 +915,7 @@ export default function App() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#0B1120] text-[#CBD5E1] font-sans flex flex-col selection:bg-[#0EA5B7] selection:text-white" id="main-app">
+    <div className="min-h-screen bg-blue-100 text-[#CBD5E1] font-sans flex flex-col selection:bg-[#3b82f6] selection:text-white" id="main-app">
 
       {/* Toast Alert Banner */}
       <AnimatePresence>
@@ -944,7 +925,7 @@ export default function App() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.95 }}
             className={`fixed top-5 left-1/2 -translate-x-1/2 z-50 flex items-center space-x-2.5 px-5 py-3 rounded-2xl shadow-xl text-white font-medium text-xs tracking-wider uppercase border ${alert.type === 'success'
-              ? 'bg-[#1E293B]/95 text-white border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)]'
+              ? 'bg-[#FFFFFF]/95 text-white border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)]'
               : 'bg-rose-950/90 text-rose-200 border-rose-500/30 shadow-black/55'
               }`}
             id="toast-notification"
@@ -981,203 +962,7 @@ export default function App() {
         {activeTab === 'catalog' && (
           <div id="catalog-view" className="space-y-12">
 
-            {/* Elegant Hero Banner */}
-            <div className="relative bg-[#F8FAFC] overflow-hidden py-16 sm:py-20 border-b border-[#E2E8F0]" id="hero-banner">
-              {/* Abstract decorative grid */}
-              <div className="absolute inset-0 opacity-20 bg-[radial-gradient(rgba(14,165,183,0.1)_1.2px,transparent_1.2px)] [background-size:16px_16px]" />
-              <div className="absolute -top-40 -right-40 h-[450px] w-[450px] bg-[#0EA5B7]/5 rounded-full blur-3xl" />
-              <div className="absolute -bottom-40 -left-40 h-[450px] w-[450px] bg-[#7C3AED]/5 rounded-full blur-3xl" />
-
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-                <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center justify-between">
-
-                  {/* LEFT SIDE (existing content) */}
-                  <div className="w-full lg:w-[45%] shrink-0 space-y-6">
-                    <div className="inline-flex items-center space-x-2 bg-white border border-[#E2E8F0] px-3.5 py-1.5 rounded-full shadow-xs">
-                      <Sparkles className="h-4 w-4 text-[#7C3AED]" />
-                      <span className="text-slate-700 text-[9px] font-black uppercase tracking-widest">UP TO 85% DISCOUNT SALE ACTIVE</span>
-                    </div>
-
-                    <h1 className="text-3xl sm:text-5xl font-black text-slate-900 leading-tight tracking-tight">
-                      Premium Digital Keys. <br />
-                      <span className="brand-gradient-text font-serif italic font-bold">
-                        100% Secure & Genuine.
-                      </span>
-                    </h1>
-
-                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
-                      Get fully-licensed, lifetime retail activation software keys for Operating Systems, high-end Antivirus suites, and productive Office suites instantly with automated delivery.
-                    </p>
-
-                    <div className="flex flex-wrap gap-4 pt-2">
-                      <div className="flex items-center space-x-2 bg-white border border-[#E2E8F0] rounded-2xl px-4 py-3 text-slate-800 text-xs font-bold shadow-xs">
-                        <Zap className="h-4.5 w-4.5 text-[#0EA5B7] fill-[#0EA5B7]/10" />
-                        <span className="tracking-wide">Instant Keys Delivery</span>
-                      </div>
-                      <div className="flex items-center space-x-2 bg-white border border-[#E2E8F0] rounded-2xl px-4 py-3 text-slate-800 text-xs font-bold shadow-xs">
-                        <ShieldCheck className="h-4.5 w-4.5 text-[#7C3AED]" />
-                        <span className="tracking-wide">Microsoft Certified Original</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* RIGHT SIDE (new promotional grid) */}
-                  <div className="w-full lg:w-[55%] flex-grow">
-                    <div className="grid grid-cols-1 sm:grid-cols-6 gap-4 animate-fade-in">
-
-                      {/* Large Primary Banner (2/3 width) */}
-                      <motion.div
-                        whileHover={{ y: -4, borderColor: "rgba(124, 58, 237, 0.3)" }}
-                        transition={{ type: "spring", stiffness: 300, damping: 22 }}
-                        onClick={() => handlePromoClick('Microsoft Office Keys')}
-                        className="sm:col-span-4 bg-gradient-to-br from-[#0EA5B7] to-[#7C3AED] text-white p-6 rounded-3xl relative overflow-hidden flex flex-col justify-between h-[210px] group border border-transparent shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer select-none"
-                      >
-                        {/* Glassy floating document icons representing Office apps */}
-                        <div className="absolute right-4 top-1/2 -translate-y-1/2 flex -space-x-4 opacity-35 group-hover:opacity-55 group-hover:scale-105 transition-all duration-500 pointer-events-none z-0">
-                          {/* Excel */}
-                          <div className="w-14 h-14 bg-emerald-500/30 backdrop-blur-md rounded-2xl border border-emerald-400/30 flex items-center justify-center transform -rotate-12 shadow-lg">
-                            <span className="text-lg font-extrabold font-mono text-emerald-100">X</span>
-                          </div>
-                          {/* Word */}
-                          <div className="w-14 h-14 bg-blue-500/40 backdrop-blur-md rounded-2xl border border-blue-400/30 flex items-center justify-center transform rotate-6 shadow-lg translate-y-3">
-                            <span className="text-lg font-extrabold font-mono text-blue-100">W</span>
-                          </div>
-                          {/* PowerPoint */}
-                          <div className="w-14 h-14 bg-orange-500/30 backdrop-blur-md rounded-2xl border border-orange-400/30 flex items-center justify-center transform -rotate-6 shadow-lg -translate-y-1">
-                            <span className="text-lg font-extrabold font-mono text-orange-100">P</span>
-                          </div>
-                        </div>
-
-                        <div className="space-y-2 relative z-10">
-                          <span className="bg-white/20 backdrop-blur-md text-white text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full w-fit">
-                            Microsoft Office 365 Promotion
-                          </span>
-                          <h3 className="text-lg font-extrabold tracking-tight leading-tight max-w-[200px]">
-                            Upgrade to <br />Office 365 Professional
-                          </h3>
-                          <p className="text-[10px] text-white/80 max-w-[200px] leading-relaxed">
-                            Activate Word, Excel, PowerPoint & 1TB cloud storage across 5 devices instantly.
-                          </p>
-                        </div>
-
-                        <div className="flex items-center justify-between relative z-10">
-                          <div className="text-xs font-black">
-                            From <span className="text-lg">₹1,199</span>
-                          </div>
-                          <span className="bg-white text-[#7C3AED] hover:bg-slate-100 font-extrabold text-[9px] uppercase tracking-widest px-3 py-1.5 rounded-xl flex items-center space-x-1 shadow-xs transition-colors duration-200">
-                            <span>Claim Now</span>
-                            <ArrowRight className="h-3 w-3" />
-                          </span>
-                        </div>
-                      </motion.div>
-
-                      {/* XBOX Game Pass Offer (Right Column - Top) */}
-                      <motion.div
-                        whileHover={{ y: -4, borderColor: "rgba(124, 58, 237, 0.3)" }}
-                        transition={{ type: "spring", stiffness: 300, damping: 22 }}
-                        onClick={() => handlePromoClick('Gaming & Gift Cards', 'Xbox')}
-                        className="sm:col-span-2 bg-white border border-[#E2E8F0] p-5 rounded-3xl relative overflow-hidden flex flex-col justify-between h-[210px] group shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer select-none"
-                      >
-                        {/* Xbox green ambient glow */}
-                        <div className="absolute -right-8 -top-8 w-24 h-24 rounded-full bg-emerald-500/10 blur-2xl opacity-60 group-hover:opacity-80 transition-all duration-300 z-0" />
-
-                        <div className="space-y-2 relative z-10">
-                          <span className="bg-emerald-50 text-emerald-600 border border-emerald-100 text-[8px] font-black uppercase tracking-widest px-2 py-0.5 rounded-md">
-                            Xbox Special
-                          </span>
-                          <h3 className="text-sm font-extrabold text-slate-800 leading-tight">
-                            Game Pass Ultimate
-                          </h3>
-                          <p className="text-[10px] text-slate-500 leading-snug">
-                            Get 3 months unlimited play of over 100 console games.
-                          </p>
-                        </div>
-
-                        <div className="space-y-3 relative z-10">
-                          {/* Live countdown timer */}
-                          <div className="flex items-center space-x-1.5 font-mono text-rose-600 font-bold bg-rose-50 border border-rose-100 rounded-xl px-2 py-0.5 text-[10px] w-fit">
-                            <Clock className="h-3 w-3 text-rose-500 animate-pulse" />
-                            <span>{String(timeLeft.hours).padStart(2, '0')}:{String(timeLeft.minutes).padStart(2, '0')}:{String(timeLeft.seconds).padStart(2, '0')}</span>
-                          </div>
-
-                          <div className="flex items-center justify-between">
-                            <span className="text-xs font-black text-slate-800">₹749</span>
-                            <span className="text-[9px] font-extrabold text-[#7C3AED] uppercase tracking-wider flex items-center space-x-0.5">
-                              <span>Get</span>
-                              <ArrowRight className="h-3 w-3" />
-                            </span>
-                          </div>
-                        </div>
-                      </motion.div>
-
-                      {/* PSN Games Promotion (Bottom Left) */}
-                      <motion.div
-                        whileHover={{ y: -4, borderColor: "rgba(124, 58, 237, 0.3)" }}
-                        transition={{ type: "spring", stiffness: 300, damping: 22 }}
-                        onClick={() => handlePromoClick('Gaming & Gift Cards', 'PlayStation')}
-                        className="sm:col-span-3 bg-white border border-[#E2E8F0] p-5 rounded-3xl relative overflow-hidden flex flex-col justify-between h-[150px] group shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer select-none"
-                      >
-                        {/* PlayStation blue glow */}
-                        <div className="absolute -right-8 -bottom-8 w-24 h-24 rounded-full bg-blue-500/10 blur-2xl opacity-60 group-hover:opacity-80 transition-all duration-300 z-0" />
-
-                        <div className="space-y-1 relative z-10">
-                          <span className="bg-blue-50 text-blue-600 border border-blue-100 text-[8px] font-black uppercase tracking-widest px-2 py-0.5 rounded-md">
-                            PlayStation
-                          </span>
-                          <h3 className="text-sm font-extrabold text-slate-800 leading-tight">
-                            PSN Store Wallet Cards
-                          </h3>
-                          <p className="text-[10px] text-slate-500 leading-snug">
-                            Access wallet funds with up to 40% wholesale rates.
-                          </p>
-                        </div>
-
-                        <div className="flex items-center justify-between relative z-10">
-                          <span className="text-xs font-black text-slate-800">From ₹1,499</span>
-                          <span className="text-[9px] font-extrabold text-[#7C3AED] uppercase tracking-wider flex items-center space-x-0.5">
-                            <span>Shop Keys</span>
-                            <ArrowRight className="h-3 w-3" />
-                          </span>
-                        </div>
-                      </motion.div>
-
-                      {/* Office for Mac Promotion (Bottom Right) */}
-                      <motion.div
-                        whileHover={{ y: -4, borderColor: "rgba(124, 58, 237, 0.3)" }}
-                        transition={{ type: "spring", stiffness: 300, damping: 22 }}
-                        onClick={() => handlePromoClick('Microsoft Office Keys', 'Mac')}
-                        className="sm:col-span-3 bg-white border border-[#E2E8F0] p-5 rounded-3xl relative overflow-hidden flex flex-col justify-between h-[150px] group shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer select-none"
-                      >
-                        {/* macOS purple glow */}
-                        <div className="absolute -right-8 -bottom-8 w-24 h-24 rounded-full bg-purple-500/10 blur-2xl opacity-60 group-hover:opacity-80 transition-all duration-300 z-0" />
-
-                        <div className="space-y-1 relative z-10">
-                          <span className="bg-purple-50 text-purple-600 border border-purple-100 text-[8px] font-black uppercase tracking-widest px-2 py-0.5 rounded-md">
-                            Apple Exclusive
-                          </span>
-                          <h3 className="text-sm font-extrabold text-slate-800 leading-tight">
-                            Office Home & Business Mac
-                          </h3>
-                          <p className="text-[10px] text-slate-500 leading-snug">
-                            Lifetime retail license keys bound directly to Apple ID.
-                          </p>
-                        </div>
-
-                        <div className="flex items-center justify-between relative z-10">
-                          <span className="text-xs font-black text-slate-800">From ₹1,999</span>
-                          <span className="text-[9px] font-extrabold text-[#7C3AED] uppercase tracking-wider flex items-center space-x-0.5">
-                            <span>Get Mac Office</span>
-                            <ArrowRight className="h-3 w-3" />
-                          </span>
-                        </div>
-                      </motion.div>
-
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-            </div>
+            <HeroSection onPromoClick={handlePromoClick} />
 
             {/* Catalog Main section */}
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8" id="store-catalog-section">
@@ -1186,11 +971,11 @@ export default function App() {
               <div className="space-y-4">
                 <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-2">
                   <div className="space-y-1">
-                    <h3 className="text-sm font-bold text-slate-800 uppercase tracking-widest flex items-center space-x-2">
-                      <Sparkles className="h-4 w-4 text-[#7C3AED]" />
+                    <h3 className="text-sm font-bold text-[#222831] uppercase tracking-widest flex items-center space-x-2">
+                      <Sparkles className="h-4 w-4 text-[#3b82f6]" />
                       <span>Premium Software Categories</span>
                     </h3>
-                    <p className="text-[11px] text-slate-500">Select a category below to explore digital key licenses</p>
+                    <p className="text-[11px] text-[#393E46]">Select a category below to explore digital key licenses</p>
                   </div>
                   {selectedCategory !== 'All' && (
                     <motion.button
@@ -1230,7 +1015,7 @@ export default function App() {
 
                         {/* Card Header: Rounded White Icon Box */}
                         <div className="flex justify-between items-start relative z-20">
-                          <div className="w-12 h-12 rounded-2xl bg-white shadow-[0_2px_8px_rgba(0,0,0,0.04)] border border-slate-100/80 flex items-center justify-center transition-all duration-300 group-hover:shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
+                          <div className="w-12 h-12 rounded-2xl bg-white shadow-[0_2px_8px_rgba(0,0,0,0.04)] border border-[#EEEEEE]/80 flex items-center justify-center transition-all duration-300 group-hover:shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
                             <cat.icon className={`h-5 w-5 ${cat.iconColorClass}`} />
                           </div>
                           {cat.badge && (
@@ -1243,17 +1028,17 @@ export default function App() {
                         {/* Card Footer: Category Name, Product Count & Chevron button */}
                         <div className="flex justify-between items-end relative z-20">
                           <div className="space-y-0.5 text-left max-w-[60%]">
-                            <h4 className="text-xs sm:text-sm font-extrabold tracking-tight text-slate-800 group-hover:text-slate-950 transition-colors">
+                            <h4 className="text-xs sm:text-sm font-extrabold tracking-tight text-[#222831] group-hover:text-[#222831] transition-colors">
                               {cat.name}
                             </h4>
-                            <span className="text-[11px] font-semibold text-slate-500">
+                            <span className="text-[11px] font-semibold text-[#393E46]">
                               {productCount} Products
                             </span>
                           </div>
 
                           {/* Navigation Chevron circle */}
-                          {/* <div className="w-7 h-7 rounded-full bg-white shadow-[0_2px_6px_rgba(0,0,0,0.04)] border border-slate-100 flex items-center justify-center group-hover:bg-[#7C3AED] group-hover:border-[#7C3AED] transition-all duration-300">
-                            <svg className="w-3.5 h-3.5 text-slate-400 group-hover:text-white transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
+                          {/* <div className="w-7 h-7 rounded-full bg-white shadow-[0_2px_6px_rgba(0,0,0,0.04)] border border-[#EEEEEE] flex items-center justify-center group-hover:bg-[#3b82f6] group-hover:border-[#3b82f6] transition-all duration-300">
+                            <svg className="w-3.5 h-3.5 text-[#393E46] group-hover:text-white transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
                               <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                             </svg>
                           </div> */}
@@ -1267,7 +1052,7 @@ export default function App() {
               {/* Products listing grid */}
               <div className="space-y-6">
                 <div className="flex justify-between items-center border-b border-[#E2E8F0] pb-3">
-                  <span className="text-[9px] font-extrabold text-slate-500 uppercase tracking-widest">
+                  <span className="text-[9px] font-extrabold text-[#393E46] uppercase tracking-widest">
                     Showing {filteredProducts.length} License Offers
                   </span>
                 </div>
@@ -1344,8 +1129,8 @@ export default function App() {
 
               {/* Trust badges footer strip */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-10 border-t border-white/[0.08]" id="trust-banner-strip">
-                <div className="bg-[#1E293B]/60 p-5 rounded-2xl border border-white/[0.08] flex items-start space-x-3 hover:border-white/15 transition-all duration-300">
-                  <div className="p-2.5 bg-white/5 text-[#0EA5B7] rounded-xl shrink-0">
+                <div className="bg-[#FFFFFF]/60 p-5 rounded-2xl border border-white/[0.08] flex items-start space-x-3 hover:border-white/15 transition-all duration-300">
+                  <div className="p-2.5 bg-white/5 text-[#3b82f6] rounded-xl shrink-0">
                     <ShieldCheck className="h-6 w-6" />
                   </div>
                   <div>
@@ -1356,8 +1141,8 @@ export default function App() {
                   </div>
                 </div>
 
-                <div className="bg-[#1E293B]/60 p-5 rounded-2xl border border-white/[0.08] flex items-start space-x-3 hover:border-white/15 transition-all duration-300">
-                  <div className="p-2.5 bg-white/5 text-[#0EA5B7] rounded-xl shrink-0">
+                <div className="bg-[#FFFFFF]/60 p-5 rounded-2xl border border-white/[0.08] flex items-start space-x-3 hover:border-white/15 transition-all duration-300">
+                  <div className="p-2.5 bg-white/5 text-[#3b82f6] rounded-xl shrink-0">
                     <Zap className="h-6 w-6" />
                   </div>
                   <div>
@@ -1368,8 +1153,8 @@ export default function App() {
                   </div>
                 </div>
 
-                <div className="bg-[#1E293B]/60 p-5 rounded-2xl border border-white/[0.08] flex items-start space-x-3 hover:border-white/15 transition-all duration-300">
-                  <div className="p-2.5 bg-white/5 text-[#0EA5B7] rounded-xl shrink-0">
+                <div className="bg-[#FFFFFF]/60 p-5 rounded-2xl border border-white/[0.08] flex items-start space-x-3 hover:border-white/15 transition-all duration-300">
+                  <div className="p-2.5 bg-white/5 text-[#3b82f6] rounded-xl shrink-0">
                     <MessageSquare className="h-6 w-6" />
                   </div>
                   <div>
@@ -1436,84 +1221,118 @@ export default function App() {
       </main>
 
       {/* Professional digital keys shop footer */}
-      <footer className="bg-[#F8FAFC] text-slate-700 border-t border-[#E2E8F0] shrink-0 py-12" id="store-footer">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div className="space-y-4">
-            <div className="flex items-center space-x-2">
-              <div className="bg-white border border-[#E2E8F0] p-2 rounded-lg flex items-center justify-center shadow-xs">
-                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M15 6v6h6M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" stroke="url(#footer-logo-grad)" />
-                  <path d="M9 12H3m6-3H6" stroke="url(#footer-logo-grad)" />
-                  <defs>
-                    <linearGradient id="footer-logo-grad" x1="3" y1="6" x2="21" y2="12" gradientUnits="userSpaceOnUse">
-                      <stop stopColor="#0EA5B7" />
-                      <stop offset="1" stopColor="#7C3AED" />
-                    </linearGradient>
-                  </defs>
-                </svg>
+      <footer className="bg-[#1A1F26] text-[#CBD5E1] border-t border-[#2A313C] shrink-0 pt-16 pb-8 font-sans" id="store-footer">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
+
+            {/* Brand Column */}
+            <div className="lg:col-span-2 space-y-6">
+              <div className="flex items-center space-x-3">
+                <div className="bg-gradient-to-tr from-[#EEEEEE] to-white border border-[#E2E8F0] p-2.5 rounded-xl flex items-center justify-center shadow-sm">
+                  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none">
+                    <path d="M4 21V5.818C4 4.814 5.176 4.272 5.94 4.922L18.06 15.228C18.824 15.878 20 15.337 20 14.333V3" stroke="url(#primary-grad-footer)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d="M4 21L20 3" stroke="url(#secondary-grad-footer)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                    <defs>
+                      <linearGradient id="primary-grad-footer" x1="4" y1="3" x2="20" y2="21" gradientUnits="userSpaceOnUse">
+                        <stop stopColor="#3B82F6" />
+                        <stop offset="1" stopColor="#1E3A8A" />
+                      </linearGradient>
+                      <linearGradient id="secondary-grad-footer" x1="20" y1="3" x2="4" y2="21" gradientUnits="userSpaceOnUse">
+                        <stop stopColor="#60A5FA" />
+                        <stop offset="1" stopColor="#2563EB" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </div>
+                <div className="text-[26px] font-black tracking-tight text-white leading-none flex items-center">
+                  Nexus<span className="font-light text-[#3b82f6]">Keys</span>
+                </div>
               </div>
-              <span className="text-lg font-black tracking-tight uppercase text-slate-900 leading-none">
-                NETLYRA<span className="serif-italic text-[#7C3AED] lowercase">keys</span>
-              </span>
+              <p className="text-sm text-[#94A3B8] leading-relaxed max-w-sm">
+                A premium, fully responsive retail license store offering authenticated genuine keys at massive wholesale discount price structures. Built for security, speed, and reliability.
+              </p>
+
+              {/* Trust Badges */}
+              <div className="flex items-center space-x-3 pt-2">
+                <div className="flex items-center space-x-1.5 bg-[#222831] px-3 py-1.5 rounded-lg border border-white/5 shadow-inner">
+                  <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-white/80">256-Bit SSL</span>
+                </div>
+                <div className="flex items-center space-x-1.5 bg-[#222831] px-3 py-1.5 rounded-lg border border-white/5 shadow-inner">
+                  <Monitor className="w-4 h-4 text-blue-400" />
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-white/80">Authorized</span>
+                </div>
+              </div>
             </div>
-            <p className="text-xs text-slate-500 leading-relaxed font-normal">
-              A premium, fully responsive retail license store offering authenticated genuine keys at massive wholesale discount price structures. Built for security, speed, and reliability.
-            </p>
-          </div>
 
-          {/* 24x7 WhatsApp Support Column */}
-          <div className="space-y-4 bg-white border border-[#0EA5B7]/20 p-5 rounded-2xl relative overflow-hidden shadow-xs" id="footer-whatsapp-column">
-            <div className="absolute top-0 right-0 h-16 w-16 bg-emerald-500/5 rounded-full blur-xl" />
-            <div className="flex items-center space-x-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shrink-0" />
-              <h4 className="text-[10px] font-black text-emerald-600 uppercase tracking-widest">24×7 ACTIVE SUPPORT</h4>
+            {/* Quick Links */}
+            <div>
+              <h4 className="text-white font-bold tracking-widest text-xs uppercase mb-6">Quick Links</h4>
+              <ul className="space-y-3 text-sm">
+                <li><a href="#" onClick={(e) => { e.preventDefault(); setActiveTab('catalog'); }} className="hover:text-blue-400 transition-colors">Home</a></li>
+                <li><a href="#" onClick={(e) => { e.preventDefault(); setActiveTab('catalog'); }} className="hover:text-blue-400 transition-colors">Browse Catalog</a></li>
+                <li><a href="#" onClick={(e) => { e.preventDefault(); setActiveTab('orders'); }} className="hover:text-blue-400 transition-colors">Track Order</a></li>
+                <li><a href="#" onClick={(e) => { e.preventDefault(); setActiveTab('support'); }} className="hover:text-blue-400 transition-colors">Support Center</a></li>
+              </ul>
             </div>
-            <p className="text-xs font-bold text-slate-900 leading-snug">
-              Need Help? Chat with us 24×7 on WhatsApp
-            </p>
-            <ul className="text-[10px] space-y-1.5 font-sans font-semibold text-slate-600">
-              <li className="flex items-center space-x-1.5">
-                <span className="text-emerald-500 text-xs font-bold">✓</span>
-                <span>Instant Activation Support</span>
-              </li>
-              <li className="flex items-center space-x-1.5">
-                <span className="text-emerald-500 text-xs font-bold">✓</span>
-                <span>Pre-sales & Post-sales assistance</span>
-              </li>
-            </ul>
-            <a
-              href="https://wa.me/919999999999?text=Hello%20Netlyrakeys%20Support%2C%20I%20need%20help%20with%20a%20key%20purchase."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full bg-[#10B981] hover:bg-[#059669] text-white font-black text-[10px] uppercase tracking-widest py-2.5 rounded-xl transition-all duration-200 flex items-center justify-center space-x-2 shadow-xs hover:scale-[1.01] active:scale-[0.99]"
-              id="footer-whatsapp-btn"
-            >
-              {/* WhatsApp Icon */}
-              <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
-                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-4.846c1.6.95 3.182 1.449 4.825 1.451 5.436 0 9.86-4.42 9.863-9.864.001-2.637-1.03-5.114-2.905-6.99C16.656 1.882 14.183 1.05 11.54 1.05 6.105 1.05 1.681 5.47 1.677 10.908c-.001 1.745.453 3.449 1.317 4.957l-1.018 3.715 3.804-.998zm11.233-7.24c-.312-.156-1.848-.912-2.129-1.015-.282-.102-.487-.156-.69.156-.204.311-.785.983-.96 1.186-.177.204-.355.228-.668.072-.312-.156-1.32-.486-2.515-1.551-.93-.829-1.558-1.854-1.74-2.165-.183-.312-.02-.481.136-.636.14-.139.312-.365.469-.547.156-.183.208-.312.312-.52.105-.208.053-.391-.026-.547-.079-.156-.69-1.661-.944-2.274-.249-.597-.502-.516-.69-.526-.178-.009-.383-.011-.587-.011-.204 0-.537.076-.818.384-.282.311-1.077 1.051-1.077 2.561 0 1.51 1.099 2.97 1.253 3.177.154.204 2.162 3.299 5.241 4.628.732.315 1.304.503 1.751.644.735.233 1.402.2 1.93.121.588-.087 1.848-.755 2.11-1.468.263-.712.263-1.32.184-1.448-.079-.118-.282-.172-.593-.328z" />
-              </svg>
-              <span>Chat on WhatsApp</span>
-            </a>
+
+            {/* Categories */}
+            <div>
+              <h4 className="text-white font-bold tracking-widest text-xs uppercase mb-6">Categories</h4>
+              <ul className="space-y-3 text-sm">
+                <li><a href="#" onClick={(e) => { e.preventDefault(); handlePromoClick('Microsoft Windows Keys'); }} className="hover:text-blue-400 transition-colors">Windows Keys</a></li>
+                <li><a href="#" onClick={(e) => { e.preventDefault(); handlePromoClick('Microsoft Office Keys'); }} className="hover:text-blue-400 transition-colors">Office Licenses</a></li>
+                <li><a href="#" onClick={(e) => { e.preventDefault(); handlePromoClick('Antivirus & Security'); }} className="hover:text-blue-400 transition-colors">Antivirus & Security</a></li>
+                <li><a href="#" onClick={(e) => { e.preventDefault(); handlePromoClick('Developer Tools'); }} className="hover:text-blue-400 transition-colors">Developer Tools</a></li>
+              </ul>
+            </div>
+
+            {/* Support / Contact */}
+            <div className="space-y-6">
+              <h4 className="text-white font-bold tracking-widest text-xs uppercase mb-6">Need Help?</h4>
+
+              <div className="bg-[#222831] border border-[#3b82f6]/20 p-5 rounded-xl relative overflow-hidden group hover:border-[#3b82f6]/40 transition-colors" id="footer-whatsapp-column">
+                <div className="absolute top-0 right-0 h-16 w-16 bg-emerald-500/10 rounded-full blur-xl group-hover:bg-emerald-500/20 transition-colors" />
+
+                <ul className="space-y-2.5 mb-5 relative z-10">
+                  <li className="flex items-center space-x-2.5 text-xs font-semibold text-white/80">
+                    <Zap className="w-4 h-4 text-amber-400" />
+                    <span>Instant Digital Delivery</span>
+                  </li>
+                  <li className="flex items-center space-x-2.5 text-xs font-semibold text-white/80">
+                    <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                    <span>Secure Checkout</span>
+                  </li>
+                  <li className="flex items-center space-x-2.5 text-xs font-semibold text-white/80">
+                    <MessageSquare className="w-4 h-4 text-blue-400" />
+                    <span>24/7 Expert Support</span>
+                  </li>
+                </ul>
+
+                <a
+                  href="https://wa.me/919999999999?text=Hello%20NexusKeys%20Support%2C%20I%20need%20help%20with%20a%20key%20purchase."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full bg-[#10B981] hover:bg-[#059669] text-white font-black text-[10px] uppercase tracking-widest py-3 rounded-lg transition-all duration-200 flex items-center justify-center space-x-2 shadow-md relative z-10"
+                >
+                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-4.846c1.6.95 3.182 1.449 4.825 1.451 5.436 0 9.86-4.42 9.863-9.864.001-2.637-1.03-5.114-2.905-6.99C16.656 1.882 14.183 1.05 11.54 1.05 6.105 1.05 1.681 5.47 1.677 10.908c-.001 1.745.453 3.449 1.317 4.957l-1.018 3.715 3.804-.998zm11.233-7.24c-.312-.156-1.848-.912-2.129-1.015-.282-.102-.487-.156-.69.156-.204.311-.785.983-.96 1.186-.177.204-.355.228-.668.072-.312-.156-1.32-.486-2.515-1.551-.93-.829-1.558-1.854-1.74-2.165-.183-.312-.02-.481.136-.636.14-.139.312-.365.469-.547.156-.183.208-.312.312-.52.105-.208.053-.391-.026-.547-.079-.156-.69-1.661-.944-2.274-.249-.597-.502-.516-.69-.526-.178-.009-.383-.011-.587-.011-.204 0-.537.076-.818.384-.282.311-1.077 1.051-1.077 2.561 0 1.51 1.099 2.97 1.253 3.177.154.204 2.162 3.299 5.241 4.628.732.315 1.304.503 1.751.644.735.233 1.402.2 1.93.121.588-.087 1.848-.755 2.11-1.468.263-.712.263-1.32.184-1.448-.079-.118-.282-.172-.593-.328z" />
+                  </svg>
+                  <span>Chat on WhatsApp</span>
+                </a>
+              </div>
+            </div>
           </div>
 
-          <div className="space-y-4">
-            <h4 className="text-[10px] font-black text-slate-800 uppercase tracking-widest">Disclaimer & Trademarks</h4>
-            <p className="text-[10px] text-slate-500 leading-relaxed font-normal">
-              Netlyrakeys is an independent marketplace provider of digital licensing activation codes. All company, product, and service names used on this website are for identification purposes only. All product titles, copyrights, and brand trademarks are properties of Microsoft Corporation or their respective original publishers.
+          {/* Bottom Bar */}
+          <div className="pt-8 border-t border-[#2A313C] flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-xs text-[#94A3B8]">
+              &copy; {new Date().getFullYear()} NexusKeys Marketplace. All rights reserved. All product titles and trademarks belong to their respective publishers.
             </p>
-          </div>
-
-          <div className="space-y-4">
-            <h4 className="text-[10px] font-black text-slate-800 uppercase tracking-widest">Secure Trust Seals</h4>
-            <div className="flex items-center space-x-2.5">
-              <div className="border border-[#E2E8F0] bg-white px-3.5 py-1.5 rounded-xl text-center shadow-xs">
-                <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest">SSL</div>
-                <div className="text-[9px] font-black text-emerald-600 uppercase tracking-widest mt-0.5">Secured</div>
-              </div>
-              <div className="border border-[#E2E8F0] bg-white px-3.5 py-1.5 rounded-xl text-center shadow-xs">
-                <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Microsoft</div>
-                <div className="text-[9px] font-black text-[#7C3AED] uppercase tracking-widest mt-0.5">Partner Key</div>
-              </div>
+            <div className="flex space-x-6 text-xs text-[#94A3B8]">
+              <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+              <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+              <a href="#" className="hover:text-white transition-colors">Refund Policy</a>
             </div>
           </div>
         </div>
@@ -1645,77 +1464,8 @@ export default function App() {
         )}
       </AnimatePresence>
 
-      {/* Floating WhatsApp Widget with Hover/Interactive Prompt */}
-      <div className="fixed bottom-6 right-6 z-50 group flex flex-col items-end" id="floating-whatsapp-widget">
-        {/* Expandable chat assistant window */}
-        <div className="mb-3 max-w-[280px] bg-[#0c0c0c] border border-emerald-500/20 rounded-2xl shadow-2xl p-4 opacity-0 scale-90 translate-y-4 pointer-events-none group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0 transition-all duration-300 origin-bottom-right" id="whatsapp-tooltip-window">
-          <div className="flex items-center space-x-2.5 border-b border-white/5 pb-2.5 mb-2.5">
-            <div className="relative">
-              <div className="h-8 w-8 rounded-full bg-emerald-500 flex items-center justify-center text-black font-extrabold text-xs shadow-inner">
-                WA
-              </div>
-              <span className="absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full bg-emerald-400 border border-[#0c0c0c] animate-pulse" />
-            </div>
-            <div>
-              <h5 className="text-xs font-bold text-white flex items-center">
-                Netlyra Support
-                <span className="text-[8px] font-bold text-emerald-400 uppercase bg-emerald-950/40 border border-emerald-500/15 px-1 py-0.5 rounded ml-1.5">24x7 Active</span>
-              </h5>
-              <p className="text-[9px] text-white/40 font-mono">Response time: Instant</p>
-            </div>
-          </div>
-
-          <div className="space-y-2.5">
-            <p className="text-[11px] font-semibold text-white leading-snug">
-              Need Help? Chat with us 24×7 on WhatsApp
-            </p>
-            <div className="space-y-1.5 text-[10px] text-white/60 font-light">
-              <div className="flex items-center space-x-1.5">
-                <span className="text-emerald-400 font-bold">✦</span>
-                <span>Instant activation support</span>
-              </div>
-              <div className="flex items-center space-x-1.5">
-                <span className="text-emerald-400 font-bold">✦</span>
-                <span>Pre-sales & post-sales assistance</span>
-              </div>
-            </div>
-
-            <a
-              href="https://wa.me/919999999999?text=Hello%20Netlyrakeys%20Support%2C%20I%20need%20assistance%20with%20license%20activation."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-2 w-full bg-emerald-500 hover:bg-emerald-400 text-black font-bold text-[10px] uppercase tracking-widest py-2 rounded-xl transition-all duration-150 flex items-center justify-center space-x-1.5"
-            >
-              <span>Start Live Chat</span>
-              <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
-                <path d="M16.003 9.414l-8.607 8.607-1.414-1.414 8.607-8.607H9.003V6h11v11h-2V11.414z" />
-              </svg>
-            </a>
-          </div>
-        </div>
-
-        {/* The main green floating action button */}
-        <a
-          href="https://wa.me/919999999999?text=Hello%20Netlyrakeys%20Support%2C%20I%20need%20assistance%20with%20license%20activation."
-          target="_blank"
-          rel="noopener noreferrer"
-          className="relative h-14 w-14 rounded-full bg-emerald-500 text-black flex items-center justify-center shadow-[0_4px_24px_rgba(16,185,129,0.4)] hover:bg-emerald-400 hover:scale-110 active:scale-95 transition-all duration-200 cursor-pointer"
-          id="whatsapp-floating-action-btn"
-        >
-          {/* Pulsating glow rings */}
-          <span className="absolute inset-0 rounded-full bg-emerald-500/30 animate-ping opacity-75" style={{ animationDuration: '2s' }} />
-
-          {/* WhatsApp logo */}
-          <svg className="w-7 h-7 fill-current" viewBox="0 0 24 24">
-            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-4.846c1.6.95 3.182 1.449 4.825 1.451 5.436 0 9.86-4.42 9.863-9.864.001-2.637-1.03-5.114-2.905-6.99C16.656 1.882 14.183 1.05 11.54 1.05 6.105 1.05 1.681 5.47 1.677 10.908c-.001 1.745.453 3.449 1.317 4.957l-1.018 3.715 3.804-.998zm11.233-7.24c-.312-.156-1.848-.912-2.129-1.015-.282-.102-.487-.156-.69.156-.204.311-.785.983-.96 1.186-.177.204-.355.228-.668.072-.312-.156-1.32-.486-2.515-1.551-.93-.829-1.558-1.854-1.74-2.165-.183-.312-.02-.481.136-.636.14-.139.312-.365.469-.547.156-.183.208-.312.312-.52.105-.208.053-.391-.026-.547-.079-.156-.69-1.661-.944-2.274-.249-.597-.502-.516-.69-.526-.178-.009-.383-.011-.587-.011-.204 0-.537.076-.818.384-.282.311-1.077 1.051-1.077 2.561 0 1.51 1.099 2.97 1.253 3.177.154.204 2.162 3.299 5.241 4.628.732.315 1.304.503 1.751.644.735.233 1.402.2 1.93.121.588-.087 1.848-.755 2.11-1.468.263-.712.263-1.32.184-1.448-.079-.118-.282-.172-.593-.328z" />
-          </svg>
-
-          {/* Tiny notification dot */}
-          <span className="absolute top-0 right-0 h-3.5 w-3.5 bg-rose-500 rounded-full border-2 border-emerald-500 flex items-center justify-center">
-            <span className="block h-1.5 w-1.5 rounded-full bg-white animate-pulse" />
-          </span>
-        </a>
-      </div>
+      {/* Floating Chat Bot Widget */}
+      <ChatBotWidget />
 
     </div>
   );

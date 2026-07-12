@@ -124,7 +124,7 @@ export default function SoftwareBox({ product, isHovered = false, size = 'normal
     deviceLimit = title.includes('rds') ? 'Remote Client CAL' : '1 PC License';
 
     if (isServer) {
-      coverBg = 'bg-gradient-to-b from-[#1e40af] via-[#1e3a8a] to-[#0f172a]';
+      coverBg = 'bg-gradient-to-b from-[#1e40af] via-[#1e3a8a] to-[#222831]';
       spineBg = 'bg-[#172554]';
       sideStripBg = 'bg-blue-600';
       glowColor = 'rgba(59, 130, 246, 0.25)';
@@ -145,7 +145,7 @@ export default function SoftwareBox({ product, isHovered = false, size = 'normal
       bottomBadge = 'RETAIL DIGITAL KEY';
     } else if (isWin11 && isEnterprise) {
       // Windows 11 Enterprise: Premium Dark, Glowing Cyan accents
-      coverBg = 'bg-gradient-to-b from-[#0f172a] via-[#020617] to-black';
+      coverBg = 'bg-gradient-to-b from-[#222831] via-[#020617] to-black';
       spineBg = 'bg-black';
       sideStripBg = 'bg-cyan-500';
       glowColor = 'rgba(6, 182, 212, 0.4)';
@@ -186,7 +186,7 @@ export default function SoftwareBox({ product, isHovered = false, size = 'normal
   } else if (isOffice) {
     // Office Products: Premium white package, orange-red accents
     coverBg = 'bg-gradient-to-b from-white via-[#fafafa] to-slate-100';
-    spineBg = 'bg-slate-200';
+    spineBg = 'bg-[#EEEEEE]';
     sideStripBg = 'bg-[#e45124]';
     glowColor = 'rgba(228, 81, 36, 0.2)';
     brandTitle = title.includes('365') ? 'Office 365' : 'Office Professional';
@@ -346,7 +346,7 @@ export default function SoftwareBox({ product, isHovered = false, size = 'normal
             {isWindows || isOffice ? (
               <>
                 <MicrosoftLogo />
-                <span className={`text-[6px] font-extrabold uppercase tracking-widest ${isLight ? 'text-slate-400' : 'text-white/45'}`}>
+                <span className={`text-[6px] font-extrabold uppercase tracking-widest ${isLight ? 'text-[#393E46]' : 'text-white/45'}`}>
                   Microsoft
                 </span>
               </>
@@ -355,7 +355,7 @@ export default function SoftwareBox({ product, isHovered = false, size = 'normal
                 <div className={`w-2 h-2 rounded-xs ${isLight ? 'bg-slate-800' : 'bg-white'} flex items-center justify-center p-[1px] shrink-0`}>
                   {cardGraphic}
                 </div>
-                <span className={`text-[6px] font-extrabold uppercase tracking-widest ${isLight ? 'text-slate-400' : 'text-white/45'}`}>
+                <span className={`text-[6px] font-extrabold uppercase tracking-widest ${isLight ? 'text-[#393E46]' : 'text-white/45'}`}>
                   {category.split(' ')[0]}
                 </span>
               </>
@@ -380,7 +380,7 @@ export default function SoftwareBox({ product, isHovered = false, size = 'normal
                   </svg>
                 </div>
               ) : null}
-              <h4 className={`text-xs font-black leading-none uppercase tracking-tight ${isLight ? 'text-slate-800' : 'text-white'}`}>
+              <h4 className={`text-xs font-black leading-none uppercase tracking-tight ${isLight ? 'text-[#222831]' : 'text-white'}`}>
                 {brandTitle}
               </h4>
             </div>
@@ -412,13 +412,13 @@ export default function SoftwareBox({ product, isHovered = false, size = 'normal
           <div className="space-y-1 z-10 relative mt-auto shrink-0">
             <span className={`inline-block text-[6px] font-black uppercase tracking-widest px-1.5 py-0.5 rounded shadow-xs ${
               isLight 
-                ? 'bg-slate-200 text-slate-700 border border-slate-300' 
+                ? 'bg-[#EEEEEE] text-[#393E46] border border-slate-300' 
                 : 'bg-white/10 text-white border border-white/15'
             }`}>
               {deviceLimit}
             </span>
             
-            <div className={`flex justify-between items-center text-[5px] font-bold tracking-widest ${isLight ? 'text-slate-400' : 'text-white/45'} border-t ${isLight ? 'border-slate-200' : 'border-white/10'} pt-1`}>
+            <div className={`flex justify-between items-center text-[5px] font-bold tracking-widest ${isLight ? 'text-[#393E46]' : 'text-white/45'} border-t ${isLight ? 'border-[#EEEEEE]' : 'border-white/10'} pt-1`}>
               <span>{bottomBadge}</span>
               <span>GENUINE</span>
             </div>

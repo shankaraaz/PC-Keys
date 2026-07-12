@@ -17,7 +17,7 @@ export default function ProductCard({ product, onAddToCart, onViewDetails }: Pro
 
   // Determine elegant ambient glow colors for each brand category
   const titleLower = product.title.toLowerCase();
-  let glowColorClass = "from-[#0EA5B7]/10 to-transparent";
+  let glowColorClass = "from-[#3b82f6]/10 to-transparent";
   if (titleLower.includes("office") || titleLower.includes("365") || titleLower.includes("m365")) {
     glowColorClass = "from-orange-500/10 to-transparent";
   } else if (titleLower.includes("server")) {
@@ -27,7 +27,7 @@ export default function ProductCard({ product, onAddToCart, onViewDetails }: Pro
   } else if (titleLower.includes("visio")) {
     glowColorClass = "from-sky-500/10 to-transparent";
   } else if (titleLower.includes("steam")) {
-    glowColorClass = "from-[#0EA5B7]/15 to-transparent";
+    glowColorClass = "from-[#3b82f6]/15 to-transparent";
   } else if (titleLower.includes("xbox")) {
     glowColorClass = "from-green-500/15 to-transparent";
   } else if (titleLower.includes("playstation")) {
@@ -66,7 +66,7 @@ export default function ProductCard({ product, onAddToCart, onViewDetails }: Pro
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* 1. TOP ROW BADGES (Highly scannable & consistent) */}
-      <div className="px-4 pt-3 pb-2 flex justify-between items-center border-b border-slate-100 z-20 shrink-0 bg-white">
+      <div className="px-4 pt-3 pb-2 flex justify-between items-center border-b border-[#EEEEEE] z-20 shrink-0 bg-white">
         <span className="bg-blue-100 text-blue-600 border border-blue-200/50 font-black text-[9px] px-2 py-0.5 rounded uppercase tracking-widest shadow-xs">
           SAVE {discountPercent}%
         </span>
@@ -105,11 +105,11 @@ export default function ProductCard({ product, onAddToCart, onViewDetails }: Pro
           </div>
 
           {/* Pricing Details Block (Aligned perfectly to bottom-left) */}
-          <div className="relative z-20 mt-auto pt-2 border-t border-slate-200/40 text-center sm:text-left sm:pl-1">
-            <span className="block text-[9px] font-bold text-slate-400 line-through leading-none">
+          <div className="relative z-20 mt-auto pt-2 border-t border-[#EEEEEE]/40 text-center sm:text-left sm:pl-1">
+            <span className="block text-[9px] font-bold text-[#393E46] line-through leading-none">
               ₹{product.price}
             </span>
-            <span className="text-base sm:text-lg font-black text-slate-900 mt-0.5 tracking-tight inline-block">
+            <span className="text-base sm:text-lg font-black text-[#222831] mt-0.5 tracking-tight inline-block">
               ₹{product.salePrice}
             </span>
           </div>
@@ -122,54 +122,54 @@ export default function ProductCard({ product, onAddToCart, onViewDetails }: Pro
             {/* Category title block (rendered dynamically with repeat-guard check) */}
             <div className="h-3.5 overflow-hidden">
               {showCategoryText ? (
-                <span className="text-[8.5px] sm:text-[9px] font-extrabold text-[#7C3AED] uppercase tracking-widest block truncate">
+                <span className="text-[8.5px] sm:text-[9px] font-extrabold text-[#3b82f6] uppercase tracking-widest block truncate">
                   {product.category}
                 </span>
               ) : (
-                <span className="text-[8.5px] sm:text-[9px] font-extrabold text-[#0EA5B7] uppercase tracking-widest block truncate">
+                <span className="text-[8.5px] sm:text-[9px] font-extrabold text-[#3b82f6] uppercase tracking-widest block truncate">
                   Genuine License Key
                 </span>
               )}
             </div>
 
             {/* Product Title (Strict line clamp & container height constraint to prevent CLS) */}
-            <h3 className="text-xs sm:text-sm font-black text-slate-900 leading-snug group-hover:text-[#7C3AED] transition-colors duration-200 line-clamp-2 h-[34px] sm:h-[36px] overflow-hidden">
+            <h3 className="text-xs sm:text-sm font-black text-[#222831] leading-snug group-hover:text-[#3b82f6] transition-colors duration-200 line-clamp-2 h-[34px] sm:h-[36px] overflow-hidden">
               {product.title}
             </h3>
 
             {/* Rating Display */}
             <div className="flex items-center space-x-1 text-xs">
               <Star className="h-3 w-3 text-amber-500 fill-amber-500 shrink-0" />
-              <span className="text-[11px] font-bold text-slate-800">{product.rating}</span>
-              <span className="text-[9px] text-slate-400">({product.reviewsCount})</span>
+              <span className="text-[11px] font-bold text-[#222831]">{product.rating}</span>
+              <span className="text-[9px] text-[#393E46]">({product.reviewsCount})</span>
             </div>
           </div>
 
           {/* Clean 4-Bullet Feature Checklist (Guaranteed exact height/padding) */}
-          <div className="space-y-1 my-2 bg-slate-50 p-2 sm:p-2.5 rounded-xl border border-slate-100 flex-grow flex flex-col justify-center h-[76px] overflow-hidden">
-            <div className="flex items-center text-[10px] md:text-[11px] text-slate-600 leading-none">
+          <div className="space-y-1 my-2 bg-[#EEEEEE] p-2 sm:p-2.5 rounded-xl border border-[#EEEEEE] flex-grow flex flex-col justify-center h-[76px] overflow-hidden">
+            <div className="flex items-center text-[10px] md:text-[11px] text-[#393E46] leading-none">
               <span className="text-emerald-500 mr-1.5 font-black">✓</span>
               <span className="font-medium truncate">{devices} License</span>
             </div>
-            <div className="flex items-center text-[10px] md:text-[11px] text-slate-600 leading-none">
+            <div className="flex items-center text-[10px] md:text-[11px] text-[#393E46] leading-none">
               <span className="text-emerald-500 mr-1.5 font-black">✓</span>
               <span className="font-medium truncate">Genuine Activation</span>
             </div>
-            <div className="flex items-center text-[10px] md:text-[11px] text-slate-600 leading-none">
+            <div className="flex items-center text-[10px] md:text-[11px] text-[#393E46] leading-none">
               <span className="text-emerald-500 mr-1.5 font-black">✓</span>
               <span className="font-medium truncate">Instant Delivery</span>
             </div>
-            <div className="flex items-center text-[10px] md:text-[11px] text-slate-600 leading-none">
+            <div className="flex items-center text-[10px] md:text-[11px] text-[#393E46] leading-none">
               <span className="text-emerald-500 mr-1.5 font-black">✓</span>
               <span className="font-medium truncate">Activation Support</span>
             </div>
           </div>
 
           {/* Action Button Strip */}
-          <div className="pt-2 border-t border-slate-100 flex items-center space-x-1.5 shrink-0 h-[40px] bg-white">
+          <div className="pt-2 border-t border-[#EEEEEE] flex items-center space-x-1.5 shrink-0 h-[40px] bg-white">
             <button
               onClick={() => onViewDetails(product)}
-              className="p-2 rounded-lg text-slate-500 bg-slate-100 hover:bg-slate-200 hover:text-slate-800 border border-slate-200 transition-all duration-200 flex items-center justify-center cursor-pointer shrink-0 h-9 w-9"
+              className="p-2 rounded-lg text-[#393E46] bg-[#EEEEEE] hover:bg-[#EEEEEE] hover:text-[#222831] border border-[#EEEEEE] transition-all duration-200 flex items-center justify-center cursor-pointer shrink-0 h-9 w-9"
               title="View Activation Details"
               id={`view-details-${product.id}`}
             >

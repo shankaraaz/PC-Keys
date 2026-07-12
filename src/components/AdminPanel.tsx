@@ -563,7 +563,7 @@ export default function AdminPanel({
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/[0.08] pb-6" id="admin-header">
         <div className="space-y-1">
           <div className="flex items-center space-x-2.5">
-            <div className="bg-[#0EA5B7]/10 border border-[#0EA5B7]/30 text-[#0EA5B7] p-2 rounded-xl">
+            <div className="bg-[#3b82f6]/10 border border-[#3b82f6]/30 text-[#3b82f6] p-2 rounded-xl">
               <ShieldCheck className="h-6 w-6" />
             </div>
             <div>
@@ -574,7 +574,7 @@ export default function AdminPanel({
         </div>
         <button
           onClick={onBackToCatalog}
-          className="bg-[#111827] hover:bg-[#1E293B] text-white border border-white/[0.08] px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-widest flex items-center space-x-2 transition-all duration-200 cursor-pointer self-start md:self-auto"
+          className="bg-[#FFFFFF] hover:bg-[#FFFFFF] text-white border border-white/[0.08] px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-widest flex items-center space-x-2 transition-all duration-200 cursor-pointer self-start md:self-auto"
         >
           <ArrowLeft className="h-4 w-4" />
           <span>Exit To Catalog</span>
@@ -583,7 +583,7 @@ export default function AdminPanel({
 
       {/* Admin Quick Summary Stats Ribbon */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4" id="admin-summary-ribbon">
-        <div className="bg-[#1E293B] p-5 rounded-2xl border border-white/[0.08] space-y-1">
+        <div className="bg-[#FFFFFF] p-5 rounded-2xl border border-white/[0.08] space-y-1">
           <div className="text-white/40 font-mono text-[9px] uppercase tracking-widest">Gross Sales revenue</div>
           <div className="text-2xl font-semibold tracking-tight text-emerald-400 flex items-center">
             <span className="mr-1">₹</span>
@@ -591,23 +591,23 @@ export default function AdminPanel({
           </div>
           <div className="text-[10px] text-white/30 font-light">Real completed transaction total</div>
         </div>
-        <div className="bg-[#1E293B] p-5 rounded-2xl border border-white/[0.08] space-y-1">
+        <div className="bg-[#FFFFFF] p-5 rounded-2xl border border-white/[0.08] space-y-1">
           <div className="text-white/40 font-mono text-[9px] uppercase tracking-widest">Total Orders Handled</div>
-          <div className="text-2xl font-semibold tracking-tight text-[#0EA5B7]">
+          <div className="text-2xl font-semibold tracking-tight text-[#3b82f6]">
             <span>{orders.length}</span>
           </div>
           <div className="text-[10px] text-white/30 font-light">
             <span className="text-emerald-400 font-semibold">{totalSalesCount}</span> successfully paid & delivered
           </div>
         </div>
-        <div className="bg-[#1E293B] p-5 rounded-2xl border border-white/[0.08] space-y-1">
+        <div className="bg-[#FFFFFF] p-5 rounded-2xl border border-white/[0.08] space-y-1">
           <div className="text-white/40 font-mono text-[9px] uppercase tracking-widest">Active Coupon Promos</div>
           <div className="text-2xl font-semibold tracking-tight text-amber-400">
             <span>{coupons.filter(c => c.active).length}</span>
           </div>
           <div className="text-[10px] text-white/30 font-light">Applied discount campaign codes</div>
         </div>
-        <div className="bg-[#1E293B] p-5 rounded-2xl border border-white/[0.08] space-y-1">
+        <div className="bg-[#FFFFFF] p-5 rounded-2xl border border-white/[0.08] space-y-1">
           <div className="text-white/40 font-mono text-[9px] uppercase tracking-widest">License Key Inventory</div>
           <div className="text-2xl font-semibold tracking-tight text-purple-400">
             <span>{keyStockStatus.available}</span> <span className="text-xs text-white/30">/ {keyStockStatus.totalKeys} keys</span>
@@ -623,7 +623,7 @@ export default function AdminPanel({
         <button
           onClick={() => { setActiveSection('analytics'); setSearchQuery(''); }}
           className={`px-4 py-3 text-[10px] font-bold uppercase tracking-widest flex items-center space-x-2 border-b-2 transition-all duration-200 cursor-pointer ${
-            activeSection === 'analytics' ? 'border-[#0EA5B7] text-[#0EA5B7]' : 'border-transparent text-[#CBD5E1]/60 hover:text-white'
+            activeSection === 'analytics' ? 'border-[#3b82f6] text-[#3b82f6]' : 'border-transparent text-[#CBD5E1]/60 hover:text-white'
           }`}
         >
           <BarChart3 className="h-4 w-4" />
@@ -632,7 +632,7 @@ export default function AdminPanel({
         <button
           onClick={() => { setActiveSection('products'); setSearchQuery(''); }}
           className={`px-4 py-3 text-[10px] font-bold uppercase tracking-widest flex items-center space-x-2 border-b-2 transition-all duration-200 cursor-pointer ${
-            activeSection === 'products' ? 'border-[#0EA5B7] text-[#0EA5B7]' : 'border-transparent text-[#CBD5E1]/60 hover:text-white'
+            activeSection === 'products' ? 'border-[#3b82f6] text-[#3b82f6]' : 'border-transparent text-[#CBD5E1]/60 hover:text-white'
           }`}
         >
           <ShoppingBag className="h-4 w-4" />
@@ -641,7 +641,7 @@ export default function AdminPanel({
         <button
           onClick={() => { setActiveSection('inventory'); setSearchQuery(''); }}
           className={`px-4 py-3 text-[10px] font-bold uppercase tracking-widest flex items-center space-x-2 border-b-2 transition-all duration-200 cursor-pointer ${
-            activeSection === 'inventory' ? 'border-[#0EA5B7] text-[#0EA5B7]' : 'border-transparent text-[#CBD5E1]/60 hover:text-white'
+            activeSection === 'inventory' ? 'border-[#3b82f6] text-[#3b82f6]' : 'border-transparent text-[#CBD5E1]/60 hover:text-white'
           }`}
         >
           <Key className="h-4 w-4" />
@@ -650,7 +650,7 @@ export default function AdminPanel({
         <button
           onClick={() => { setActiveSection('orders'); setSearchQuery(''); }}
           className={`px-4 py-3 text-[10px] font-bold uppercase tracking-widest flex items-center space-x-2 border-b-2 transition-all duration-200 cursor-pointer ${
-            activeSection === 'orders' ? 'border-[#0EA5B7] text-[#0EA5B7]' : 'border-transparent text-[#CBD5E1]/60 hover:text-white'
+            activeSection === 'orders' ? 'border-[#3b82f6] text-[#3b82f6]' : 'border-transparent text-[#CBD5E1]/60 hover:text-white'
           }`}
         >
           <FileText className="h-4 w-4" />
@@ -659,7 +659,7 @@ export default function AdminPanel({
         <button
           onClick={() => { setActiveSection('refunds'); setSearchQuery(''); }}
           className={`px-4 py-3 text-[10px] font-bold uppercase tracking-widest flex items-center space-x-2 border-b-2 transition-all duration-200 cursor-pointer ${
-            activeSection === 'refunds' ? 'border-[#0EA5B7] text-[#0EA5B7]' : 'border-transparent text-[#CBD5E1]/60 hover:text-white'
+            activeSection === 'refunds' ? 'border-[#3b82f6] text-[#3b82f6]' : 'border-transparent text-[#CBD5E1]/60 hover:text-white'
           }`}
         >
           <RefreshCw className="h-4 w-4" />
@@ -668,7 +668,7 @@ export default function AdminPanel({
         <button
           onClick={() => { setActiveSection('coupons'); setSearchQuery(''); }}
           className={`px-4 py-3 text-[10px] font-bold uppercase tracking-widest flex items-center space-x-2 border-b-2 transition-all duration-200 cursor-pointer ${
-            activeSection === 'coupons' ? 'border-[#0EA5B7] text-[#0EA5B7]' : 'border-transparent text-[#CBD5E1]/60 hover:text-white'
+            activeSection === 'coupons' ? 'border-[#3b82f6] text-[#3b82f6]' : 'border-transparent text-[#CBD5E1]/60 hover:text-white'
           }`}
         >
           <Tag className="h-4 w-4" />
@@ -677,7 +677,7 @@ export default function AdminPanel({
         <button
           onClick={() => { setActiveSection('customers'); setSearchQuery(''); }}
           className={`px-4 py-3 text-[10px] font-bold uppercase tracking-widest flex items-center space-x-2 border-b-2 transition-all duration-200 cursor-pointer ${
-            activeSection === 'customers' ? 'border-[#0EA5B7] text-[#0EA5B7]' : 'border-transparent text-[#CBD5E1]/60 hover:text-white'
+            activeSection === 'customers' ? 'border-[#3b82f6] text-[#3b82f6]' : 'border-transparent text-[#CBD5E1]/60 hover:text-white'
           }`}
         >
           <Users className="h-4 w-4" />
@@ -687,7 +687,7 @@ export default function AdminPanel({
 
       {/* SEARCH / UTILITY BAR */}
       {activeSection !== 'analytics' && (
-        <div className="flex flex-col md:flex-row gap-4 justify-between items-center bg-[#111827] p-4 rounded-2xl border border-white/[0.08]" id="admin-search-ribbon">
+        <div className="flex flex-col md:flex-row gap-4 justify-between items-center bg-[#FFFFFF] p-4 rounded-2xl border border-white/[0.08]" id="admin-search-ribbon">
           <div className="relative w-full md:max-w-md">
             <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-white/30" />
             <input
@@ -695,7 +695,7 @@ export default function AdminPanel({
               placeholder={`Search ${activeSection}...`}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-[#0B1120] border border-white/[0.08] rounded-xl py-2.5 pl-10 pr-4 text-xs font-mono uppercase tracking-wider text-white placeholder-white/30 focus:border-[#0EA5B7] outline-none transition-all duration-200"
+              className="w-full bg-[#EEEEEE] border border-white/[0.08] rounded-xl py-2.5 pl-10 pr-4 text-xs font-mono uppercase tracking-wider text-white placeholder-white/30 focus:border-[#3b82f6] outline-none transition-all duration-200"
             />
           </div>
 
@@ -712,7 +712,7 @@ export default function AdminPanel({
                 <button
                   type="button"
                   onClick={() => document.getElementById('csv-import-file')?.click()}
-                  className="bg-[#111827] hover:bg-[#1E293B] text-white border border-white/[0.08] px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-widest flex items-center space-x-1.5 transition-all duration-200 cursor-pointer"
+                  className="bg-[#FFFFFF] hover:bg-[#FFFFFF] text-white border border-white/[0.08] px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-widest flex items-center space-x-1.5 transition-all duration-200 cursor-pointer"
                   title="Import products from a CSV file"
                 >
                   <Upload className="h-4 w-4 text-emerald-400" />
@@ -721,10 +721,10 @@ export default function AdminPanel({
                 <button
                   type="button"
                   onClick={handleExportCSV}
-                  className="bg-[#111827] hover:bg-[#1E293B] text-white border border-white/[0.08] px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-widest flex items-center space-x-1.5 transition-all duration-200 cursor-pointer"
+                  className="bg-[#FFFFFF] hover:bg-[#FFFFFF] text-white border border-white/[0.08] px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-widest flex items-center space-x-1.5 transition-all duration-200 cursor-pointer"
                   title="Export products to a CSV file"
                 >
-                  <Download className="h-4 w-4 text-[#0EA5B7]" />
+                  <Download className="h-4 w-4 text-[#3b82f6]" />
                   <span className="hidden sm:inline">Export CSV</span>
                 </button>
                 <button
@@ -752,7 +752,7 @@ export default function AdminPanel({
                 <select
                   value={selectedProductKeysView}
                   onChange={(e) => setSelectedProductKeysView(e.target.value)}
-                  className="bg-[#0B1120] border border-white/[0.08] text-xs text-white uppercase tracking-wider font-mono rounded-xl p-2.5 outline-none focus:border-[#0EA5B7]"
+                  className="bg-[#EEEEEE] border border-white/[0.08] text-xs text-white uppercase tracking-wider font-mono rounded-xl p-2.5 outline-none focus:border-[#3b82f6]"
                 >
                   <option value="all">ALL PRODUCTS</option>
                   {products.map(p => (
@@ -774,7 +774,7 @@ export default function AdminPanel({
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               
               {/* Sales Revenue Trend */}
-              <div className="lg:col-span-2 bg-[#1E293B] p-6 rounded-3xl border border-white/[0.08] space-y-4">
+              <div className="lg:col-span-2 bg-[#FFFFFF] p-6 rounded-3xl border border-white/[0.08] space-y-4">
                 <div className="flex items-center justify-between">
                   <div>
                     <h3 className="text-sm font-semibold uppercase tracking-wider text-white">Daily Operations revenue</h3>
@@ -796,7 +796,7 @@ export default function AdminPanel({
                       <XAxis dataKey="day" stroke="#555" fontSize={11} tickLine={false} />
                       <YAxis stroke="#555" fontSize={11} tickLine={false} />
                       <Tooltip 
-                        contentStyle={{ backgroundColor: '#111827', borderColor: 'rgba(255,255,255,0.08)', borderRadius: 12 }} 
+                        contentStyle={{ backgroundColor: '#FFFFFF', borderColor: 'rgba(255,255,255,0.08)', borderRadius: 12 }} 
                         labelStyle={{ color: '#aaa', fontWeight: 'bold' }}
                       />
                       <Area type="monotone" dataKey="revenue" stroke="#10b981" strokeWidth={2} fillOpacity={1} fill="url(#revenueGrad)" />
@@ -806,7 +806,7 @@ export default function AdminPanel({
               </div>
 
               {/* Category Share */}
-              <div className="bg-[#1E293B] p-6 rounded-3xl border border-white/[0.08] space-y-4">
+              <div className="bg-[#FFFFFF] p-6 rounded-3xl border border-white/[0.08] space-y-4">
                 <div>
                   <h3 className="text-sm font-semibold uppercase tracking-wider text-white">Share of Sales Category</h3>
                   <p className="text-xs text-white/40">Distribution of gross revenues by department</p>
@@ -828,7 +828,7 @@ export default function AdminPanel({
                           <Cell key={`cell-${index}`} fill={['#60a5fa', '#a78bfa', '#fb7185', '#34d399', '#f59e0b', '#3b82f6', '#ec4899', '#14b8a6', '#f43f5e'][index % 9]} />
                         ))}
                       </Pie>
-                      <Tooltip contentStyle={{ backgroundColor: '#111827', borderColor: 'rgba(255,255,255,0.08)', borderRadius: 12 }} />
+                      <Tooltip contentStyle={{ backgroundColor: '#FFFFFF', borderColor: 'rgba(255,255,255,0.08)', borderRadius: 12 }} />
                     </PieChart>
                   </ResponsiveContainer>
                   
@@ -859,7 +859,7 @@ export default function AdminPanel({
 
             {/* Bottom Row - Stock Status Alerts */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="bg-[#1E293B] p-6 rounded-3xl border border-white/[0.08] space-y-3 col-span-1 md:col-span-2">
+              <div className="bg-[#FFFFFF] p-6 rounded-3xl border border-white/[0.08] space-y-3 col-span-1 md:col-span-2">
                 <div className="flex items-center justify-between">
                   <h4 className="text-xs font-bold uppercase tracking-widest text-white">Stock Level Threshold Watch</h4>
                   <span className="bg-red-950 text-red-400 border border-red-500/20 px-2 py-0.5 rounded text-[9px] font-mono uppercase">Under 15 items</span>
@@ -875,7 +875,7 @@ export default function AdminPanel({
                             setActiveSection('inventory');
                             setNewKeysProductId(p.id);
                           }}
-                          className="bg-[#111827] hover:bg-[#0EA5B7] text-[#CBD5E1] hover:text-white px-2.5 py-1 rounded border border-white/[0.08] text-[10px] uppercase font-bold tracking-wider transition-all duration-200"
+                          className="bg-[#FFFFFF] hover:bg-[#3b82f6] text-[#CBD5E1] hover:text-white px-2.5 py-1 rounded border border-white/[0.08] text-[10px] uppercase font-bold tracking-wider transition-all duration-200"
                         >
                           Restock Keys
                         </button>
@@ -889,7 +889,7 @@ export default function AdminPanel({
               </div>
 
               {/* Conversion metrics box */}
-              <div className="bg-[#1E293B] p-6 rounded-3xl border border-white/[0.08] space-y-4 flex flex-col justify-between">
+              <div className="bg-[#FFFFFF] p-6 rounded-3xl border border-white/[0.08] space-y-4 flex flex-col justify-between">
                 <div>
                   <h4 className="text-xs font-bold uppercase tracking-widest text-[#CBD5E1]/60">Core Operational Metrics</h4>
                   <div className="mt-4 space-y-3.5 font-mono text-xs">
@@ -903,7 +903,7 @@ export default function AdminPanel({
                     </div>
                     <div className="flex justify-between border-b border-white/[0.08] pb-1.5">
                       <span className="text-white/40">Verification Rate:</span>
-                      <span className="text-[#0EA5B7] font-semibold">99.8% Auto</span>
+                      <span className="text-[#3b82f6] font-semibold">99.8% Auto</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-white/40">License Solved Rate:</span>
@@ -911,8 +911,8 @@ export default function AdminPanel({
                     </div>
                   </div>
                 </div>
-                <div className="bg-[#0B1120] rounded-xl p-3 border border-white/[0.08] text-center flex items-center space-x-3">
-                  <Inbox className="h-5 w-5 text-[#0EA5B7]" />
+                <div className="bg-[#EEEEEE] rounded-xl p-3 border border-white/[0.08] text-center flex items-center space-x-3">
+                  <Inbox className="h-5 w-5 text-[#3b82f6]" />
                   <div className="text-left">
                     <div className="text-[9px] font-mono uppercase text-white/40">Payment Integrations</div>
                     <div className="text-[10px] text-white/80 font-bold uppercase tracking-wider">Razorpay • GPay • Cashfree</div>
@@ -925,11 +925,11 @@ export default function AdminPanel({
 
         {/* SECTION 2: PRODUCTS */}
         {activeSection === 'products' && (
-          <div className="bg-[#1E293B] rounded-3xl border border-white/[0.08] overflow-hidden" id="section-products-list">
+          <div className="bg-[#FFFFFF] rounded-3xl border border-white/[0.08] overflow-hidden" id="section-products-list">
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse text-xs">
                 <thead>
-                  <tr className="bg-[#111827] border-b border-white/[0.08] text-[#CBD5E1]/60 uppercase tracking-widest font-mono text-[10px]">
+                  <tr className="bg-[#FFFFFF] border-b border-white/[0.08] text-[#CBD5E1]/60 uppercase tracking-widest font-mono text-[10px]">
                     <th className="p-4">Product Info</th>
                     <th className="p-4">Category</th>
                     <th className="p-4 text-right">M.R.P.</th>
@@ -944,7 +944,7 @@ export default function AdminPanel({
                     <tr key={p.id} className="hover:bg-white/[0.03] transition-colors">
                       <td className="p-4">
                         <div className="flex items-center space-x-3">
-                          <img src={p.imageUrl} alt={p.title} className="h-10 w-10 rounded-lg object-cover bg-[#0B1120] border border-white/[0.08]" />
+                          <img src={p.imageUrl} alt={p.title} className="h-10 w-10 rounded-lg object-cover bg-[#EEEEEE] border border-white/[0.08]" />
                           <div className="max-w-xs space-y-0.5">
                             <div className="text-white font-medium truncate">{p.title}</div>
                             <div className="text-[10px] text-white/40 font-mono uppercase">ID: {p.id}</div>
@@ -952,7 +952,7 @@ export default function AdminPanel({
                         </div>
                       </td>
                       <td className="p-4">
-                        <span className="bg-[#0EA5B7]/10 border border-[#0EA5B7]/25 px-2 py-1 rounded-full text-[10px] uppercase font-mono tracking-wider text-[#0EA5B7]">
+                        <span className="bg-[#3b82f6]/10 border border-[#3b82f6]/25 px-2 py-1 rounded-full text-[10px] uppercase font-mono tracking-wider text-[#3b82f6]">
                           {p.category}
                         </span>
                       </td>
@@ -974,7 +974,7 @@ export default function AdminPanel({
                             className={`p-1.5 rounded-lg border transition-all cursor-pointer ${
                               p.status === 'Active' 
                                 ? 'bg-emerald-950/40 hover:bg-emerald-900/60 text-emerald-400 border-emerald-500/25' 
-                                : 'bg-[#111827] hover:bg-[#1E293B] text-[#CBD5E1] border-white/[0.08]'
+                                : 'bg-[#FFFFFF] hover:bg-[#FFFFFF] text-[#CBD5E1] border-white/[0.08]'
                             }`}
                             title={p.status === 'Active' ? 'Deactivate (Set to Hidden)' : 'Activate (Set to Active)'}
                           >
@@ -985,7 +985,7 @@ export default function AdminPanel({
                           <button
                             type="button"
                             onClick={() => handleDuplicateProduct(p)}
-                            className="bg-[#111827] hover:bg-[#1E293B] text-[#CBD5E1] p-2 rounded-xl border border-white/[0.08] transition-all cursor-pointer"
+                            className="bg-[#FFFFFF] hover:bg-[#FFFFFF] text-[#CBD5E1] p-2 rounded-xl border border-white/[0.08] transition-all cursor-pointer"
                             title="Duplicate Product (Copy SKU)"
                           >
                             <Copy className="h-4 w-4 text-amber-400" />
@@ -993,7 +993,7 @@ export default function AdminPanel({
                           <button
                             type="button"
                             onClick={() => handleStartEditProduct(p)}
-                            className="bg-[#111827] hover:bg-[#1E293B] text-[#CBD5E1] p-2 rounded-xl border border-white/[0.08] transition-all cursor-pointer"
+                            className="bg-[#FFFFFF] hover:bg-[#FFFFFF] text-[#CBD5E1] p-2 rounded-xl border border-white/[0.08] transition-all cursor-pointer"
                             title="Edit Product"
                           >
                             <Settings className="h-4 w-4 text-blue-400" />
@@ -1005,7 +1005,7 @@ export default function AdminPanel({
                                 onDeleteProduct(p.id);
                               }
                             }}
-                            className="bg-[#111827] hover:bg-rose-500/10 text-rose-400 p-2 rounded-xl border border-white/[0.08] hover:border-rose-500/30 transition-all cursor-pointer"
+                            className="bg-[#FFFFFF] hover:bg-rose-500/10 text-rose-400 p-2 rounded-xl border border-white/[0.08] hover:border-rose-500/30 transition-all cursor-pointer"
                             title="Delete Product"
                           >
                             <Trash2 className="h-4 w-4" />
@@ -1030,7 +1030,7 @@ export default function AdminPanel({
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6" id="section-inventory">
             
             {/* Keys Allocation Form */}
-            <div className="bg-[#1E293B] p-6 rounded-3xl border border-white/[0.08] space-y-4 self-start">
+            <div className="bg-[#FFFFFF] p-6 rounded-3xl border border-white/[0.08] space-y-4 self-start">
               <div>
                 <h3 className="text-sm font-semibold uppercase tracking-wider text-white">Replenish Activation Keys</h3>
                 <p className="text-xs text-white/40">Select a product and load serial codes to raise stock</p>
@@ -1042,7 +1042,7 @@ export default function AdminPanel({
                   <select
                     value={newKeysProductId}
                     onChange={(e) => setNewKeysProductId(e.target.value)}
-                    className="w-full bg-[#0B1120] border border-white/[0.08] text-xs text-white rounded-xl p-3 outline-none focus:border-[#0EA5B7]"
+                    className="w-full bg-[#EEEEEE] border border-white/[0.08] text-xs text-white rounded-xl p-3 outline-none focus:border-[#3b82f6]"
                     required
                   >
                     <option value="">SELECT PRODUCT...</option>
@@ -1059,7 +1059,7 @@ export default function AdminPanel({
                     value={newKeysInput}
                     onChange={(e) => setNewKeysInput(e.target.value)}
                     placeholder="ABCD-EFGH-IJKL-MNOP&#10;QWERT-YUIOP-ASDFG-HJKLM"
-                    className="w-full bg-[#0B1120] border border-white/[0.08] text-xs text-white rounded-xl p-3 font-mono outline-none focus:border-[#0EA5B7] resize-none"
+                    className="w-full bg-[#EEEEEE] border border-white/[0.08] text-xs text-white rounded-xl p-3 font-mono outline-none focus:border-[#3b82f6] resize-none"
                     required
                   />
                   <p className="text-[10px] text-white/30 leading-tight">These codes will be marked as available. Selling them increments the product stock count automatically.</p>
@@ -1076,15 +1076,15 @@ export default function AdminPanel({
             </div>
 
             {/* Keys Table Database */}
-            <div className="lg:col-span-2 bg-[#1E293B] rounded-3xl border border-white/[0.08] overflow-hidden flex flex-col h-[520px]">
-              <div className="p-4 bg-[#111827] border-b border-white/[0.08] font-bold text-xs uppercase tracking-wider flex justify-between items-center text-white">
+            <div className="lg:col-span-2 bg-[#FFFFFF] rounded-3xl border border-white/[0.08] overflow-hidden flex flex-col h-[520px]">
+              <div className="p-4 bg-[#FFFFFF] border-b border-white/[0.08] font-bold text-xs uppercase tracking-wider flex justify-between items-center text-white">
                 <span>License Keys Database</span>
-                <span className="text-[10px] font-mono text-[#0EA5B7] bg-[#0EA5B7]/10 px-2.5 py-0.5 rounded-full border border-[#0EA5B7]/20">{filteredKeysList.length} total codes</span>
+                <span className="text-[10px] font-mono text-[#3b82f6] bg-[#3b82f6]/10 px-2.5 py-0.5 rounded-full border border-[#3b82f6]/20">{filteredKeysList.length} total codes</span>
               </div>
               <div className="overflow-y-auto flex-1">
                 <table className="w-full text-left border-collapse text-xs">
                   <thead>
-                    <tr className="bg-[#0B1120] border-b border-white/[0.08] text-white/50 uppercase tracking-widest font-mono text-[9px]">
+                    <tr className="bg-[#EEEEEE] border-b border-white/[0.08] text-white/50 uppercase tracking-widest font-mono text-[9px]">
                       <th className="p-3.5">Product Title</th>
                       <th className="p-3.5">Key Serial String</th>
                       <th className="p-3.5">Status</th>
@@ -1133,11 +1133,11 @@ export default function AdminPanel({
 
         {/* SECTION 4: ORDERS */}
         {activeSection === 'orders' && (
-          <div className="bg-[#1E293B] rounded-3xl border border-white/[0.08] overflow-hidden" id="section-orders-list">
+          <div className="bg-[#FFFFFF] rounded-3xl border border-white/[0.08] overflow-hidden" id="section-orders-list">
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse text-xs">
                 <thead>
-                  <tr className="bg-[#111827] border-b border-white/[0.08] text-[#CBD5E1]/60 uppercase tracking-widest font-mono text-[10px]">
+                  <tr className="bg-[#FFFFFF] border-b border-white/[0.08] text-[#CBD5E1]/60 uppercase tracking-widest font-mono text-[10px]">
                     <th className="p-4">Order Details</th>
                     <th className="p-4">Customer Info</th>
                     <th className="p-4">Items Summary</th>
@@ -1152,9 +1152,9 @@ export default function AdminPanel({
                     <tr key={o.id} className="hover:bg-white/[0.03] transition-colors">
                       <td className="p-4">
                         <div className="space-y-1 font-mono text-[11px]">
-                          <div className="text-[#0EA5B7] font-bold">{o.id}</div>
+                          <div className="text-[#3b82f6] font-bold">{o.id}</div>
                           <div className="text-white/40 text-[9px]">{new Date(o.createdAt).toLocaleString()}</div>
-                          <div className="text-[9px] bg-[#0B1120] border border-white/[0.08] text-white/50 px-1.5 py-0.5 rounded inline-block truncate max-w-[150px]">
+                          <div className="text-[9px] bg-[#EEEEEE] border border-white/[0.08] text-white/50 px-1.5 py-0.5 rounded inline-block truncate max-w-[150px]">
                             TXN: {o.paymentDetails?.transactionId || 'None'}
                           </div>
                         </div>
@@ -1170,11 +1170,11 @@ export default function AdminPanel({
                         <div className="space-y-1.5">
                           {o.items.map((it, idx) => (
                             <div key={idx} className="text-white/80">
-                              <span className="font-semibold text-[#0EA5B7]">{it.quantity}x</span> {it.title}
+                              <span className="font-semibold text-[#3b82f6]">{it.quantity}x</span> {it.title}
                               {it.licenseKeys && it.licenseKeys.length > 0 && (
                                 <div className="mt-1 flex flex-wrap gap-1 font-mono text-[10px]">
                                   {it.licenseKeys.map((k, ki) => (
-                                    <span key={ki} className="bg-[#0EA5B7]/10 text-[#0EA5B7] px-1.5 py-0.5 rounded border border-[#0EA5B7]/20">
+                                    <span key={ki} className="bg-[#3b82f6]/10 text-[#3b82f6] px-1.5 py-0.5 rounded border border-[#3b82f6]/20">
                                       🔑 {k}
                                     </span>
                                   ))}
@@ -1234,11 +1234,11 @@ export default function AdminPanel({
 
         {/* SECTION 5: REFUNDS */}
         {activeSection === 'refunds' && (
-          <div className="bg-[#1E293B] rounded-3xl border border-white/[0.08] overflow-hidden animate-fade-in" id="section-refunds">
+          <div className="bg-[#FFFFFF] rounded-3xl border border-white/[0.08] overflow-hidden animate-fade-in" id="section-refunds">
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse text-xs">
                 <thead>
-                  <tr className="bg-[#111827] border-b border-white/[0.08] text-[#CBD5E1]/60 uppercase tracking-widest font-mono text-[10px]">
+                  <tr className="bg-[#FFFFFF] border-b border-white/[0.08] text-[#CBD5E1]/60 uppercase tracking-widest font-mono text-[10px]">
                     <th className="p-4">Refund ID</th>
                     <th className="p-4">Order Association</th>
                     <th className="p-4">Customer Details</th>
@@ -1251,7 +1251,7 @@ export default function AdminPanel({
                 <tbody className="divide-y divide-white/[0.08] font-light">
                   {refundRequests.map(ref => (
                     <tr key={ref.id} className="hover:bg-white/[0.03] transition-colors">
-                      <td className="p-4 font-mono text-[#0EA5B7] font-bold text-[11px]">{ref.id}</td>
+                      <td className="p-4 font-mono text-[#3b82f6] font-bold text-[11px]">{ref.id}</td>
                       <td className="p-4 font-mono text-white/60 text-[11px]">{ref.orderId}</td>
                       <td className="p-4">
                         <div className="space-y-0.5">
@@ -1286,7 +1286,7 @@ export default function AdminPanel({
                             </button>
                             <button
                               onClick={() => onProcessRefund(ref.id, 'rejected')}
-                              className="bg-[#111827] hover:bg-rose-500/10 text-rose-400 border border-white/[0.08] hover:border-rose-500/30 px-2.5 py-1.5 rounded-xl text-[9px] uppercase tracking-wider font-bold transition-all cursor-pointer flex items-center space-x-1"
+                              className="bg-[#FFFFFF] hover:bg-rose-500/10 text-rose-400 border border-white/[0.08] hover:border-rose-500/30 px-2.5 py-1.5 rounded-xl text-[9px] uppercase tracking-wider font-bold transition-all cursor-pointer flex items-center space-x-1"
                             >
                               <X className="h-3 w-3" />
                               <span>Reject</span>
@@ -1314,12 +1314,12 @@ export default function AdminPanel({
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6" id="section-coupons">
             
             {/* Coupon display table */}
-            <div className="md:col-span-2 bg-[#1E293B] rounded-3xl border border-white/[0.08] overflow-hidden">
-              <div className="p-4 bg-[#111827] border-b border-white/[0.08] text-xs font-bold uppercase tracking-wider text-white">Active Store Coupons</div>
+            <div className="md:col-span-2 bg-[#FFFFFF] rounded-3xl border border-white/[0.08] overflow-hidden">
+              <div className="p-4 bg-[#FFFFFF] border-b border-white/[0.08] text-xs font-bold uppercase tracking-wider text-white">Active Store Coupons</div>
               <div className="overflow-x-auto">
                 <table className="w-full text-left border-collapse text-xs">
                   <thead>
-                    <tr className="bg-[#0B1120] border-b border-white/[0.08] text-white/50 uppercase tracking-widest font-mono text-[9px]">
+                    <tr className="bg-[#EEEEEE] border-b border-white/[0.08] text-white/50 uppercase tracking-widest font-mono text-[9px]">
                       <th className="p-3.5">Promo Code</th>
                       <th className="p-3.5">Discount Metric</th>
                       <th className="p-3.5 text-right">Min Order Size</th>
@@ -1331,7 +1331,7 @@ export default function AdminPanel({
                     {coupons.map(cp => (
                       <tr key={cp.id} className="hover:bg-white/[0.03] transition-colors">
                         <td className="p-3.5 font-bold text-white tracking-wider flex items-center space-x-1.5">
-                          <Tag className="h-3.5 w-3.5 text-[#0EA5B7]" />
+                          <Tag className="h-3.5 w-3.5 text-[#3b82f6]" />
                           <span>{cp.code}</span>
                         </td>
                         <td className="p-3.5 text-emerald-400 font-semibold">
@@ -1350,7 +1350,7 @@ export default function AdminPanel({
                         <td className="p-3.5 text-right">
                           <button
                             onClick={() => onDeleteCoupon(cp.id)}
-                            className="bg-[#111827] hover:bg-rose-500/10 text-rose-400 p-1.5 rounded-xl border border-white/[0.08] hover:border-rose-500/30 transition-all cursor-pointer"
+                            className="bg-[#FFFFFF] hover:bg-rose-500/10 text-rose-400 p-1.5 rounded-xl border border-white/[0.08] hover:border-rose-500/30 transition-all cursor-pointer"
                             title="Delete Coupon"
                           >
                             <Trash2 className="h-3.5 w-3.5" />
@@ -1369,7 +1369,7 @@ export default function AdminPanel({
             </div>
 
             {/* Quick Coupon Creator */}
-            <div className="bg-[#1E293B] p-6 rounded-3xl border border-white/[0.08] space-y-4 self-start">
+            <div className="bg-[#FFFFFF] p-6 rounded-3xl border border-white/[0.08] space-y-4 self-start">
               <div>
                 <h3 className="text-sm font-semibold uppercase tracking-wider text-white">Generate Promo Code</h3>
                 <p className="text-xs text-white/40">Launch a new marketing campaign code</p>
@@ -1384,7 +1384,7 @@ export default function AdminPanel({
                     placeholder="E.G. NEWYEAR50, WIN11SALE"
                     value={cpCode}
                     onChange={(e) => setCpCode(e.target.value)}
-                    className="w-full bg-[#0B1120] border border-white/[0.08] text-xs text-white rounded-xl p-3 font-mono outline-none uppercase focus:border-[#0EA5B7]"
+                    className="w-full bg-[#EEEEEE] border border-white/[0.08] text-xs text-white rounded-xl p-3 font-mono outline-none uppercase focus:border-[#3b82f6]"
                   />
                 </div>
 
@@ -1394,7 +1394,7 @@ export default function AdminPanel({
                     <select
                       value={cpType}
                       onChange={(e) => setCpType(e.target.value as any)}
-                      className="w-full bg-[#0B1120] border border-white/[0.08] text-xs text-white rounded-xl p-3 outline-none focus:border-[#0EA5B7]"
+                      className="w-full bg-[#EEEEEE] border border-white/[0.08] text-xs text-white rounded-xl p-3 outline-none focus:border-[#3b82f6]"
                     >
                       <option value="percent">PERCENT (%)</option>
                       <option value="fixed">FLAT ($)</option>
@@ -1409,7 +1409,7 @@ export default function AdminPanel({
                       min="1"
                       value={cpValue}
                       onChange={(e) => setCpValue(e.target.value)}
-                      className="w-full bg-[#0B1120] border border-white/[0.08] text-xs text-white rounded-xl p-3 outline-none focus:border-[#0EA5B7]"
+                      className="w-full bg-[#EEEEEE] border border-white/[0.08] text-xs text-white rounded-xl p-3 outline-none focus:border-[#3b82f6]"
                     />
                   </div>
                 </div>
@@ -1422,7 +1422,7 @@ export default function AdminPanel({
                     min="0"
                     value={cpMinOrder}
                     onChange={(e) => setCpMinOrder(e.target.value)}
-                    className="w-full bg-[#0B1120] border border-white/[0.08] text-xs text-white rounded-xl p-3 outline-none focus:border-[#0EA5B7]"
+                    className="w-full bg-[#EEEEEE] border border-white/[0.08] text-xs text-white rounded-xl p-3 outline-none focus:border-[#3b82f6]"
                   />
                 </div>
 
@@ -1441,11 +1441,11 @@ export default function AdminPanel({
 
         {/* SECTION 7: CUSTOMERS */}
         {activeSection === 'customers' && (
-          <div className="bg-[#1E293B] rounded-3xl border border-white/[0.08] overflow-hidden" id="section-customers">
+          <div className="bg-[#FFFFFF] rounded-3xl border border-white/[0.08] overflow-hidden" id="section-customers">
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse text-xs">
                 <thead>
-                  <tr className="bg-[#111827] border-b border-white/[0.08] text-[#CBD5E1]/60 uppercase tracking-widest font-mono text-[10px]">
+                  <tr className="bg-[#FFFFFF] border-b border-white/[0.08] text-[#CBD5E1]/60 uppercase tracking-widest font-mono text-[10px]">
                     <th className="p-4">Customer Name</th>
                     <th className="p-4">Email Address</th>
                     <th className="p-4">Registered Date</th>
@@ -1463,7 +1463,7 @@ export default function AdminPanel({
                       </td>
                       <td className="p-4 font-mono text-[11px] text-white/70">{cust.email}</td>
                       <td className="p-4 font-mono text-[10px] text-white/40">{new Date(cust.createdAt).toLocaleDateString()}</td>
-                      <td className="p-4 text-center font-mono font-semibold text-[#0EA5B7]">{cust.totalOrders}</td>
+                      <td className="p-4 text-center font-mono font-semibold text-[#3b82f6]">{cust.totalOrders}</td>
                       <td className="p-4 text-right font-mono text-emerald-400 font-semibold">${cust.totalSpent.toFixed(2)}</td>
                       <td className="p-4 text-center">
                         <span className={`px-2.5 py-1 rounded-full text-[9px] font-bold uppercase tracking-wider ${
@@ -1479,7 +1479,7 @@ export default function AdminPanel({
                           onClick={() => onToggleCustomerStatus(cust.uid)}
                           className={`px-3 py-1.5 rounded-xl text-[9px] uppercase tracking-wider font-bold transition-all cursor-pointer flex items-center space-x-1.5 ml-auto border ${
                             cust.status === 'active'
-                              ? 'bg-[#111827] hover:bg-rose-500/10 text-rose-400 border-white/[0.08] hover:border-rose-500/20'
+                              ? 'bg-[#FFFFFF] hover:bg-rose-500/10 text-rose-400 border-white/[0.08] hover:border-rose-500/20'
                               : 'bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border-emerald-500/20'
                           }`}
                         >
@@ -1521,7 +1521,7 @@ export default function AdminPanel({
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
-              className="relative bg-[#1E293B] border border-white/[0.08] rounded-3xl max-w-4xl w-full p-6 md:p-8 shadow-2xl z-10 space-y-6 max-h-[90vh] overflow-y-auto"
+              className="relative bg-[#FFFFFF] border border-white/[0.08] rounded-3xl max-w-4xl w-full p-6 md:p-8 shadow-2xl z-10 space-y-6 max-h-[90vh] overflow-y-auto"
             >
               <button
                 type="button"
@@ -1532,7 +1532,7 @@ export default function AdminPanel({
               </button>
 
               <div>
-                <span className="text-[10px] uppercase font-mono tracking-widest text-[#0EA5B7] bg-[#0EA5B7]/10 border border-[#0EA5B7]/25 px-2.5 py-1 rounded-md">
+                <span className="text-[10px] uppercase font-mono tracking-widest text-[#3b82f6] bg-[#3b82f6]/10 border border-[#3b82f6]/25 px-2.5 py-1 rounded-md">
                   {editingProduct ? 'Update SKU' : 'Catalog Ingress'}
                 </span>
                 <h3 className="text-xl font-light text-white tracking-tight mt-2 font-sans">
@@ -1546,28 +1546,28 @@ export default function AdminPanel({
                 <button
                   type="button"
                   onClick={() => setActiveFormTab('basic')}
-                  className={`pb-2 px-1 transition-all border-b-2 font-bold ${activeFormTab === 'basic' ? 'border-[#0EA5B7] text-[#0EA5B7]' : 'border-transparent text-white/40 hover:text-white/80'}`}
+                  className={`pb-2 px-1 transition-all border-b-2 font-bold ${activeFormTab === 'basic' ? 'border-[#3b82f6] text-[#3b82f6]' : 'border-transparent text-white/40 hover:text-white/80'}`}
                 >
                   ✦ Basic Specs
                 </button>
                 <button
                   type="button"
                   onClick={() => setActiveFormTab('pricing')}
-                  className={`pb-2 px-1 transition-all border-b-2 font-bold ${activeFormTab === 'pricing' ? 'border-[#0EA5B7] text-[#0EA5B7]' : 'border-transparent text-white/40 hover:text-white/80'}`}
+                  className={`pb-2 px-1 transition-all border-b-2 font-bold ${activeFormTab === 'pricing' ? 'border-[#3b82f6] text-[#3b82f6]' : 'border-transparent text-white/40 hover:text-white/80'}`}
                 >
                   ✦ Pricing & SKU Limits
                 </button>
                 <button
                   type="button"
                   onClick={() => setActiveFormTab('media')}
-                  className={`pb-2 px-1 transition-all border-b-2 font-bold ${activeFormTab === 'media' ? 'border-[#0EA5B7] text-[#0EA5B7]' : 'border-transparent text-white/40 hover:text-white/80'}`}
+                  className={`pb-2 px-1 transition-all border-b-2 font-bold ${activeFormTab === 'media' ? 'border-[#3b82f6] text-[#3b82f6]' : 'border-transparent text-white/40 hover:text-white/80'}`}
                 >
                   ✦ WebP Media & Gallery
                 </button>
                 <button
                   type="button"
                   onClick={() => setActiveFormTab('seo')}
-                  className={`pb-2 px-1 transition-all border-b-2 font-bold ${activeFormTab === 'seo' ? 'border-[#0EA5B7] text-[#0EA5B7]' : 'border-transparent text-white/40 hover:text-white/80'}`}
+                  className={`pb-2 px-1 transition-all border-b-2 font-bold ${activeFormTab === 'seo' ? 'border-[#3b82f6] text-[#3b82f6]' : 'border-transparent text-white/40 hover:text-white/80'}`}
                 >
                   ✦ SEO & Trust Parameters
                 </button>
@@ -1589,7 +1589,7 @@ export default function AdminPanel({
                             setProdSlug(e.target.value.toLowerCase().replace(/[^a-z0-9]+/g, '-'));
                             setProdMetaTitle(e.target.value);
                           }}
-                          className="w-full bg-[#0B1120] border border-white/[0.08] rounded-xl p-3 text-white outline-none focus:border-[#0EA5B7] font-sans font-medium text-xs transition-colors"
+                          className="w-full bg-[#EEEEEE] border border-white/[0.08] rounded-xl p-3 text-white outline-none focus:border-[#3b82f6] font-sans font-medium text-xs transition-colors"
                         />
                       </div>
 
@@ -1598,7 +1598,7 @@ export default function AdminPanel({
                         <input
                           type="text" required placeholder="windows-11-professional-retail-key"
                           value={prodSlug} onChange={(e) => setProdSlug(e.target.value.toLowerCase().replace(/[^a-z0-9\-]+/g, ''))}
-                          className="w-full bg-[#0B1120] border border-white/[0.08] rounded-xl p-3 text-white outline-none focus:border-[#0EA5B7] font-mono text-xs transition-colors"
+                          className="w-full bg-[#EEEEEE] border border-white/[0.08] rounded-xl p-3 text-white outline-none focus:border-[#3b82f6] font-mono text-xs transition-colors"
                         />
                       </div>
 
@@ -1607,7 +1607,7 @@ export default function AdminPanel({
                         <input
                           type="text" placeholder="E.G. Microsoft, Adobe, Kaspersky"
                           value={prodBrand} onChange={(e) => setProdBrand(e.target.value)}
-                          className="w-full bg-[#0B1120] border border-white/[0.08] rounded-xl p-3 text-white outline-none focus:border-[#0EA5B7] font-sans transition-colors"
+                          className="w-full bg-[#EEEEEE] border border-white/[0.08] rounded-xl p-3 text-white outline-none focus:border-[#3b82f6] font-sans transition-colors"
                         />
                       </div>
 
@@ -1616,7 +1616,7 @@ export default function AdminPanel({
                         <input
                           type="text" placeholder="E.G. Operating Systems, Office Suites, VPN"
                           value={prodSubcategory} onChange={(e) => setProdSubcategory(e.target.value)}
-                          className="w-full bg-[#0B1120] border border-white/[0.08] rounded-xl p-3 text-white outline-none focus:border-[#0EA5B7] font-sans transition-colors"
+                          className="w-full bg-[#EEEEEE] border border-white/[0.08] rounded-xl p-3 text-white outline-none focus:border-[#3b82f6] font-sans transition-colors"
                         />
                       </div>
 
@@ -1624,7 +1624,7 @@ export default function AdminPanel({
                         <label className="text-[10px] text-white/40 uppercase">Primary Category Department</label>
                         <select
                           value={prodCategory} onChange={(e) => setProdCategory(e.target.value as any)}
-                          className="w-full bg-[#0B1120] border border-white/[0.08] rounded-xl p-3 text-white outline-none focus:border-[#0EA5B7] font-sans transition-colors cursor-pointer"
+                          className="w-full bg-[#EEEEEE] border border-white/[0.08] rounded-xl p-3 text-white outline-none focus:border-[#3b82f6] font-sans transition-colors cursor-pointer"
                         >
                           <option value="Microsoft Windows Keys">Microsoft Windows Keys</option>
                           <option value="Microsoft Office Keys">Microsoft Office Keys</option>
@@ -1642,7 +1642,7 @@ export default function AdminPanel({
                         <input
                           type="text" placeholder="Brief 1-sentence sales pitch"
                           value={prodShortDesc} onChange={(e) => setProdShortDesc(e.target.value)}
-                          className="w-full bg-[#0B1120] border border-white/[0.08] rounded-xl p-3 text-white outline-none focus:border-[#0EA5B7] font-sans transition-colors"
+                          className="w-full bg-[#EEEEEE] border border-white/[0.08] rounded-xl p-3 text-white outline-none focus:border-[#3b82f6] font-sans transition-colors"
                         />
                       </div>
 
@@ -1654,7 +1654,7 @@ export default function AdminPanel({
                             setProdDesc(e.target.value);
                             setProdFullDesc(e.target.value);
                           }}
-                          className="w-full bg-[#0B1120] border border-white/[0.08] rounded-xl p-3 text-white outline-none focus:border-[#0EA5B7] font-sans transition-colors"
+                          className="w-full bg-[#EEEEEE] border border-white/[0.08] rounded-xl p-3 text-white outline-none focus:border-[#3b82f6] font-sans transition-colors"
                         />
                       </div>
 
@@ -1663,7 +1663,7 @@ export default function AdminPanel({
                         <textarea
                           rows={4} required placeholder="Lifetime Retail License&#10;Genuine Activation&#10;Email Delivery"
                           value={prodFeatures} onChange={(e) => setProdFeatures(e.target.value)}
-                          className="w-full bg-[#0B1120] border border-white/[0.08] rounded-xl p-3 text-white outline-none focus:border-[#0EA5B7] font-sans resize-none transition-colors"
+                          className="w-full bg-[#EEEEEE] border border-white/[0.08] rounded-xl p-3 text-white outline-none focus:border-[#3b82f6] font-sans resize-none transition-colors"
                         />
                       </div>
 
@@ -1672,7 +1672,7 @@ export default function AdminPanel({
                         <textarea
                           rows={4} required placeholder="1. Go to official Microsoft activation.&#10;2. Input product serial serial code.&#10;3. Enjoy genuine OS."
                           value={prodGuide} onChange={(e) => setProdGuide(e.target.value)}
-                          className="w-full bg-[#0B1120] border border-white/[0.08] rounded-xl p-3 text-white outline-none focus:border-[#0EA5B7] font-sans resize-none transition-colors"
+                          className="w-full bg-[#EEEEEE] border border-white/[0.08] rounded-xl p-3 text-white outline-none focus:border-[#3b82f6] font-sans resize-none transition-colors"
                         />
                       </div>
                     </div>
@@ -1688,7 +1688,7 @@ export default function AdminPanel({
                         <input
                           type="number" step="0.01" required min="0"
                           value={prodCostPrice} onChange={(e) => setProdCostPrice(e.target.value)}
-                          className="w-full bg-[#0B1120] border border-white/[0.08] rounded-xl p-3 text-white outline-none focus:border-[#0EA5B7] transition-colors"
+                          className="w-full bg-[#EEEEEE] border border-white/[0.08] rounded-xl p-3 text-white outline-none focus:border-[#3b82f6] transition-colors"
                         />
                       </div>
 
@@ -1697,7 +1697,7 @@ export default function AdminPanel({
                         <input
                           type="number" step="0.01" required min="1"
                           value={prodSalePrice} onChange={(e) => setProdSalePrice(e.target.value)}
-                          className="w-full bg-[#0B1120] border border-white/[0.08] rounded-xl p-3 text-white outline-none focus:border-[#0EA5B7] transition-colors"
+                          className="w-full bg-[#EEEEEE] border border-white/[0.08] rounded-xl p-3 text-white outline-none focus:border-[#3b82f6] transition-colors"
                         />
                       </div>
 
@@ -1706,7 +1706,7 @@ export default function AdminPanel({
                         <input
                           type="number" step="0.01" required min="0"
                           value={prodPrice} onChange={(e) => setProdPrice(e.target.value)}
-                          className="w-full bg-[#0B1120] border border-white/[0.08] rounded-xl p-3 text-white outline-none focus:border-[#0EA5B7] transition-colors"
+                          className="w-full bg-[#EEEEEE] border border-white/[0.08] rounded-xl p-3 text-white outline-none focus:border-[#3b82f6] transition-colors"
                         />
                       </div>
 
@@ -1714,7 +1714,7 @@ export default function AdminPanel({
                         <label className="text-[10px] text-white/40 uppercase">Price Currency Code</label>
                         <select
                           value={prodCurrency} onChange={(e) => setProdCurrency(e.target.value)}
-                          className="w-full bg-[#0B1120] border border-white/[0.08] rounded-xl p-3 text-white outline-none focus:border-[#0EA5B7] transition-colors font-sans cursor-pointer"
+                          className="w-full bg-[#EEEEEE] border border-white/[0.08] rounded-xl p-3 text-white outline-none focus:border-[#3b82f6] transition-colors font-sans cursor-pointer"
                         >
                           <option value="INR">INR (₹) Default</option>
                           <option value="USD">USD ($)</option>
@@ -1726,7 +1726,7 @@ export default function AdminPanel({
                         <input
                           type="number" required min="0"
                           value={prodStock} onChange={(e) => setProdStock(e.target.value)}
-                          className="w-full bg-[#0B1120] border border-white/[0.08] rounded-xl p-3 text-white outline-none focus:border-[#0EA5B7] transition-colors"
+                          className="w-full bg-[#EEEEEE] border border-white/[0.08] rounded-xl p-3 text-white outline-none focus:border-[#3b82f6] transition-colors"
                         />
                       </div>
 
@@ -1734,7 +1734,7 @@ export default function AdminPanel({
                         <label className="text-[10px] text-white/40 uppercase">SKU Availability status</label>
                         <select
                           value={prodStatus} onChange={(e) => setProdStatus(e.target.value as any)}
-                          className="w-full bg-[#0B1120] border border-white/[0.08] rounded-xl p-3 text-white outline-none focus:border-[#0EA5B7] transition-colors font-sans cursor-pointer"
+                          className="w-full bg-[#EEEEEE] border border-white/[0.08] rounded-xl p-3 text-white outline-none focus:border-[#3b82f6] transition-colors font-sans cursor-pointer"
                         >
                           <option value="Active">Active (Visible)</option>
                           <option value="Draft">Draft (Offline)</option>
@@ -1747,7 +1747,7 @@ export default function AdminPanel({
                         <label className="text-[10px] text-white/40 uppercase">License class Type</label>
                         <select
                           value={prodLicenseType} onChange={(e) => setProdLicenseType(e.target.value as any)}
-                          className="w-full bg-[#0B1120] border border-white/[0.08] rounded-xl p-3 text-white outline-none focus:border-[#0EA5B7] transition-colors font-sans cursor-pointer"
+                          className="w-full bg-[#EEEEEE] border border-white/[0.08] rounded-xl p-3 text-white outline-none focus:border-[#3b82f6] transition-colors font-sans cursor-pointer"
                         >
                           <option value="Retail">Retail Key</option>
                           <option value="OEM">OEM Hardware Key</option>
@@ -1762,7 +1762,7 @@ export default function AdminPanel({
                         <label className="text-[10px] text-white/40 uppercase">License validity duration</label>
                         <select
                           value={prodValidity} onChange={(e) => setProdValidity(e.target.value as any)}
-                          className="w-full bg-[#0B1120] border border-white/[0.08] rounded-xl p-3 text-white outline-none focus:border-[#0EA5B7] transition-colors font-sans cursor-pointer"
+                          className="w-full bg-[#EEEEEE] border border-white/[0.08] rounded-xl p-3 text-white outline-none focus:border-[#3b82f6] transition-colors font-sans cursor-pointer"
                         >
                           <option value="Lifetime">Lifetime Validity</option>
                           <option value="1 Year">1 Year Duration</option>
@@ -1775,7 +1775,7 @@ export default function AdminPanel({
                         <label className="text-[10px] text-white/40 uppercase">Hardware activation limit</label>
                         <select
                           value={prodDeviceLimit} onChange={(e) => setProdDeviceLimit(e.target.value as any)}
-                          className="w-full bg-[#0B1120] border border-white/[0.08] rounded-xl p-3 text-white outline-none focus:border-[#0EA5B7] transition-colors font-sans cursor-pointer"
+                          className="w-full bg-[#EEEEEE] border border-white/[0.08] rounded-xl p-3 text-white outline-none focus:border-[#3b82f6] transition-colors font-sans cursor-pointer"
                         >
                           <option value="1 PC">1 PC Activation</option>
                           <option value="2 PC">2 PC Activations</option>
@@ -1790,21 +1790,21 @@ export default function AdminPanel({
                 {/* TAB 3: MEDIA UPLOADS & IMAGES */}
                 {activeFormTab === 'media' && (
                   <div className="space-y-6 font-mono">
-                    <div className="bg-[#111827]/30 p-5 rounded-2xl border border-white/[0.08] space-y-4">
+                    <div className="bg-[#FFFFFF]/30 p-5 rounded-2xl border border-white/[0.08] space-y-4">
                       <div className="flex items-center justify-between">
                         <div>
                           <h4 className="text-xs font-bold text-white uppercase tracking-wider">Canvas WebP Ingestion Station</h4>
                           <p className="text-[10px] text-white/40">Upload client files to perform auto-WebP conversion & cropping</p>
                         </div>
-                        <Image className="h-5 w-5 text-[#0EA5B7]" />
+                        <Image className="h-5 w-5 text-[#3b82f6]" />
                       </div>
 
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                         
                         {/* Box 1: Main Image Upload */}
-                        <div className="bg-[#0B1120] border border-white/[0.08] p-4 rounded-xl flex flex-col justify-between space-y-3">
+                        <div className="bg-[#EEEEEE] border border-white/[0.08] p-4 rounded-xl flex flex-col justify-between space-y-3">
                           <div>
-                            <span className="text-[9px] uppercase font-bold text-[#0EA5B7]">Main SKU Cover</span>
+                            <span className="text-[9px] uppercase font-bold text-[#3b82f6]">Main SKU Cover</span>
                             <div className="mt-2 h-20 bg-black/50 rounded-lg flex items-center justify-center overflow-hidden border border-white/5 relative">
                               {prodImg ? <img src={prodImg} className="h-full w-full object-contain" alt="Main cover" /> : <span className="text-[9px] text-white/30">No Image</span>}
                             </div>
@@ -1816,20 +1816,20 @@ export default function AdminPanel({
                             />
                             <button
                               type="button" onClick={() => document.getElementById('main-upload-file')?.click()}
-                              className="w-full bg-[#0EA5B7]/10 hover:bg-[#0EA5B7]/20 text-[#0EA5B7] py-1.5 rounded-lg border border-[#0EA5B7]/20 text-[9px] font-bold uppercase tracking-wider transition-colors cursor-pointer"
+                              className="w-full bg-[#3b82f6]/10 hover:bg-[#3b82f6]/20 text-[#3b82f6] py-1.5 rounded-lg border border-[#3b82f6]/20 text-[9px] font-bold uppercase tracking-wider transition-colors cursor-pointer"
                             >
                               Upload File
                             </button>
                             <input
                               type="text" placeholder="Or paste absolute image URL..."
                               value={prodImg} onChange={(e) => setProdImg(e.target.value)}
-                              className="w-full bg-[#0B1120] border border-white/[0.05] text-[9px] p-2 rounded text-white outline-none"
+                              className="w-full bg-[#EEEEEE] border border-white/[0.05] text-[9px] p-2 rounded text-white outline-none"
                             />
                           </div>
                         </div>
 
                         {/* Box 2: Thumbnail Upload */}
-                        <div className="bg-[#0B1120] border border-white/[0.08] p-4 rounded-xl flex flex-col justify-between space-y-3">
+                        <div className="bg-[#EEEEEE] border border-white/[0.08] p-4 rounded-xl flex flex-col justify-between space-y-3">
                           <div>
                             <span className="text-[9px] uppercase font-bold text-blue-400">SKU Core Thumbnail</span>
                             <div className="mt-2 h-20 bg-black/50 rounded-lg flex items-center justify-center overflow-hidden border border-white/5">
@@ -1850,13 +1850,13 @@ export default function AdminPanel({
                             <input
                               type="text" placeholder="Or paste absolute thumbnail URL..."
                               value={prodThumbnail} onChange={(e) => setProdThumbnail(e.target.value)}
-                              className="w-full bg-[#0B1120] border border-white/[0.05] text-[9px] p-2 rounded text-white outline-none"
+                              className="w-full bg-[#EEEEEE] border border-white/[0.05] text-[9px] p-2 rounded text-white outline-none"
                             />
                           </div>
                         </div>
 
                         {/* Box 3: Gallery Queue Upload */}
-                        <div className="bg-[#0B1120] border border-white/[0.08] p-4 rounded-xl flex flex-col justify-between space-y-3">
+                        <div className="bg-[#EEEEEE] border border-white/[0.08] p-4 rounded-xl flex flex-col justify-between space-y-3">
                           <div>
                             <span className="text-[9px] uppercase font-bold text-amber-400">Gallery Image Stream</span>
                             <div className="mt-2 h-20 bg-black/50 rounded-lg flex items-center justify-center border border-white/5 text-center p-2">
@@ -1891,7 +1891,7 @@ export default function AdminPanel({
 
                     {/* Canvas Cropper Overlay Component */}
                     {cropImageSource && (
-                      <div className="bg-[#0B1120] border border-dashed border-[#0EA5B7]/40 p-5 rounded-2xl space-y-4">
+                      <div className="bg-[#EEEEEE] border border-dashed border-[#3b82f6]/40 p-5 rounded-2xl space-y-4">
                         <div className="flex justify-between items-center">
                           <div className="flex items-center space-x-2">
                             <span className="h-2 w-2 rounded-full bg-emerald-500 animate-ping" />
@@ -1923,7 +1923,7 @@ export default function AdminPanel({
                               <input
                                 type="range" min="1" max="3" step="0.1"
                                 value={cropZoom} onChange={(e) => setCropZoom(parseFloat(e.target.value))}
-                                className="w-full accent-[#0EA5B7] bg-white/10 h-1 rounded-lg"
+                                className="w-full accent-[#3b82f6] bg-white/10 h-1 rounded-lg"
                               />
                             </div>
 
@@ -1947,7 +1947,7 @@ export default function AdminPanel({
                       <label className="text-[10px] text-white/40 uppercase">Media Library Gallery Queue Manager (Touch & Click Reordering)</label>
                       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                         {/* Display Main Image as Item 0 */}
-                        <div className="bg-[#0B1120] rounded-xl p-2.5 border border-[#0EA5B7]/20 flex flex-col justify-between space-y-2 relative group">
+                        <div className="bg-[#EEEEEE] rounded-xl p-2.5 border border-[#3b82f6]/20 flex flex-col justify-between space-y-2 relative group">
                           <span className="absolute top-1 right-1 bg-emerald-950 text-emerald-400 border border-emerald-500/20 text-[8px] font-bold px-1.5 py-0.5 rounded font-mono uppercase z-10">Main</span>
                           <div className="h-20 bg-black/50 rounded-lg flex items-center justify-center overflow-hidden">
                             {prodImg ? <img src={prodImg} className="h-full w-full object-contain" alt="Main cover preview" /> : <span className="text-[10px] text-white/20">Empty</span>}
@@ -1957,7 +1957,7 @@ export default function AdminPanel({
 
                         {/* Display Gallery Items */}
                         {prodGallery.map((gImg, idx) => (
-                          <div key={idx} className="bg-[#0B1120] rounded-xl p-2.5 border border-white/5 flex flex-col justify-between space-y-2 relative group hover:border-white/25 transition-colors">
+                          <div key={idx} className="bg-[#EEEEEE] rounded-xl p-2.5 border border-white/5 flex flex-col justify-between space-y-2 relative group hover:border-white/25 transition-colors">
                             <span className="absolute top-1 right-1 bg-black/60 text-white/70 text-[8px] font-mono px-1 py-0.5 rounded">#{idx + 1}</span>
                             <div className="h-20 bg-black/50 rounded-lg flex items-center justify-center overflow-hidden">
                               <img src={gImg} className="h-full w-full object-contain" alt={`Gallery item ${idx}`} />
@@ -2025,7 +2025,7 @@ export default function AdminPanel({
                         ))}
 
                         {prodGallery.length === 0 && (
-                          <div className="bg-[#111827]/30 rounded-xl p-3 border border-dashed border-white/10 flex flex-col items-center justify-center text-center col-span-3 min-h-[120px]">
+                          <div className="bg-[#FFFFFF]/30 rounded-xl p-3 border border-dashed border-white/10 flex flex-col items-center justify-center text-center col-span-3 min-h-[120px]">
                             <Plus className="h-4 w-4 text-white/20 mb-1" />
                             <p className="text-[9px] text-white/30">No gallery images added yet.</p>
                           </div>
@@ -2038,7 +2038,7 @@ export default function AdminPanel({
                 {/* TAB 4: SEO & TRUST BADGES */}
                 {activeFormTab === 'seo' && (
                   <div className="space-y-6 font-mono">
-                    <div className="bg-[#111827]/40 p-5 rounded-2xl border border-white/[0.08] space-y-4">
+                    <div className="bg-[#FFFFFF]/40 p-5 rounded-2xl border border-white/[0.08] space-y-4">
                       <div>
                         <h4 className="text-xs font-bold text-white uppercase tracking-wider">Search Engine Optimization (SEO Meta)</h4>
                         <p className="text-[10px] text-white/40">Adjust tags rendered in search indexes to boost visibility</p>
@@ -2050,7 +2050,7 @@ export default function AdminPanel({
                           <input
                             type="text" placeholder="E.G. Windows 11 Professional Retail Key | NetlyraKeys"
                             value={prodMetaTitle} onChange={(e) => setProdMetaTitle(e.target.value)}
-                            className="w-full bg-[#0B1120] border border-white/[0.08] rounded-xl p-3 text-white outline-none focus:border-[#0EA5B7] font-sans transition-colors"
+                            className="w-full bg-[#EEEEEE] border border-white/[0.08] rounded-xl p-3 text-white outline-none focus:border-[#3b82f6] font-sans transition-colors"
                           />
                         </div>
 
@@ -2059,7 +2059,7 @@ export default function AdminPanel({
                           <textarea
                             rows={2} placeholder="E.G. Buy genuine Windows 11 Pro keys with instant delivery, GST invoice and 24/7 premium support."
                             value={prodMetaDesc} onChange={(e) => setProdMetaDesc(e.target.value)}
-                            className="w-full bg-[#0B1120] border border-white/[0.08] rounded-xl p-3 text-white outline-none focus:border-[#0EA5B7] font-sans resize-none transition-colors"
+                            className="w-full bg-[#EEEEEE] border border-white/[0.08] rounded-xl p-3 text-white outline-none focus:border-[#3b82f6] font-sans resize-none transition-colors"
                           />
                         </div>
 
@@ -2068,7 +2068,7 @@ export default function AdminPanel({
                           <input
                             type="text" placeholder="windows 11 key, microsoft office, netlyrakeys, genuine license"
                             value={prodKeywords} onChange={(e) => setProdKeywords(e.target.value)}
-                            className="w-full bg-[#0B1120] border border-white/[0.08] rounded-xl p-3 text-white outline-none focus:border-[#0EA5B7] transition-colors"
+                            className="w-full bg-[#EEEEEE] border border-white/[0.08] rounded-xl p-3 text-white outline-none focus:border-[#3b82f6] transition-colors"
                           />
                         </div>
                       </div>
@@ -2084,68 +2084,68 @@ export default function AdminPanel({
                       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
                         <div
                           onClick={() => setBadgeInstantDelivery(!badgeInstantDelivery)}
-                          className={`p-3.5 rounded-xl border flex items-center justify-between cursor-pointer transition-all ${badgeInstantDelivery ? 'bg-[#0EA5B7]/10 border-[#0EA5B7]/30 text-[#0EA5B7]' : 'bg-[#0B1120] border-white/[0.08] text-white/40'}`}
+                          className={`p-3.5 rounded-xl border flex items-center justify-between cursor-pointer transition-all ${badgeInstantDelivery ? 'bg-[#3b82f6]/10 border-[#3b82f6]/30 text-[#3b82f6]' : 'bg-[#EEEEEE] border-white/[0.08] text-white/40'}`}
                         >
                           <div className="text-left space-y-0.5">
                             <div className="text-[10px] font-bold uppercase">Instant Delivery</div>
                             <div className="text-[8px] opacity-60">Delivered within seconds</div>
                           </div>
-                          {badgeInstantDelivery ? <Check className="h-4 w-4 text-[#0EA5B7] shrink-0" /> : <X className="h-4 w-4 opacity-40 shrink-0" />}
+                          {badgeInstantDelivery ? <Check className="h-4 w-4 text-[#3b82f6] shrink-0" /> : <X className="h-4 w-4 opacity-40 shrink-0" />}
                         </div>
 
                         <div
                           onClick={() => setBadgeGstInvoice(!badgeGstInvoice)}
-                          className={`p-3.5 rounded-xl border flex items-center justify-between cursor-pointer transition-all ${badgeGstInvoice ? 'bg-[#0EA5B7]/10 border-[#0EA5B7]/30 text-[#0EA5B7]' : 'bg-[#0B1120] border-white/[0.08] text-white/40'}`}
+                          className={`p-3.5 rounded-xl border flex items-center justify-between cursor-pointer transition-all ${badgeGstInvoice ? 'bg-[#3b82f6]/10 border-[#3b82f6]/30 text-[#3b82f6]' : 'bg-[#EEEEEE] border-white/[0.08] text-white/40'}`}
                         >
                           <div className="text-left space-y-0.5">
                             <div className="text-[10px] font-bold uppercase">GST Invoice</div>
                             <div className="text-[8px] opacity-60">Includes GST input credit</div>
                           </div>
-                          {badgeGstInvoice ? <Check className="h-4 w-4 text-[#0EA5B7] shrink-0" /> : <X className="h-4 w-4 opacity-40 shrink-0" />}
+                          {badgeGstInvoice ? <Check className="h-4 w-4 text-[#3b82f6] shrink-0" /> : <X className="h-4 w-4 opacity-40 shrink-0" />}
                         </div>
 
                         <div
                           onClick={() => setBadgeActivationSupport(!badgeActivationSupport)}
-                          className={`p-3.5 rounded-xl border flex items-center justify-between cursor-pointer transition-all ${badgeActivationSupport ? 'bg-[#0EA5B7]/10 border-[#0EA5B7]/30 text-[#0EA5B7]' : 'bg-[#0B1120] border-white/[0.08] text-white/40'}`}
+                          className={`p-3.5 rounded-xl border flex items-center justify-between cursor-pointer transition-all ${badgeActivationSupport ? 'bg-[#3b82f6]/10 border-[#3b82f6]/30 text-[#3b82f6]' : 'bg-[#EEEEEE] border-white/[0.08] text-white/40'}`}
                         >
                           <div className="text-left space-y-0.5">
                             <div className="text-[10px] font-bold uppercase">Activation Support</div>
                             <div className="text-[8px] opacity-60">Full setup support</div>
                           </div>
-                          {badgeActivationSupport ? <Check className="h-4 w-4 text-[#0EA5B7] shrink-0" /> : <X className="h-4 w-4 opacity-40 shrink-0" />}
+                          {badgeActivationSupport ? <Check className="h-4 w-4 text-[#3b82f6] shrink-0" /> : <X className="h-4 w-4 opacity-40 shrink-0" />}
                         </div>
 
                         <div
                           onClick={() => setBadgeWhatsappSupport(!badgeWhatsappSupport)}
-                          className={`p-3.5 rounded-xl border flex items-center justify-between cursor-pointer transition-all ${badgeWhatsappSupport ? 'bg-[#0EA5B7]/10 border-[#0EA5B7]/30 text-[#0EA5B7]' : 'bg-[#0B1120] border-white/[0.08] text-white/40'}`}
+                          className={`p-3.5 rounded-xl border flex items-center justify-between cursor-pointer transition-all ${badgeWhatsappSupport ? 'bg-[#3b82f6]/10 border-[#3b82f6]/30 text-[#3b82f6]' : 'bg-[#EEEEEE] border-white/[0.08] text-white/40'}`}
                         >
                           <div className="text-left space-y-0.5">
                             <div className="text-[10px] font-bold uppercase">WhatsApp 24/7 Chat</div>
                             <div className="text-[8px] opacity-60">Live agent widget support</div>
                           </div>
-                          {badgeWhatsappSupport ? <Check className="h-4 w-4 text-[#0EA5B7] shrink-0" /> : <X className="h-4 w-4 opacity-40 shrink-0" />}
+                          {badgeWhatsappSupport ? <Check className="h-4 w-4 text-[#3b82f6] shrink-0" /> : <X className="h-4 w-4 opacity-40 shrink-0" />}
                         </div>
 
                         <div
                           onClick={() => setBadgeGenuineLicense(!badgeGenuineLicense)}
-                          className={`p-3.5 rounded-xl border flex items-center justify-between cursor-pointer transition-all ${badgeGenuineLicense ? 'bg-[#0EA5B7]/10 border-[#0EA5B7]/30 text-[#0EA5B7]' : 'bg-[#0B1120] border-white/[0.08] text-white/40'}`}
+                          className={`p-3.5 rounded-xl border flex items-center justify-between cursor-pointer transition-all ${badgeGenuineLicense ? 'bg-[#3b82f6]/10 border-[#3b82f6]/30 text-[#3b82f6]' : 'bg-[#EEEEEE] border-white/[0.08] text-white/40'}`}
                         >
                           <div className="text-left space-y-0.5">
                             <div className="text-[10px] font-bold uppercase">Genuine License</div>
                             <div className="text-[8px] opacity-60">100% legal digital software</div>
                           </div>
-                          {badgeGenuineLicense ? <Check className="h-4 w-4 text-[#0EA5B7] shrink-0" /> : <X className="h-4 w-4 opacity-40 shrink-0" />}
+                          {badgeGenuineLicense ? <Check className="h-4 w-4 text-[#3b82f6] shrink-0" /> : <X className="h-4 w-4 opacity-40 shrink-0" />}
                         </div>
 
                         <div
                           onClick={() => setBadgeReplacementWarranty(!badgeReplacementWarranty)}
-                          className={`p-3.5 rounded-xl border flex items-center justify-between cursor-pointer transition-all ${badgeReplacementWarranty ? 'bg-[#0EA5B7]/10 border-[#0EA5B7]/30 text-[#0EA5B7]' : 'bg-[#0B1120] border-white/[0.08] text-white/40'}`}
+                          className={`p-3.5 rounded-xl border flex items-center justify-between cursor-pointer transition-all ${badgeReplacementWarranty ? 'bg-[#3b82f6]/10 border-[#3b82f6]/30 text-[#3b82f6]' : 'bg-[#EEEEEE] border-white/[0.08] text-white/40'}`}
                         >
                           <div className="text-left space-y-0.5">
                             <div className="text-[10px] font-bold uppercase">Replacement Warranty</div>
                             <div className="text-[8px] opacity-60">Immediate key swaps</div>
                           </div>
-                          {badgeReplacementWarranty ? <Check className="h-4 w-4 text-[#0EA5B7] shrink-0" /> : <X className="h-4 w-4 opacity-40 shrink-0" />}
+                          {badgeReplacementWarranty ? <Check className="h-4 w-4 text-[#3b82f6] shrink-0" /> : <X className="h-4 w-4 opacity-40 shrink-0" />}
                         </div>
                       </div>
                     </div>
@@ -2163,7 +2163,7 @@ export default function AdminPanel({
                   <button
                     type="button"
                     onClick={() => setProductFormOpen(false)}
-                    className="sm:w-32 bg-[#111827] hover:bg-white/[0.03] text-white border border-white/[0.08] font-bold py-3.5 rounded-xl transition-all duration-200"
+                    className="sm:w-32 bg-[#FFFFFF] hover:bg-white/[0.03] text-white border border-white/[0.08] font-bold py-3.5 rounded-xl transition-all duration-200"
                   >
                     Cancel
                   </button>
