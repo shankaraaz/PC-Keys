@@ -166,7 +166,7 @@ export default function Navbar({
               <button
                 onClick={() => onTabChange('catalog')}
                 className={`px-5 h-11 flex items-center justify-center rounded-lg text-xs font-bold uppercase tracking-widest transition-all duration-200 cursor-pointer shadow-xs ${activeTab === 'catalog'
-                  ? 'bg-[#3b82f6] text-white hover:bg-[#6D28D9]'
+                  ? 'bg-blue-600 text-white hover:bg-blue-700'
                   : 'bg-[#EEEEEE] text-[#393E46] hover:bg-[#E2E8F0]'
                   }`}
                 id="nav-catalog-btn"
@@ -222,7 +222,7 @@ export default function Navbar({
                 <div className="relative">
                   <button
                     onClick={() => setDropdownOpen(!dropdownOpen)}
-                    className="flex items-center space-x-2 pl-1.5 pr-3 h-11 rounded-xl border border-[#E2E8F0] hover:bg-[#EEEEEE] transition-all duration-200"
+                    className="flex items-center space-x-2 pl-1.5 pr-3 h-11 rounded-xl border border-[#E2E8F0] hover:bg-[#EEEEEE] transition-all duration-200 font-bold"
                     id="user-profile-menu-btn"
                   >
                     <div className="h-8 w-8 rounded-lg bg-[#E2E8F0] text-[#3b82f6] flex items-center justify-center font-bold text-xs uppercase tracking-wider">

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
-import { Sparkles, Zap, ShieldCheck, ArrowRight, Clock } from 'lucide-react';
+import { Sparkles, Zap, ShieldCheck, ArrowRight, Clock, ShoppingCart, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Category } from '../types';
 
 interface HeroSectionProps {
@@ -10,21 +10,45 @@ interface HeroSectionProps {
 export default function HeroSection({ onPromoClick }: HeroSectionProps) {
   // Countdown timer for XBOX Game Pass Flash Deal in Hero Section
   const [timeLeft, setTimeLeft] = useState({ hours: 3, minutes: 45, seconds: 12 });
-  const [currentSlide, setCurrentSlide] = useState(0);
 
-  const heroImages = [
-    '/asset/win-black.jpg',
-    '/asset/win-color.jpg',
-    '/asset/win-glass.jpg',
-    '/asset/win-white.jpg'
+  const [currentProductSlide, setCurrentProductSlide] = useState(1); // 1 is center item
+
+  const carouselProducts = [
+    {
+      id: 1,
+      title: 'Visio\nProfessional 2021',
+      logo: 'V',
+      bg: 'bg-[#155fc9]',
+      border: 'border-[#0f4b9f]',
+      text: 'text-white',
+    },
+    {
+      id: 2,
+      title: 'Project\nProfessional 2021',
+      logo: 'P',
+      bg: 'bg-[#0f7a3f]',
+      border: 'border-[#0a5c2d]',
+      text: 'text-white',
+    },
+    {
+      id: 3,
+      title: 'Microsoft\nSQL Server Standard',
+      logo: 'SQL',
+      bg: 'bg-white',
+      border: 'border-gray-200',
+      text: 'text-gray-800',
+    }
   ];
 
-  useEffect(() => {
-    const slideInterval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % heroImages.length);
-    }, 4500); // 4.5 seconds per slide
-    return () => clearInterval(slideInterval);
-  }, []);
+  const nextProductSlide = () => {
+    setCurrentProductSlide((prev) => (prev + 1) % carouselProducts.length);
+  };
+
+  const prevProductSlide = () => {
+    setCurrentProductSlide((prev) => (prev - 1 + carouselProducts.length) % carouselProducts.length);
+  };
+
+
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -47,29 +71,12 @@ export default function HeroSection({ onPromoClick }: HeroSectionProps) {
 
   return (
     // min-h-[calc(100vh-64px)]
-    <div className="relative bg-[#EEEEEE] overflow-hidden min-h-[calc(90vh-32px)] flex items-center border-b border-[#E2E8F0] py-16 sm:py-20" id="hero-banner">
-      {/* Background Carousel */}
-      {heroImages.map((src, index) => (
-        <div
-          key={src}
-          className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-            index === currentSlide ? 'opacity-100' : 'opacity-0'
-          }`}
-        >
-          <img
-            src={src}
-            alt="Hero Background"
-            className="w-full h-full object-cover object-center"
-          />
-        </div>
-      ))}
+    <div className="relative bg-[#F6F6F6] overflow-hidden min-h-[60vh] flex items-center border-b border-[#E2E8F0] " id="hero-banner">
 
-      {/* Elegant overlay to ensure text readability */}
-      <div className="absolute inset-0 bg-white/85 backdrop-blur-[2px]" />
-      
+
       {/* Subtle brand glow effects */}
-      <div className="absolute -top-40 -right-40 h-[450px] w-[450px] bg-[#3b82f6]/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-40 -left-40 h-[450px] w-[450px] bg-[#3b82f6]/10 rounded-full blur-3xl pointer-events-none" />
+      {/* <div className="absolute -top-40 -right-40 h-[450px] w-[450px] bg-[#3b82f6]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-40 -left-40 h-[450px] w-[450px] bg-[#3b82f6]/10 rounded-full blur-3xl pointer-events-none" /> */}
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative w-full">
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center justify-between">
@@ -105,158 +112,109 @@ export default function HeroSection({ onPromoClick }: HeroSectionProps) {
           </div>
 
           {/* RIGHT SIDE (new promotional grid) */}
+          {/* RIGHT SIDE (Carousel Card) */}
           <div className="w-full lg:w-[55%] flex-grow">
-            <div className="grid grid-cols-1 sm:grid-cols-6 gap-4 animate-fade-in">
+            <div className="bg-gradient-to-br from-[#105fdc] to-[#9c4be6] rounded-[2rem] p-6 md:p-10 relative overflow-hidden shadow-2xl flex flex-col justify-between h-[450px] sm:h-[500px]">
 
-              {/* Large Primary Banner (2/3 width) */}
-              <motion.div
-                whileHover={{ y: -4, borderColor: "rgba(124, 58, 237, 0.3)" }}
-                transition={{ type: "spring", stiffness: 300, damping: 22 }}
-                onClick={() => onPromoClick('Microsoft Office Keys')}
-                className="sm:col-span-4 bg-gradient-to-br from-[#3b82f6] to-[#3b82f6] text-white p-6 rounded-3xl relative overflow-hidden flex flex-col justify-between h-[210px] group border border-transparent shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer select-none"
-              >
-                {/* Glassy floating document icons representing Office apps */}
-                <div className="absolute right-4 top-1/2 -translate-y-1/2 flex -space-x-4 opacity-35 group-hover:opacity-55 group-hover:scale-105 transition-all duration-500 pointer-events-none z-0">
-                  {/* Excel */}
-                  <div className="w-14 h-14 bg-emerald-500/30 backdrop-blur-md rounded-2xl border border-emerald-400/30 flex items-center justify-center transform -rotate-12 shadow-lg">
-                    <span className="text-lg font-extrabold font-mono text-emerald-100">X</span>
-                  </div>
-                  {/* Word */}
-                  <div className="w-14 h-14 bg-blue-500/40 backdrop-blur-md rounded-2xl border border-blue-400/30 flex items-center justify-center transform rotate-6 shadow-lg translate-y-3">
-                    <span className="text-lg font-extrabold font-mono text-blue-100">W</span>
-                  </div>
-                  {/* PowerPoint */}
-                  <div className="w-14 h-14 bg-orange-500/30 backdrop-blur-md rounded-2xl border border-orange-400/30 flex items-center justify-center transform -rotate-6 shadow-lg -translate-y-1">
-                    <span className="text-lg font-extrabold font-mono text-orange-100">P</span>
-                  </div>
+              {/* Text Content */}
+              <div className="z-10 text-center sm:text-left space-y-4 max-w-lg">
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-white leading-tight tracking-tight">
+                  Get All Microsoft Licensing <br className="hidden sm:block" /> product's Key at Best Price
+                </h2>
+                <p className="text-white/90 text-sm leading-relaxed">
+                  Shop all Microsoft Licensing product's Genuine Key at best affordable price
+                </p>
+                {/* <button
+                  onClick={() => onPromoClick('Microsoft Office Keys')}
+                  className="bg-[#2463eb] hover:bg-[#1a4db8] text-white px-6 py-3 rounded-lg font-bold flex items-center space-x-2 transition-colors mx-auto sm:mx-0 shadow-lg mt-2"
+                >
+                  <span>Shop Now</span>
+                  <ShoppingCart className="w-5 h-5" />
+                </button> */}
+              </div>
+
+              {/* Carousel container */}
+              <div className="relative mt-8 sm:mt-12 flex-grow flex items-center justify-center z-10 w-full h-[250px]">
+                {/* Left Arrow */}
+                <button
+                  onClick={prevProductSlide}
+                  className="absolute left-2 sm:left-6 z-30 p-2 sm:p-3 bg-black/20 hover:bg-black/40 rounded-full text-white backdrop-blur-md transition-colors shadow-lg"
+                >
+                  <ChevronLeft className="w-6 h-6" />
+                </button>
+
+                {/* Cards Wrapper */}
+                <div className="relative flex items-center justify-center w-full max-w-[400px] h-[220px]">
+                  {carouselProducts.map((product, index) => {
+                    let position = index - currentProductSlide;
+                    if (position < -1) position += carouselProducts.length;
+                    if (position > 1) position -= carouselProducts.length;
+
+                    let zIndex = 10;
+                    let transform = 'scale(0.8) translateX(0)';
+                    let opacity = 'opacity-0';
+
+                    if (position === 0) {
+                      zIndex = 20;
+                      transform = 'scale(1.05) translateY(0)';
+                      opacity = 'opacity-100';
+                    } else if (position === -1) {
+                      zIndex = 15;
+                      transform = 'scale(0.85) translateX(-80px)';
+                      opacity = 'opacity-70';
+                    } else if (position === 1) {
+                      zIndex = 15;
+                      transform = 'scale(0.85) translateX(80px)';
+                      opacity = 'opacity-70';
+                    }
+
+                    return (
+                      <div
+                        key={product.id}
+                        className={`absolute transition-all duration-500 ease-out flex-shrink-0 w-[140px] h-[190px] sm:w-[150px] sm:h-[210px] rounded-r-md border-l-8 ${product.border} shadow-2xl flex flex-col overflow-hidden bg-white ${opacity}`}
+                        style={{ transform, zIndex }}
+                      >
+                        <div className={`flex-grow flex items-center justify-center ${product.bg}`}>
+                          <span className="text-4xl sm:text-5xl font-extrabold text-white/90 font-mono tracking-tighter drop-shadow-md">
+                            {product.logo}
+                          </span>
+                        </div>
+                        <div className="bg-white h-[35%] p-2 sm:p-3 flex items-center justify-center border-t border-gray-100">
+                          <span className={`text-[10px] sm:text-xs font-bold leading-tight text-center ${product.text} whitespace-pre-line`}>
+                            {product.title}
+                          </span>
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
 
-                <div className="space-y-2 relative z-10">
-                  <span className="bg-white/20 backdrop-blur-md text-white text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full w-fit">
-                    Microsoft Office 365 Promotion
-                  </span>
-                  <h3 className="text-lg font-extrabold tracking-tight leading-tight max-w-[200px]">
-                    Upgrade to <br />Office 365 Professional
-                  </h3>
-                  <p className="text-[10px] text-white/80 max-w-[200px] leading-relaxed">
-                    Activate Word, Excel, PowerPoint & 1TB cloud storage across 5 devices instantly.
-                  </p>
-                </div>
+                {/* Right Arrow */}
+                <button
+                  onClick={nextProductSlide}
+                  className="absolute right-2 sm:right-6 z-30 p-2 sm:p-3 bg-black/20 hover:bg-black/40 rounded-full text-white backdrop-blur-md transition-colors shadow-lg"
+                >
+                  <ChevronRight className="w-6 h-6" />
+                </button>
+              </div>
 
-                <div className="flex items-center justify-between relative z-10">
-                  <div className="text-xs font-black">
-                    From <span className="text-lg">₹1,199</span>
-                  </div>
-                  <span className="bg-white text-[#3b82f6] hover:bg-[#EEEEEE] font-extrabold text-[9px] uppercase tracking-widest px-3 py-1.5 rounded-xl flex items-center space-x-1 shadow-xs transition-colors duration-200">
-                    <span>Claim Now</span>
-                    <ArrowRight className="h-3 w-3" />
-                  </span>
-                </div>
-              </motion.div>
+              {/* Dots */}
+              <div className="absolute bottom-6 left-0 right-0 flex justify-center space-x-2 z-20">
+                {carouselProducts.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setCurrentProductSlide(idx)}
+                    className={`h-2 rounded-full transition-all duration-300 ${currentProductSlide === idx ? 'bg-white w-6' : 'bg-white/40 hover:bg-white/60 w-2'}`}
+                  />
+                ))}
+              </div>
 
-              {/* XBOX Game Pass Offer (Right Column - Top) */}
-              <motion.div
-                whileHover={{ y: -4, borderColor: "rgba(124, 58, 237, 0.3)" }}
-                transition={{ type: "spring", stiffness: 300, damping: 22 }}
-                onClick={() => onPromoClick('Gaming & Gift Cards', 'Xbox')}
-                className="sm:col-span-2 bg-white border border-[#E2E8F0] p-5 rounded-3xl relative overflow-hidden flex flex-col justify-between h-[210px] group shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer select-none"
-              >
-                {/* Xbox green ambient glow */}
-                <div className="absolute -right-8 -top-8 w-24 h-24 rounded-full bg-emerald-500/10 blur-2xl opacity-60 group-hover:opacity-80 transition-all duration-300 z-0" />
-
-                <div className="space-y-2 relative z-10">
-                  <span className="bg-emerald-50 text-emerald-600 border border-emerald-100 text-[8px] font-black uppercase tracking-widest px-2 py-0.5 rounded-md">
-                    Xbox Special
-                  </span>
-                  <h3 className="text-sm font-extrabold text-[#222831] leading-tight">
-                    Game Pass Ultimate
-                  </h3>
-                  <p className="text-[10px] text-[#393E46] leading-snug">
-                    Get 3 months unlimited play of over 100 console games.
-                  </p>
-                </div>
-
-                <div className="space-y-3 relative z-10">
-                  {/* Live countdown timer */}
-                  <div className="flex items-center space-x-1.5 font-mono text-rose-600 font-bold bg-rose-50 border border-rose-100 rounded-xl px-2 py-0.5 text-[10px] w-fit">
-                    <Clock className="h-3 w-3 text-rose-500 animate-pulse" />
-                    <span>{String(timeLeft.hours).padStart(2, '0')}:{String(timeLeft.minutes).padStart(2, '0')}:{String(timeLeft.seconds).padStart(2, '0')}</span>
-                  </div>
-
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-black text-[#222831]">₹749</span>
-                    <span className="text-[9px] font-extrabold text-[#3b82f6] uppercase tracking-wider flex items-center space-x-0.5">
-                      <span>Get</span>
-                      <ArrowRight className="h-3 w-3" />
-                    </span>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* PSN Games Promotion (Bottom Left) */}
-              <motion.div
-                whileHover={{ y: -4, borderColor: "rgba(124, 58, 237, 0.3)" }}
-                transition={{ type: "spring", stiffness: 300, damping: 22 }}
-                onClick={() => onPromoClick('Gaming & Gift Cards', 'PlayStation')}
-                className="sm:col-span-3 bg-white border border-[#E2E8F0] p-5 rounded-3xl relative overflow-hidden flex flex-col justify-between h-[150px] group shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer select-none"
-              >
-                {/* PlayStation blue glow */}
-                <div className="absolute -right-8 -bottom-8 w-24 h-24 rounded-full bg-blue-500/10 blur-2xl opacity-60 group-hover:opacity-80 transition-all duration-300 z-0" />
-
-                <div className="space-y-1 relative z-10">
-                  <span className="bg-blue-50 text-blue-600 border border-blue-100 text-[8px] font-black uppercase tracking-widest px-2 py-0.5 rounded-md">
-                    PlayStation
-                  </span>
-                  <h3 className="text-sm font-extrabold text-[#222831] leading-tight">
-                    PSN Store Wallet Cards
-                  </h3>
-                  <p className="text-[10px] text-[#393E46] leading-snug">
-                    Access wallet funds with up to 40% wholesale rates.
-                  </p>
-                </div>
-
-                <div className="flex items-center justify-between relative z-10">
-                  <span className="text-xs font-black text-[#222831]">From ₹1,499</span>
-                  <span className="text-[9px] font-extrabold text-[#3b82f6] uppercase tracking-wider flex items-center space-x-0.5">
-                    <span>Shop Keys</span>
-                    <ArrowRight className="h-3 w-3" />
-                  </span>
-                </div>
-              </motion.div>
-
-              {/* Office for Mac Promotion (Bottom Right) */}
-              <motion.div
-                whileHover={{ y: -4, borderColor: "rgba(124, 58, 237, 0.3)" }}
-                transition={{ type: "spring", stiffness: 300, damping: 22 }}
-                onClick={() => onPromoClick('Microsoft Office Keys', 'Mac')}
-                className="sm:col-span-3 bg-white border border-[#E2E8F0] p-5 rounded-3xl relative overflow-hidden flex flex-col justify-between h-[150px] group shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer select-none"
-              >
-                {/* macOS purple glow */}
-                <div className="absolute -right-8 -bottom-8 w-24 h-24 rounded-full bg-purple-500/10 blur-2xl opacity-60 group-hover:opacity-80 transition-all duration-300 z-0" />
-
-                <div className="space-y-1 relative z-10">
-                  <span className="bg-purple-50 text-purple-600 border border-purple-100 text-[8px] font-black uppercase tracking-widest px-2 py-0.5 rounded-md">
-                    Apple Exclusive
-                  </span>
-                  <h3 className="text-sm font-extrabold text-[#222831] leading-tight">
-                    Office Home & Business Mac
-                  </h3>
-                  <p className="text-[10px] text-[#393E46] leading-snug">
-                    Lifetime retail license keys bound directly to Apple ID.
-                  </p>
-                </div>
-
-                <div className="flex items-center justify-between relative z-10">
-                  <span className="text-xs font-black text-[#222831]">From ₹1,999</span>
-                  <span className="text-[9px] font-extrabold text-[#3b82f6] uppercase tracking-wider flex items-center space-x-0.5">
-                    <span>Get Mac Office</span>
-                    <ArrowRight className="h-3 w-3" />
-                  </span>
-                </div>
-              </motion.div>
-
+              {/* Decorative background elements */}
+              {/* <div className="absolute -top-24 -right-24 w-80 h-80 bg-white/10 rounded-full blur-3xl pointer-events-none" />
+              <div className="absolute -bottom-24 -left-24 w-80 h-80 bg-blue-500/20 rounded-full blur-3xl pointer-events-none" /> */}
             </div>
           </div>
+
 
         </div>
       </div>
