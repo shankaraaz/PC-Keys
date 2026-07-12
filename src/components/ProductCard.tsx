@@ -98,10 +98,7 @@ export default function ProductCard({ product, onAddToCart, onViewDetails }: Pro
 
           {/* 3D Box Stage (Upper 40% constraint) */}
           <div className="absolute inset-x-0 top-3 bottom-14 flex items-center justify-center z-10 overflow-hidden">
-            <div className="relative flex items-center justify-center transition-all duration-500 ease-out preserve-3d [perspective:1000px] group-hover:[transform:rotateY(-12deg)_rotateX(4deg)_translateY(-4px)] scale-[0.68] sm:scale-[0.74] md:scale-[0.80]">
-              {/* Box 3D Base Reflection/Shadow Floor */}
-              <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-[85%] h-[15px] bg-gradient-to-t from-slate-900/15 to-transparent blur-md opacity-60 group-hover:opacity-80 group-hover:w-[90%] transition-all duration-500 pointer-events-none z-0" />
-              
+            <div className="relative flex items-center justify-center transition-all duration-500 ease-out preserve-3d scale-[0.68] sm:scale-[0.74] md:scale-[0.80]">
               {/* Render 3D Software Box */}
               <SoftwareBox product={product} isHovered={isHovered} size="normal" />
             </div>

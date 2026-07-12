@@ -1,33 +1,33 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  collection, 
-  getDocs, 
-  setDoc, 
-  doc, 
-  query, 
-  where, 
+import {
+  collection,
+  getDocs,
+  setDoc,
+  doc,
+  query,
+  where,
   orderBy,
-  addDoc 
+  addDoc
 } from 'firebase/firestore';
-import { 
-  signInWithPopup, 
-  GoogleAuthProvider, 
-  signOut, 
+import {
+  signInWithPopup,
+  GoogleAuthProvider,
+  signOut,
   onAuthStateChanged,
-  User as FirebaseUser 
+  User as FirebaseUser
 } from 'firebase/auth';
-import { 
-  Key, 
-  ShieldCheck, 
-  Sparkles, 
-  ShoppingCart, 
-  Search, 
-  User as UserIcon, 
-  Mail, 
-  ArrowRight, 
-  Zap, 
-  MessageSquare, 
-  Star, 
+import {
+  Key,
+  ShieldCheck,
+  Sparkles,
+  ShoppingCart,
+  Search,
+  User as UserIcon,
+  Mail,
+  ArrowRight,
+  Zap,
+  MessageSquare,
+  Star,
   X,
   Monitor,
   FileText,
@@ -57,150 +57,327 @@ import { Product, CartItem, Order, Category, Coupon, InventoryKey, RefundRequest
 import { SEEDED_PRODUCTS } from './data';
 import { searchProducts, getDidYouMeanQuery, logSearchAnalytics } from './lib/search';
 
+// Premium Vector Illustrations for Category Bento Cards
+const WindowsIllustration = () => (
+  <svg className="w-full h-full" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="winG" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#60a5fa" stopOpacity="0.9" />
+        <stop offset="100%" stopColor="#1d4ed8" stopOpacity="0.9" />
+      </linearGradient>
+      <linearGradient id="winSpec" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stopColor="white" stopOpacity="0.4" />
+        <stop offset="100%" stopColor="white" stopOpacity="0.0" />
+      </linearGradient>
+      <filter id="winGlow" x="-20%" y="-20%" width="140%" height="140%">
+        <feDropShadow dx="3" dy="6" stdDeviation="5" floodColor="#1d4ed8" floodOpacity="0.25" />
+      </filter>
+    </defs>
+    <g filter="url(#winGlow)">
+      {/* Top Left Block */}
+      <rect x="25" y="25" width="31" height="31" rx="4" fill="url(#winG)" />
+      <rect x="25" y="25" width="31" height="31" rx="4" fill="url(#winSpec)" />
+      {/* Top Right Block */}
+      <rect x="62" y="25" width="31" height="31" rx="4" fill="url(#winG)" />
+      <rect x="62" y="25" width="31" height="31" rx="4" fill="url(#winSpec)" />
+      {/* Bottom Left Block */}
+      <rect x="25" y="62" width="31" height="31" rx="4" fill="url(#winG)" />
+      <rect x="25" y="62" width="31" height="31" rx="4" fill="url(#winSpec)" />
+      {/* Bottom Right Block */}
+      <rect x="62" y="62" width="31" height="31" rx="4" fill="url(#winG)" />
+      <rect x="62" y="62" width="31" height="31" rx="4" fill="url(#winSpec)" />
+    </g>
+  </svg>
+);
+
+const OfficeIllustration = () => (
+  <svg className="w-full h-full" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="offRed" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#ff6b4a" />
+        <stop offset="100%" stopColor="#dc2626" />
+      </linearGradient>
+      <linearGradient id="offOr" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#fb923c" />
+        <stop offset="100%" stopColor="#ea580c" />
+      </linearGradient>
+      <filter id="offGlow" x="-10%" y="-10%" width="120%" height="120%">
+        <feDropShadow dx="3" dy="5" stdDeviation="4" floodColor="#ea580c" floodOpacity="0.25" />
+      </filter>
+    </defs>
+    <g filter="url(#offGlow)">
+      {/* Background card sheet */}
+      <rect x="42" y="32" width="46" height="56" rx="8" fill="url(#offRed)" />
+      <rect x="42" y="32" width="46" height="56" rx="8" stroke="white" strokeWidth="1.5" strokeOpacity="0.2" />
+      {/* Foreground floating sheet */}
+      <rect x="32" y="42" width="46" height="46" rx="8" fill="url(#offOr)" stroke="white" strokeWidth="1.5" strokeOpacity="0.4" />
+      {/* Inner stylized Office 'O' */}
+      <circle cx="55" cy="65" r="10" stroke="white" strokeWidth="3" fill="none" />
+    </g>
+  </svg>
+);
+
+const SecurityIllustration = () => (
+  <svg className="w-full h-full" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="secG" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#34d399" />
+        <stop offset="100%" stopColor="#059669" />
+      </linearGradient>
+      <filter id="secGlow" x="-15%" y="-15%" width="130%" height="130%">
+        <feDropShadow dx="3" dy="5" stdDeviation="4" floodColor="#059669" floodOpacity="0.25" />
+      </filter>
+    </defs>
+    <g filter="url(#secGlow)">
+      {/* Main Shield */}
+      <path d="M60 22 C82 27 88 38 88 56 C88 74 60 88 60 88 C60 88 32 74 32 56 C32 38 38 27 60 22 Z" fill="url(#secG)" />
+      <path d="M60 22 C82 27 88 38 88 56 C88 74 60 88 60 88 C60 88 32 74 32 56 C32 38 38 27 60 22 Z" stroke="white" strokeWidth="1.5" strokeOpacity="0.3" />
+      {/* Concentric protective rings */}
+      <path d="M60 32 C74 36 78 44 78 56 C78 68 60 77 60 77 C60 77 42 68 42 56 C42 44 46 36 60 32 Z" stroke="white" strokeWidth="1.5" strokeDasharray="4 3" strokeOpacity="0.6" fill="none" />
+      {/* Checkmark inside */}
+      <path d="M50 56 L57 63 L70 48" stroke="white" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
+    </g>
+  </svg>
+);
+
+const CreativeIllustration = () => (
+  <svg className="w-full h-full" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="crG1" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#ec4899" />
+        <stop offset="100%" stopColor="#8b5cf6" />
+      </linearGradient>
+      <linearGradient id="crG2" x1="0%" y1="100%" x2="100%" y2="0%">
+        <stop offset="0%" stopColor="#f43f5e" />
+        <stop offset="100%" stopColor="#d946ef" />
+      </linearGradient>
+      <filter id="crGlow" x="-10%" y="-10%" width="120%" height="120%">
+        <feDropShadow dx="3" dy="5" stdDeviation="4" floodColor="#8b5cf6" floodOpacity="0.25" />
+      </filter>
+    </defs>
+    <g filter="url(#crGlow)">
+      {/* Ribbon 1 */}
+      <path d="M25 65 C40 30 70 85 95 45 C80 80 50 25 25 65 Z" fill="url(#crG1)" />
+      {/* Ribbon 2 */}
+      <path d="M35 75 C50 40 80 95 105 55 C90 90 60 35 35 75 Z" fill="url(#crG2)" opacity="0.8" />
+      {/* Art tools background circles */}
+      <circle cx="45" cy="35" r="4" fill="#a78bfa" />
+      <circle cx="75" cy="30" r="5" fill="#f472b6" />
+      <circle cx="85" cy="70" r="3" fill="#c084fc" />
+    </g>
+  </svg>
+);
+
+const DeveloperIllustration = () => (
+  <svg className="w-full h-full" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="devG" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#0f172a" />
+        <stop offset="100%" stopColor="#1e293b" />
+      </linearGradient>
+      <filter id="devGlow" x="-10%" y="-10%" width="120%" height="120%">
+        <feDropShadow dx="3" dy="5" stdDeviation="4" floodColor="#0d9488" floodOpacity="0.2" />
+      </filter>
+    </defs>
+    <g filter="url(#devGlow)">
+      {/* Terminal Window frame */}
+      <rect x="25" y="30" width="70" height="55" rx="6" fill="url(#devG)" stroke="#334155" strokeWidth="1.5" />
+      {/* Header Bar */}
+      <rect x="25" y="30" width="70" height="12" rx="6" fill="#1e293b" />
+      {/* Window dots */}
+      <circle cx="32" cy="36" r="2" fill="#ef4444" />
+      <circle cx="38" cy="36" r="2" fill="#f59e0b" />
+      <circle cx="44" cy="36" r="2" fill="#10b981" />
+      {/* Code syntax lines */}
+      <path d="M32 50 L38 54 L32 58" stroke="#10b981" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <line x1="43" y1="54" x2="52" y2="54" stroke="#06b6d4" strokeWidth="1.5" strokeLinecap="round" />
+      <line x1="32" y1="64" x2="48" y2="64" stroke="#a78bfa" strokeWidth="1.5" strokeLinecap="round" />
+      <line x1="52" y1="64" x2="68" y2="64" stroke="#f43f5e" strokeWidth="1.5" strokeLinecap="round" />
+      <line x1="32" y1="72" x2="60" y2="72" stroke="#e2e8f0" strokeWidth="1.5" strokeLinecap="round" />
+    </g>
+  </svg>
+);
+
+const VpnIllustration = () => (
+  <svg className="w-full h-full" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="vpnG" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#38bdf8" />
+        <stop offset="100%" stopColor="#0284c7" />
+      </linearGradient>
+      <filter id="vpnGlow" x="-10%" y="-10%" width="120%" height="120%">
+        <feDropShadow dx="3" dy="5" stdDeviation="4" floodColor="#0284c7" floodOpacity="0.25" />
+      </filter>
+    </defs>
+    <g filter="url(#vpnGlow)">
+      {/* Network Grid Globe */}
+      <circle cx="60" cy="55" r="32" stroke="url(#vpnG)" strokeWidth="1.5" strokeOpacity="0.3" fill="none" />
+      <circle cx="60" cy="55" r="32" fill="url(#vpnG)" fillOpacity="0.05" />
+      <ellipse cx="60" cy="55" rx="32" ry="12" stroke="url(#vpnG)" strokeWidth="1.5" strokeOpacity="0.4" fill="none" />
+      <ellipse cx="60" cy="55" rx="12" ry="32" stroke="url(#vpnG)" strokeWidth="1.5" strokeOpacity="0.4" fill="none" />
+      <line x1="28" y1="55" x2="92" y2="55" stroke="url(#vpnG)" strokeWidth="1.5" strokeOpacity="0.4" />
+      {/* Secure lock overlaid in center-right */}
+      <g transform="translate(62, 50)">
+        <rect x="2" y="10" width="20" height="15" rx="3" fill="#0284c7" stroke="white" strokeWidth="1.5" />
+        <path d="M7 10 v-4 a5 5 0 0 1 10 0 v4" stroke="white" strokeWidth="1.5" fill="none" />
+      </g>
+    </g>
+  </svg>
+);
+
+const GamingIllustration = () => (
+  <svg className="w-full h-full" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="gameG" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#f472b6" />
+        <stop offset="100%" stopColor="#db2777" />
+      </linearGradient>
+      <filter id="gameGlow" x="-10%" y="-10%" width="120%" height="120%">
+        <feDropShadow dx="3" dy="5" stdDeviation="4" floodColor="#db2777" floodOpacity="0.25" />
+      </filter>
+    </defs>
+    <g filter="url(#gameGlow)" transform="translate(20, 30)">
+      {/* Controller Body */}
+      <path d="M 12 15 L 68 15 C 78 15 82 22 80 38 L 74 62 C 72 68 64 68 56 60 L 50 54 L 30 54 L 24 60 C 16 68 8 68 6 62 L 0 38 C -2 22 2 15 12 15 Z" fill="url(#gameG)" />
+      <path d="M 12 15 L 68 15 C 78 15 82 22 80 38 L 74 62 C 72 68 64 68 56 60 L 50 54 L 30 54 L 24 60 C 16 68 8 68 6 62 L 0 38 C -2 22 2 15 12 15 Z" stroke="white" strokeWidth="1.5" strokeOpacity="0.3" fill="none" />
+      {/* D-Pad */}
+      <path d="M 16 35 h 8 v -4 h 4 v 4 h 8 v 4 h -8 v 4 h -4 v -4 h -8 Z" fill="white" />
+      {/* Buttons */}
+      <circle cx="62" cy="33" r="3.5" fill="white" />
+      <circle cx="70" cy="41" r="3.5" fill="white" />
+      <circle cx="54" cy="41" r="3.5" fill="white" />
+      <circle cx="62" cy="49" r="3.5" fill="white" />
+      {/* Joysticks */}
+      <circle cx="28" cy="46" r="6" fill="#be185d" />
+      <circle cx="52" cy="46" r="6" fill="#be185d" />
+    </g>
+  </svg>
+);
+
+const BusinessIllustration = () => (
+  <svg className="w-full h-full" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="bizG" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#2dd4bf" />
+        <stop offset="100%" stopColor="#0f766e" />
+      </linearGradient>
+      <filter id="bizGlow" x="-10%" y="-10%" width="120%" height="120%">
+        <feDropShadow dx="3" dy="5" stdDeviation="4" floodColor="#0f766e" floodOpacity="0.25" />
+      </filter>
+    </defs>
+    <g filter="url(#bizGlow)">
+      {/* Grid lines */}
+      <line x1="25" y1="80" x2="95" y2="80" stroke="#cbd5e1" strokeWidth="1.5" />
+      <line x1="25" y1="60" x2="95" y2="60" stroke="#e2e8f0" strokeWidth="1" strokeDasharray="3 3" />
+      <line x1="25" y1="40" x2="95" y2="40" stroke="#e2e8f0" strokeWidth="1" strokeDasharray="3 3" />
+      {/* Chart Bars */}
+      <rect x="30" y="55" width="10" height="25" rx="2" fill="url(#bizG)" />
+      <rect x="46" y="45" width="10" height="35" rx="2" fill="url(#bizG)" />
+      <rect x="62" y="32" width="10" height="48" rx="2" fill="url(#bizG)" />
+      <rect x="78" y="20" width="10" height="60" rx="2" fill="url(#bizG)" />
+      {/* Overlay growth trend line */}
+      <path d="M 35 60 L 51 48 L 67 36 L 83 22" stroke="#f59e0b" strokeWidth="3.5" strokeLinecap="round" fill="none" />
+      <circle cx="83" cy="22" r="5" fill="#f59e0b" stroke="white" strokeWidth="1.5" />
+    </g>
+  </svg>
+);
+
 const premiumCategories = [
   {
     id: 'Microsoft Windows Keys' as Category,
     name: 'Windows Keys',
     icon: Monitor,
-    emoji: '🪟',
-    badge: 'Popular',
-    glowBg: 'bg-cyan-500',
-    dotColor: 'bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.8)]',
-    artworkUrl: 'https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=400&auto=format&fit=crop&q=80',
-    cardStyle: (isActive: boolean) => isActive 
-      ? 'border-cyan-500 bg-white shadow-[0_4px_20px_rgba(6,182,212,0.12)] ring-1 ring-cyan-500/20' 
-      : 'border-[#E2E8F0] bg-white hover:border-cyan-500/30 hover:shadow-[0_4px_15px_rgba(6,182,212,0.06)]',
-    iconHoverStyle: 'group-hover:bg-cyan-50 group-hover:text-cyan-600 group-hover:border-cyan-500/20',
-    iconActiveStyle: 'bg-cyan-100 text-cyan-600 border-cyan-500/30',
-    textActiveStyle: 'text-cyan-600 font-semibold',
-    badgeStyle: 'bg-neutral-50 border-[#E2E8F0] text-[#64748B] group-hover:border-cyan-500/15 group-hover:bg-cyan-50 group-hover:text-cyan-600',
-    badgeActiveStyle: 'bg-cyan-100 border-cyan-500/20 text-cyan-600'
+    badge: 'POPULAR',
+    bgClass: (isActive: boolean) => isActive
+      ? 'bg-[#EFF6FF] border-[#3B82F6] shadow-[0_8px_30px_rgba(59,130,246,0.12)]'
+      : 'bg-[#EFF6FF]/65 border-[#EFF6FF] hover:bg-[#EFF6FF]/90 hover:border-[#BFDBFE] hover:shadow-[0_8px_25px_rgba(59,130,246,0.06)]',
+    iconColorClass: 'text-blue-500',
+    badgeClass: 'bg-[#EFF6FF] border-[#BFDBFE]/60 text-blue-600',
+    illustration: WindowsIllustration
   },
   {
     id: 'Microsoft Office Keys' as Category,
     name: 'Office Keys',
     icon: FileText,
-    emoji: '📄',
-    badge: 'Best Seller',
-    glowBg: 'bg-emerald-500',
-    dotColor: 'bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]',
-    artworkUrl: 'https://images.unsplash.com/photo-1618005198143-e5283b519a7f?w=400&auto=format&fit=crop&q=80',
-    cardStyle: (isActive: boolean) => isActive 
-      ? 'border-emerald-500 bg-white shadow-[0_4px_20px_rgba(16,185,129,0.12)] ring-1 ring-emerald-500/20' 
-      : 'border-[#E2E8F0] bg-white hover:border-emerald-500/30 hover:shadow-[0_4px_15px_rgba(16,185,129,0.06)]',
-    iconHoverStyle: 'group-hover:bg-emerald-50 group-hover:text-emerald-600 group-hover:border-emerald-500/20',
-    iconActiveStyle: 'bg-emerald-100 text-emerald-600 border-emerald-500/30',
-    textActiveStyle: 'text-emerald-600 font-semibold',
-    badgeStyle: 'bg-neutral-50 border-[#E2E8F0] text-[#64748B] group-hover:border-emerald-500/15 group-hover:bg-emerald-50 group-hover:text-emerald-600',
-    badgeActiveStyle: 'bg-emerald-100 border-emerald-500/20 text-emerald-600'
+    badge: 'BEST SELLER',
+    bgClass: (isActive: boolean) => isActive
+      ? 'bg-[#FFF7ED] border-[#F97316] shadow-[0_8px_30px_rgba(249,115,22,0.12)]'
+      : 'bg-[#FFF7ED]/65 border-[#FFF7ED] hover:bg-[#FFF7ED]/90 hover:border-[#FED7AA] hover:shadow-[0_8px_25px_rgba(249,115,22,0.06)]',
+    iconColorClass: 'text-orange-500',
+    badgeClass: 'bg-[#FFF7ED] border-[#FED7AA]/60 text-orange-600',
+    illustration: OfficeIllustration
   },
   {
     id: 'Antivirus & Security' as Category,
     name: 'Antivirus & Security',
     icon: ShieldCheck,
-    emoji: '🛡',
-    badge: 'Essential',
-    glowBg: 'bg-rose-500',
-    dotColor: 'bg-rose-400 shadow-[0_0_8px_rgba(244,63,94,0.8)]',
-    artworkUrl: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=400&auto=format&fit=crop&q=80',
-    cardStyle: (isActive: boolean) => isActive 
-      ? 'border-rose-500 bg-white shadow-[0_4px_20px_rgba(244,63,94,0.12)] ring-1 ring-rose-500/20' 
-      : 'border-[#E2E8F0] bg-white hover:border-rose-500/30 hover:shadow-[0_4px_15px_rgba(244,63,94,0.06)]',
-    iconHoverStyle: 'group-hover:bg-rose-50 group-hover:text-rose-600 group-hover:border-rose-500/20',
-    iconActiveStyle: 'bg-rose-100 text-rose-600 border-rose-500/30',
-    textActiveStyle: 'text-rose-600 font-semibold',
-    badgeStyle: 'bg-neutral-50 border-[#E2E8F0] text-[#64748B] group-hover:border-rose-500/15 group-hover:bg-rose-50 group-hover:text-rose-600',
-    badgeActiveStyle: 'bg-rose-100 border-rose-500/20 text-rose-600'
+    badge: 'ESSENTIAL',
+    bgClass: (isActive: boolean) => isActive
+      ? 'bg-[#F0FDF4] border-[#10B981] shadow-[0_8px_30px_rgba(16,185,129,0.12)]'
+      : 'bg-[#F0FDF4]/65 border-[#F0FDF4] hover:bg-[#F0FDF4]/90 hover:border-[#A7F3D0] hover:shadow-[0_8px_25px_rgba(16,185,129,0.06)]',
+    iconColorClass: 'text-emerald-500',
+    badgeClass: 'bg-[#F0FDF4] border-[#A7F3D0]/60 text-emerald-600',
+    illustration: SecurityIllustration
   },
   {
     id: 'Creative & Professional Software' as Category,
     name: 'Creative Software',
     icon: Palette,
-    emoji: '🎨',
-    badge: 'Trending',
-    glowBg: 'bg-violet-500',
-    dotColor: 'bg-violet-400 shadow-[0_0_8px_rgba(139,92,246,0.8)]',
-    artworkUrl: 'https://images.unsplash.com/photo-1618005198140-5e30bdf3184f?w=400&auto=format&fit=crop&q=80',
-    cardStyle: (isActive: boolean) => isActive 
-      ? 'border-violet-500 bg-white shadow-[0_4px_20px_rgba(139,92,246,0.12)] ring-1 ring-violet-500/20' 
-      : 'border-[#E2E8F0] bg-white hover:border-violet-500/30 hover:shadow-[0_4px_15px_rgba(139,92,246,0.06)]',
-    iconHoverStyle: 'group-hover:bg-violet-50 group-hover:text-violet-600 group-hover:border-violet-500/20',
-    iconActiveStyle: 'bg-violet-100 text-violet-600 border-violet-500/30',
-    textActiveStyle: 'text-violet-600 font-semibold',
-    badgeStyle: 'bg-neutral-50 border-[#E2E8F0] text-[#64748B] group-hover:border-violet-500/15 group-hover:bg-violet-50 group-hover:text-violet-600',
-    badgeActiveStyle: 'bg-violet-100 border-violet-500/20 text-violet-600'
+    badge: 'TRENDING',
+    bgClass: (isActive: boolean) => isActive
+      ? 'bg-[#FAF5FF] border-[#8B5CF6] shadow-[0_8px_30px_rgba(139,92,246,0.12)]'
+      : 'bg-[#FAF5FF]/65 border-[#FAF5FF] hover:bg-[#FAF5FF]/90 hover:border-[#E9D5FF] hover:shadow-[0_8px_25px_rgba(139,92,246,0.06)]',
+    iconColorClass: 'text-purple-500',
+    badgeClass: 'bg-[#FAF5FF] border-[#E9D5FF]/60 text-purple-600',
+    illustration: CreativeIllustration
   },
   {
     id: 'Developer Tools' as Category,
     name: 'Developer Tools',
     icon: Terminal,
-    emoji: '💻',
-    badge: 'Pro',
-    glowBg: 'bg-amber-500',
-    dotColor: 'bg-amber-400 shadow-[0_0_8px_rgba(245,158,11,0.8)]',
-    artworkUrl: 'https://images.unsplash.com/photo-1607799279861-4dd421887fb3?w=400&auto=format&fit=crop&q=80',
-    cardStyle: (isActive: boolean) => isActive 
-      ? 'border-amber-500 bg-white shadow-[0_4px_20px_rgba(245,158,11,0.12)] ring-1 ring-amber-500/20' 
-      : 'border-[#E2E8F0] bg-white hover:border-amber-500/30 hover:shadow-[0_4px_15px_rgba(245,158,11,0.06)]',
-    iconHoverStyle: 'group-hover:bg-amber-50 group-hover:text-amber-600 group-hover:border-amber-500/20',
-    iconActiveStyle: 'bg-amber-100 text-amber-600 border-amber-500/30',
-    textActiveStyle: 'text-amber-600 font-semibold',
-    badgeStyle: 'bg-neutral-50 border-[#E2E8F0] text-[#64748B] group-hover:border-amber-500/15 group-hover:bg-amber-50 group-hover:text-amber-600',
-    badgeActiveStyle: 'bg-amber-100 border-amber-500/20 text-amber-600'
+    badge: 'PRO',
+    bgClass: (isActive: boolean) => isActive
+      ? 'bg-[#F0FDFA] border-[#0D9488] shadow-[0_8px_30px_rgba(13,148,136,0.12)]'
+      : 'bg-[#F0FDFA]/65 border-[#F0FDFA] hover:bg-[#F0FDFA]/90 hover:border-[#99F6E4] hover:shadow-[0_8px_25px_rgba(13,148,136,0.06)]',
+    iconColorClass: 'text-teal-500',
+    badgeClass: 'bg-[#F0FDFA] border-[#99F6E4]/60 text-teal-600',
+    illustration: DeveloperIllustration
   },
   {
     id: 'VPN & Privacy' as Category,
     name: 'VPN & Privacy',
     icon: Globe,
-    emoji: '🔒',
-    badge: 'Secure',
-    glowBg: 'bg-indigo-500',
-    dotColor: 'bg-indigo-400 shadow-[0_0_8px_rgba(99,102,241,0.8)]',
-    artworkUrl: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=400&auto=format&fit=crop&q=80',
-    cardStyle: (isActive: boolean) => isActive 
-      ? 'border-indigo-500 bg-white shadow-[0_4px_20px_rgba(99,102,241,0.12)] ring-1 ring-indigo-500/20' 
-      : 'border-[#E2E8F0] bg-white hover:border-indigo-500/30 hover:shadow-[0_4px_15px_rgba(99,102,241,0.06)]',
-    iconHoverStyle: 'group-hover:bg-indigo-50 group-hover:text-indigo-600 group-hover:border-indigo-500/20',
-    iconActiveStyle: 'bg-indigo-100 text-indigo-600 border-indigo-500/30',
-    textActiveStyle: 'text-indigo-600 font-semibold',
-    badgeStyle: 'bg-neutral-50 border-[#E2E8F0] text-[#64748B] group-hover:border-indigo-500/15 group-hover:bg-indigo-50 group-hover:text-indigo-600',
-    badgeActiveStyle: 'bg-indigo-100 border-indigo-500/20 text-indigo-600'
+    badge: 'SECURE',
+    bgClass: (isActive: boolean) => isActive
+      ? 'bg-[#F0F9FF] border-[#0EA5E9] shadow-[0_8px_30px_rgba(14,165,233,0.12)]'
+      : 'bg-[#F0F9FF]/65 border-[#F0F9FF] hover:bg-[#F0F9FF]/90 hover:border-[#BAE6FD] hover:shadow-[0_8px_25px_rgba(14,165,233,0.06)]',
+    iconColorClass: 'text-sky-500',
+    badgeClass: 'bg-[#F0F9FF] border-[#BAE6FD]/60 text-sky-600',
+    illustration: VpnIllustration
   },
   {
     id: 'Gaming & Gift Cards' as Category,
     name: 'Gaming & Gift Cards',
     icon: Gamepad2,
-    emoji: '🎮',
-    badge: 'Hot',
-    glowBg: 'bg-fuchsia-500',
-    dotColor: 'bg-fuchsia-400 shadow-[0_0_8px_rgba(244,114,182,0.8)]',
-    artworkUrl: 'https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=400&auto=format&fit=crop&q=80',
-    cardStyle: (isActive: boolean) => isActive 
-      ? 'border-fuchsia-500 bg-white shadow-[0_4px_20px_rgba(244,114,182,0.12)] ring-1 ring-fuchsia-500/20' 
-      : 'border-[#E2E8F0] bg-white hover:border-fuchsia-500/30 hover:shadow-[0_4px_15px_rgba(244,114,182,0.06)]',
-    iconHoverStyle: 'group-hover:bg-fuchsia-50 group-hover:text-fuchsia-600 group-hover:border-fuchsia-500/20',
-    iconActiveStyle: 'bg-fuchsia-100 text-fuchsia-600 border-fuchsia-500/30',
-    textActiveStyle: 'text-fuchsia-600 font-semibold',
-    badgeStyle: 'bg-neutral-50 border-[#E2E8F0] text-[#64748B] group-hover:border-fuchsia-500/15 group-hover:bg-fuchsia-50 group-hover:text-fuchsia-600',
-    badgeActiveStyle: 'bg-fuchsia-100 border-fuchsia-500/20 text-fuchsia-600'
+    badge: 'HOT',
+    bgClass: (isActive: boolean) => isActive
+      ? 'bg-[#FDF2F8] border-[#EC4899] shadow-[0_8px_30px_rgba(236,72,153,0.12)]'
+      : 'bg-[#FDF2F8]/65 border-[#FDF2F8] hover:bg-[#FDF2F8]/90 hover:border-[#FBCFE8] hover:shadow-[0_8px_25px_rgba(236,72,153,0.06)]',
+    iconColorClass: 'text-pink-500',
+    badgeClass: 'bg-[#FDF2F8] border-[#FBCFE8]/60 text-pink-600',
+    illustration: GamingIllustration
   },
   {
     id: 'Business & Enterprise Licenses' as Category,
     name: 'Business & Enterprise',
     icon: Building2,
-    emoji: '🏢',
-    badge: 'Corporate',
-    glowBg: 'bg-yellow-500',
-    dotColor: 'bg-yellow-400 shadow-[0_0_8px_rgba(253,224,71,0.8)]',
-    artworkUrl: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&auto=format&fit=crop&q=80',
-    cardStyle: (isActive: boolean) => isActive 
-      ? 'border-yellow-500 bg-white shadow-[0_4px_20px_rgba(234,179,8,0.12)] ring-1 ring-yellow-500/20' 
-      : 'border-[#E2E8F0] bg-white hover:border-yellow-500/30 hover:shadow-[0_4px_15px_rgba(234,179,8,0.06)]',
-    iconHoverStyle: 'group-hover:bg-yellow-50 group-hover:text-yellow-600 group-hover:border-yellow-500/20',
-    iconActiveStyle: 'bg-yellow-100 text-yellow-600 border-yellow-500/30',
-    textActiveStyle: 'text-yellow-600 font-semibold',
-    badgeStyle: 'bg-neutral-50 border-[#E2E8F0] text-[#64748B] group-hover:border-yellow-500/15 group-hover:bg-yellow-50 group-hover:text-yellow-600',
-    badgeActiveStyle: 'bg-yellow-100 border-yellow-500/20 text-yellow-600'
+    badge: 'CORPORATE',
+    bgClass: (isActive: boolean) => isActive
+      ? 'bg-[#F0FDF4] border-[#0F766E] shadow-[0_8px_30px_rgba(15,118,110,0.12)]'
+      : 'bg-[#F0FDF4]/65 border-[#F0FDF4] hover:bg-[#F0FDF4]/90 hover:border-[#A7F3D0] hover:shadow-[0_8px_25px_rgba(15,118,110,0.06)]',
+    iconColorClass: 'text-teal-700',
+    badgeClass: 'bg-[#F0FDF4] border-[#A7F3D0]/60 text-teal-700',
+    illustration: BusinessIllustration
   }
 ];
 
@@ -240,7 +417,7 @@ export default function App() {
       const endOfDay = new Date();
       endOfDay.setHours(23, 59, 59, 999);
       const diff = endOfDay.getTime() - now.getTime();
-      
+
       if (diff > 0) {
         const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
         const minutes = Math.floor((diff / 1000 / 60) % 60);
@@ -271,10 +448,10 @@ export default function App() {
       for (let i = 1; i <= 4; i++) {
         let keyStr = '';
         if (
-          p.category === 'Microsoft Windows Keys' || 
-          p.category === 'Microsoft Office Keys' || 
-          p.category === 'Antivirus & Security' || 
-          p.category === 'Developer Tools' || 
+          p.category === 'Microsoft Windows Keys' ||
+          p.category === 'Microsoft Office Keys' ||
+          p.category === 'Antivirus & Security' ||
+          p.category === 'Developer Tools' ||
           p.category === 'Business & Enterprise Licenses'
         ) {
           keyStr = `${Math.random().toString(36).substr(2, 5)}-${Math.random().toString(36).substr(2, 5)}-${Math.random().toString(36).substr(2, 5)}-${Math.random().toString(36).substr(2, 5)}-${Math.random().toString(36).substr(2, 5)}`.toUpperCase();
@@ -584,7 +761,7 @@ export default function App() {
       const path = 'orders';
       try {
         const q = query(
-          collection(db, path), 
+          collection(db, path),
           where('userId', '==', currentUserId)
         );
         const querySnapshot = await getDocs(q);
@@ -595,7 +772,7 @@ export default function App() {
             ...docSnap.data()
           } as Order);
         });
-        
+
         // Sort orders descending locally by date
         fetched.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
         setOrders(fetched);
@@ -695,7 +872,7 @@ export default function App() {
   // Push completed Order to Firestore
   const handlePostOrderToFirestore = async (orderPayload: Omit<Order, 'id' | 'createdAt'>) => {
     const path = 'orders';
-    
+
     // For local demo/guest users who are unauthenticated, throw to trigger CheckoutPage local fallback
     if (currentUserId && (currentUserId.startsWith('demo_user_') || currentUserId.startsWith('guest_'))) {
       throw new Error("Demo/guest user is not authenticated; storing locally instead.");
@@ -745,20 +922,20 @@ export default function App() {
   const cartCount = cart.reduce((acc, item) => acc + item.quantity, 0);
 
   const categoriesList: Category[] = [
-    'All', 
-    'Microsoft Windows Keys', 
-    'Microsoft Office Keys', 
-    'Antivirus & Security', 
-    'Creative & Professional Software', 
-    'Developer Tools', 
-    'VPN & Privacy', 
-    'Gaming & Gift Cards', 
+    'All',
+    'Microsoft Windows Keys',
+    'Microsoft Office Keys',
+    'Antivirus & Security',
+    'Creative & Professional Software',
+    'Developer Tools',
+    'VPN & Privacy',
+    'Gaming & Gift Cards',
     'Business & Enterprise Licenses'
   ];
 
   return (
     <div className="min-h-screen bg-[#0B1120] text-[#CBD5E1] font-sans flex flex-col selection:bg-[#0EA5B7] selection:text-white" id="main-app">
-      
+
       {/* Toast Alert Banner */}
       <AnimatePresence>
         {alert && (
@@ -766,11 +943,10 @@ export default function App() {
             initial={{ opacity: 0, y: -20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.95 }}
-            className={`fixed top-5 left-1/2 -translate-x-1/2 z-50 flex items-center space-x-2.5 px-5 py-3 rounded-2xl shadow-xl text-white font-medium text-xs tracking-wider uppercase border ${
-              alert.type === 'success' 
-                ? 'bg-[#1E293B]/95 text-white border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)]' 
-                : 'bg-rose-950/90 text-rose-200 border-rose-500/30 shadow-black/55'
-            }`}
+            className={`fixed top-5 left-1/2 -translate-x-1/2 z-50 flex items-center space-x-2.5 px-5 py-3 rounded-2xl shadow-xl text-white font-medium text-xs tracking-wider uppercase border ${alert.type === 'success'
+              ? 'bg-[#1E293B]/95 text-white border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)]'
+              : 'bg-rose-950/90 text-rose-200 border-rose-500/30 shadow-black/55'
+              }`}
             id="toast-notification"
           >
             <Sparkles className="h-4.5 w-4.5 shrink-0 text-brand-teal" />
@@ -804,17 +980,17 @@ export default function App() {
       <main className="flex-grow pb-16">
         {activeTab === 'catalog' && (
           <div id="catalog-view" className="space-y-12">
-            
+
             {/* Elegant Hero Banner */}
             <div className="relative bg-[#F8FAFC] overflow-hidden py-16 sm:py-20 border-b border-[#E2E8F0]" id="hero-banner">
               {/* Abstract decorative grid */}
               <div className="absolute inset-0 opacity-20 bg-[radial-gradient(rgba(14,165,183,0.1)_1.2px,transparent_1.2px)] [background-size:16px_16px]" />
               <div className="absolute -top-40 -right-40 h-[450px] w-[450px] bg-[#0EA5B7]/5 rounded-full blur-3xl" />
               <div className="absolute -bottom-40 -left-40 h-[450px] w-[450px] bg-[#7C3AED]/5 rounded-full blur-3xl" />
-              
+
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
                 <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center justify-between">
-                  
+
                   {/* LEFT SIDE (existing content) */}
                   <div className="w-full lg:w-[45%] shrink-0 space-y-6">
                     <div className="inline-flex items-center space-x-2 bg-white border border-[#E2E8F0] px-3.5 py-1.5 rounded-full shadow-xs">
@@ -848,7 +1024,7 @@ export default function App() {
                   {/* RIGHT SIDE (new promotional grid) */}
                   <div className="w-full lg:w-[55%] flex-grow">
                     <div className="grid grid-cols-1 sm:grid-cols-6 gap-4 animate-fade-in">
-                      
+
                       {/* Large Primary Banner (2/3 width) */}
                       <motion.div
                         whileHover={{ y: -4, borderColor: "rgba(124, 58, 237, 0.3)" }}
@@ -998,15 +1174,15 @@ export default function App() {
 
                     </div>
                   </div>
-                  
+
                 </div>
               </div>
             </div>
 
             {/* Catalog Main section */}
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8" id="store-catalog-section">
-              
-               {/* Category selector row */}
+
+              {/* Category selector row */}
               <div className="space-y-4">
                 <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-2">
                   <div className="space-y-1">
@@ -1034,58 +1210,53 @@ export default function App() {
                   {premiumCategories.map((cat) => {
                     const isActive = selectedCategory === cat.id;
                     const productCount = products.filter(p => p.category === cat.id).length;
-                    
+
                     return (
                       <motion.div
                         key={cat.id}
                         onClick={() => setSelectedCategory(isActive ? 'All' : cat.id)}
-                        whileHover={{ y: -4, scale: 1.015 }}
+                        whileHover={{
+                          y: -6,
+                          boxShadow: "0 20px 40px rgba(0,0,0,0.08)"
+                        }}
                         whileTap={{ scale: 0.985 }}
-                        transition={{ type: "spring", stiffness: 400, damping: 22 }}
-                        className={`relative h-[155px] rounded-2xl p-4 sm:p-5 flex flex-col justify-between transition-all duration-300 border cursor-pointer select-none overflow-hidden group ${cat.cardStyle(isActive)}`}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                        className={`relative h-[150px] rounded-3xl p-5 flex flex-col justify-between transition-all duration-300 border cursor-pointer select-none overflow-hidden group ${cat.bgClass(isActive)}`}
                       >
-                        {/* Background artwork and gradient overlay mask */}
-                        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden rounded-2xl">
-                          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-transparent z-10" />
-                          <motion.img
-                            src={cat.artworkUrl}
-                            alt=""
-                            referrerPolicy="no-referrer"
-                            className="absolute right-0 top-0 h-full w-[65%] object-cover opacity-[0.06] blur-[2px] saturate-[1.2] group-hover:scale-112 group-hover:opacity-[0.12] transition-all duration-700 ease-out origin-right"
-                          />
+                        {/* Background illustration graphic */}
+                        <div className="absolute right-[-10px] top-4 bottom-4 w-[130px] flex items-center justify-center opacity-90 group-hover:scale-105 transition-all duration-300 z-10 pointer-events-none">
+                          <cat.illustration />
                         </div>
 
-                        {/* Abstract glow spot */}
-                        <div className={`absolute -right-8 -top-8 w-24 h-24 rounded-full blur-3xl opacity-5 group-hover:opacity-10 transition-all duration-300 z-10 ${cat.glowBg}`} />
-                        
-                        {/* Card Header: Icon & Optional Badge */}
+                        {/* Card Header: Rounded White Icon Box */}
                         <div className="flex justify-between items-start relative z-20">
-                          <div className={`p-2.5 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center transition-all duration-300 ${isActive ? cat.iconActiveStyle : cat.iconHoverStyle}`}>
-                            <cat.icon className="h-5 w-5" />
+                          <div className="w-12 h-12 rounded-2xl bg-white shadow-[0_2px_8px_rgba(0,0,0,0.04)] border border-slate-100/80 flex items-center justify-center transition-all duration-300 group-hover:shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
+                            <cat.icon className={`h-5 w-5 ${cat.iconColorClass}`} />
                           </div>
                           {cat.badge && (
-                            <span className={`text-[9px] uppercase font-mono font-bold tracking-wider px-2 py-0.5 rounded-full border transition-all duration-300 ${isActive ? cat.badgeActiveStyle : cat.badgeStyle}`}>
+                            <span className={`text-[9px] uppercase font-sans font-extrabold tracking-wider px-2.5 py-0.5 rounded-full border transition-all duration-300 ${cat.badgeClass}`}>
                               {cat.badge}
                             </span>
                           )}
                         </div>
 
-                        {/* Card Footer: Category Name & Product Count */}
-                        <div className="space-y-1 relative z-20">
-                          <h4 className={`text-xs sm:text-sm font-bold tracking-tight transition-all duration-300 ${isActive ? cat.textActiveStyle : 'text-slate-800 group-hover:text-slate-950'}`}>
-                            {cat.emoji} {cat.name}
-                          </h4>
-                          <div className="flex items-center justify-between">
-                            <span className="text-[10px] text-slate-500 font-semibold group-hover:text-slate-700 transition-all">
+                        {/* Card Footer: Category Name, Product Count & Chevron button */}
+                        <div className="flex justify-between items-end relative z-20">
+                          <div className="space-y-0.5 text-left max-w-[60%]">
+                            <h4 className="text-xs sm:text-sm font-extrabold tracking-tight text-slate-800 group-hover:text-slate-950 transition-colors">
+                              {cat.name}
+                            </h4>
+                            <span className="text-[11px] font-semibold text-slate-500">
                               {productCount} Products
                             </span>
-                            {isActive && (
-                              <motion.span 
-                                layoutId="active-category-dot"
-                                className={`h-1.5 w-1.5 rounded-full ${cat.dotColor}`}
-                              />
-                            )}
                           </div>
+
+                          {/* Navigation Chevron circle */}
+                          {/* <div className="w-7 h-7 rounded-full bg-white shadow-[0_2px_6px_rgba(0,0,0,0.04)] border border-slate-100 flex items-center justify-center group-hover:bg-[#7C3AED] group-hover:border-[#7C3AED] transition-all duration-300">
+                            <svg className="w-3.5 h-3.5 text-slate-400 group-hover:text-white transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                            </svg>
+                          </div> */}
                         </div>
                       </motion.div>
                     );
@@ -1115,7 +1286,7 @@ export default function App() {
                         <p className="text-xs text-white/40 max-w-[340px] mx-auto leading-relaxed font-light">
                           We couldn't find any digital keys matching your query "<span className="text-blue-400 font-bold">{searchQuery}</span>".
                         </p>
-                        
+
                         {getDidYouMeanQuery(searchQuery) && (
                           <div className="pt-2 text-xs" id="spelling-suggestion-wrapper">
                             <span className="text-white/50 font-light">Did you mean: </span>
@@ -1310,10 +1481,10 @@ export default function App() {
                 <span>Pre-sales & Post-sales assistance</span>
               </li>
             </ul>
-            <a 
-              href="https://wa.me/919999999999?text=Hello%20Netlyrakeys%20Support%2C%20I%20need%20help%20with%20a%20key%20purchase." 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <a
+              href="https://wa.me/919999999999?text=Hello%20Netlyrakeys%20Support%2C%20I%20need%20help%20with%20a%20key%20purchase."
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-full bg-[#10B981] hover:bg-[#059669] text-white font-black text-[10px] uppercase tracking-widest py-2.5 rounded-xl transition-all duration-200 flex items-center justify-center space-x-2 shadow-xs hover:scale-[1.01] active:scale-[0.99]"
               id="footer-whatsapp-btn"
             >
@@ -1382,7 +1553,7 @@ export default function App() {
           <div className="fixed inset-0 z-50 overflow-y-auto flex items-center justify-center p-4" id="login-modal-overlay">
             {/* Backdrop */}
             <div className="fixed inset-0 bg-black/80 backdrop-blur-md" onClick={() => setLoginModalOpen(false)} />
-            
+
             {/* Modal Card */}
             <motion.div
               initial={{ scale: 0.95, opacity: 0 }}
@@ -1452,9 +1623,8 @@ export default function App() {
                           setDemoLoginEmailError('');
                         }
                       }}
-                      className={`w-full px-4 py-2.5 bg-white/5 border ${
-                        demoLoginEmailError ? 'border-rose-500 focus:border-rose-500' : 'border-white/10 focus:border-blue-400/50'
-                      } rounded-xl text-xs font-semibold text-white outline-none placeholder:text-white/20`}
+                      className={`w-full px-4 py-2.5 bg-white/5 border ${demoLoginEmailError ? 'border-rose-500 focus:border-rose-500' : 'border-white/10 focus:border-blue-400/50'
+                        } rounded-xl text-xs font-semibold text-white outline-none placeholder:text-white/20`}
                     />
                     {demoLoginEmailError && (
                       <p className="text-[10px] text-rose-400 font-bold tracking-wide pl-1 animate-pulse" id="demo-email-error-text">
@@ -1494,7 +1664,7 @@ export default function App() {
               <p className="text-[9px] text-white/40 font-mono">Response time: Instant</p>
             </div>
           </div>
-          
+
           <div className="space-y-2.5">
             <p className="text-[11px] font-semibold text-white leading-snug">
               Need Help? Chat with us 24×7 on WhatsApp
@@ -1509,7 +1679,7 @@ export default function App() {
                 <span>Pre-sales & post-sales assistance</span>
               </div>
             </div>
-            
+
             <a
               href="https://wa.me/919999999999?text=Hello%20Netlyrakeys%20Support%2C%20I%20need%20assistance%20with%20license%20activation."
               target="_blank"
@@ -1518,7 +1688,7 @@ export default function App() {
             >
               <span>Start Live Chat</span>
               <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
-                <path d="M16.003 9.414l-8.607 8.607-1.414-1.414 8.607-8.607H9.003V6h11v11h-2V11.414z"/>
+                <path d="M16.003 9.414l-8.607 8.607-1.414-1.414 8.607-8.607H9.003V6h11v11h-2V11.414z" />
               </svg>
             </a>
           </div>
@@ -1534,12 +1704,12 @@ export default function App() {
         >
           {/* Pulsating glow rings */}
           <span className="absolute inset-0 rounded-full bg-emerald-500/30 animate-ping opacity-75" style={{ animationDuration: '2s' }} />
-          
+
           {/* WhatsApp logo */}
           <svg className="w-7 h-7 fill-current" viewBox="0 0 24 24">
             <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-4.846c1.6.95 3.182 1.449 4.825 1.451 5.436 0 9.86-4.42 9.863-9.864.001-2.637-1.03-5.114-2.905-6.99C16.656 1.882 14.183 1.05 11.54 1.05 6.105 1.05 1.681 5.47 1.677 10.908c-.001 1.745.453 3.449 1.317 4.957l-1.018 3.715 3.804-.998zm11.233-7.24c-.312-.156-1.848-.912-2.129-1.015-.282-.102-.487-.156-.69.156-.204.311-.785.983-.96 1.186-.177.204-.355.228-.668.072-.312-.156-1.32-.486-2.515-1.551-.93-.829-1.558-1.854-1.74-2.165-.183-.312-.02-.481.136-.636.14-.139.312-.365.469-.547.156-.183.208-.312.312-.52.105-.208.053-.391-.026-.547-.079-.156-.69-1.661-.944-2.274-.249-.597-.502-.516-.69-.526-.178-.009-.383-.011-.587-.011-.204 0-.537.076-.818.384-.282.311-1.077 1.051-1.077 2.561 0 1.51 1.099 2.97 1.253 3.177.154.204 2.162 3.299 5.241 4.628.732.315 1.304.503 1.751.644.735.233 1.402.2 1.93.121.588-.087 1.848-.755 2.11-1.468.263-.712.263-1.32.184-1.448-.079-.118-.282-.172-.593-.328z" />
           </svg>
-          
+
           {/* Tiny notification dot */}
           <span className="absolute top-0 right-0 h-3.5 w-3.5 bg-rose-500 rounded-full border-2 border-emerald-500 flex items-center justify-center">
             <span className="block h-1.5 w-1.5 rounded-full bg-white animate-pulse" />

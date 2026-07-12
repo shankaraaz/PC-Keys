@@ -12,6 +12,7 @@ interface ProductDetailsModalProps {
 }
 
 export default function ProductDetailsModal({ product, onClose, onAddToCart }: ProductDetailsModalProps) {
+  const [isHoveredModal, setIsHoveredModal] = useState(false);
   const discountPercent = Math.round(((product.price - product.salePrice) / product.price) * 100);
 
   // Determine elegant ambient glow colors for each brand category
@@ -68,20 +69,17 @@ export default function ProductDetailsModal({ product, onClose, onAddToCart }: P
         </button>
 
         {/* LEFT COLUMN: Premium 3D Software Box Showcase */}
-        <div className="w-full md:w-[45%] bg-slate-50 border-r border-[#E2E8F0] flex flex-col p-6 space-y-6 justify-center items-center relative select-none overflow-hidden">
+        <div 
+          className="w-full md:w-[45%] bg-slate-50 border-r border-[#E2E8F0] flex flex-col p-6 space-y-6 justify-center items-center relative select-none overflow-hidden cursor-pointer"
+          onMouseEnter={() => setIsHoveredModal(true)}
+          onMouseLeave={() => setIsHoveredModal(false)}
+        >
           
           {/* Ambient Brand Glow */}
           <div className={`absolute w-[240px] h-[240px] rounded-full bg-gradient-to-r ${glowColorClass} blur-[60px] opacity-40 pointer-events-none z-0`} />
 
-          <div className="relative preserve-3d [perspective:1000px] hover:[transform:rotateY(-15deg)_rotateX(6deg)_translateY(-8px)] transition-all duration-500 ease-out flex items-center justify-center p-2 z-10">
-            {/* Glossy Reflection Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-white/20 opacity-20 rounded-lg pointer-events-none z-20" />
-            
-            {/* 3D Base Reflection shadow floor */}
-            <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-[85%] h-6 bg-gradient-to-t from-slate-200 to-transparent blur-md opacity-85 pointer-events-none z-0" />
-            <div className="absolute -bottom-9 left-1/2 -translate-x-1/2 w-[75%] h-[1px] bg-slate-100 pointer-events-none z-10" />
-
-            <SoftwareBox product={product} isHovered={false} size="large" />
+          <div className="relative preserve-3d flex items-center justify-center p-2 z-10">
+            <SoftwareBox product={product} isHovered={isHoveredModal} size="large" />
           </div>
           
           <div className="text-center space-y-1.5 z-10">
