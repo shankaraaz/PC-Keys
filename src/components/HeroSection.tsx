@@ -17,26 +17,29 @@ export default function HeroSection({ onPromoClick }: HeroSectionProps) {
     {
       id: 1,
       title: 'Microsoft\nOffice',
-      logo: 'O',
-      bg: 'bg-[#D83B01]', // Standard Office Orange
-      border: 'border-[#A42600]',
-      text: 'text-white',
+      image: '/hero-section/office2019.png',
+      bg: 'bg-transparent',
+      border: 'border-transparent',
+      text: 'text-gray-800',
+      className: "h-[230px] w-auto object-cover",
     },
     {
       id: 2,
       title: 'Microsoft\nWindows',
-      logo: 'Win',
-      bg: 'bg-[#0078D7]', // Standard Windows Blue
-      border: 'border-[#005A9E]',
-      text: 'text-white',
+      image: '/hero-section/windows10-new-1.png',
+      bg: 'bg-transparent',
+      border: 'border-transparent',
+      text: 'text-gray-800',
+      className: "h-[250px] w-auto object-cover",
     },
     {
       id: 3,
-      title: 'Premium\nAntivirus',
-      logo: 'AV',
-      bg: 'bg-[#107C10]', // Security Green
-      border: 'border-[#0B5A0B]',
-      text: 'text-white',
+      title: 'Microsoft 365',
+      image: '/hero-section/office365-mini-new.png',
+      bg: 'bg-transparent',
+      border: 'border-transparent',
+      text: 'text-gray-800',
+      className: "h-[240px] w-full object-cover",
     }
   ];
 
@@ -114,7 +117,7 @@ export default function HeroSection({ onPromoClick }: HeroSectionProps) {
           {/* RIGHT SIDE (new promotional grid) */}
           {/* RIGHT SIDE (Carousel Card) */}
           <div className="w-full lg:w-[55%] flex-grow">
-            <div className="bg-gradient-to-br from-[#105fdc] to-[#9c4be6] rounded-[2rem] p-6 md:p-10 relative overflow-hidden shadow-2xl flex flex-col justify-between h-[450px] sm:h-[500px]">
+            <div className="bg-gradient-to-br from-blue-500 to-blue-900 rounded-[2rem] p-6 md:p-10 relative overflow-hidden shadow-2xl flex flex-col justify-between h-[450px] sm:h-[500px]">
 
               {/* Text Content */}
               <div className="z-10 text-center sm:text-left space-y-4 max-w-lg">
@@ -134,7 +137,7 @@ export default function HeroSection({ onPromoClick }: HeroSectionProps) {
               </div>
 
               {/* Carousel container */}
-              <div className="relative mt-8 sm:mt-12 flex-grow flex items-center justify-center z-10 w-full h-[250px]">
+              <div className="relative  flex-grow flex items-center justify-center z-10 w-full h-[250px]">
                 {/* Left Arrow */}
                 <button
                   onClick={prevProductSlide}
@@ -171,19 +174,14 @@ export default function HeroSection({ onPromoClick }: HeroSectionProps) {
                     return (
                       <div
                         key={product.id}
-                        className={`absolute transition-all duration-500 ease-out flex-shrink-0 w-[140px] h-[190px] sm:w-[150px] sm:h-[210px] rounded-r-md border-l-8 ${product.border} shadow-2xl flex flex-col overflow-hidden bg-white ${opacity}`}
+                        className={`absolute transition-all duration-500 ease-out flex-shrink-0 w-[140px] sm:w-[160px] flex flex-col items-center ${opacity}`}
                         style={{ transform, zIndex }}
                       >
-                        <div className={`flex-grow flex items-center justify-center ${product.bg}`}>
-                          <span className="text-4xl sm:text-5xl font-extrabold text-white/90 font-mono tracking-tighter drop-shadow-md">
-                            {product.logo}
-                          </span>
-                        </div>
-                        <div className="bg-white h-[35%] p-2 sm:p-3 flex items-center justify-center border-t border-gray-100">
-                          <span className={`text-[10px] sm:text-xs font-bold leading-tight text-center ${product.text} whitespace-pre-line`}>
-                            {product.title}
-                          </span>
-                        </div>
+                        <img
+                          src={product.image}
+                          alt={product.title.replace('\n', ' ')}
+                          className={`${product.className || "w-full h-auto"} drop-shadow-2xl object-contain transition-transform hover:scale-105`}
+                        />
                       </div>
                     );
                   })}
