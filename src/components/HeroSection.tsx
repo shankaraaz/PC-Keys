@@ -16,27 +16,27 @@ export default function HeroSection({ onPromoClick }: HeroSectionProps) {
   const carouselProducts = [
     {
       id: 1,
-      title: 'Visio\nProfessional 2021',
-      logo: 'V',
-      bg: 'bg-[#155fc9]',
-      border: 'border-[#0f4b9f]',
+      title: 'Microsoft\nOffice',
+      logo: 'O',
+      bg: 'bg-[#D83B01]', // Standard Office Orange
+      border: 'border-[#A42600]',
       text: 'text-white',
     },
     {
       id: 2,
-      title: 'Project\nProfessional 2021',
-      logo: 'P',
-      bg: 'bg-[#0f7a3f]',
-      border: 'border-[#0a5c2d]',
+      title: 'Microsoft\nWindows',
+      logo: 'Win',
+      bg: 'bg-[#0078D7]', // Standard Windows Blue
+      border: 'border-[#005A9E]',
       text: 'text-white',
     },
     {
       id: 3,
-      title: 'Microsoft\nSQL Server Standard',
-      logo: 'SQL',
-      bg: 'bg-white',
-      border: 'border-gray-200',
-      text: 'text-gray-800',
+      title: 'Premium\nAntivirus',
+      logo: 'AV',
+      bg: 'bg-[#107C10]', // Security Green
+      border: 'border-[#0B5A0B]',
+      text: 'text-white',
     }
   ];
 
