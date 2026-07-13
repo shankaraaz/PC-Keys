@@ -43,7 +43,7 @@ export default function Navbar({
   return (
     <div className="sticky top-0 z-40 w-full font-sans" id="store-navbar-wrapper">
       {/* Prominent 24x7 WhatsApp Support Banner with brand gradient */}
-      <div className="bg-gradient-to-r from-blue-500 to-blue-600 py-2 sm:py-2.5 relative z-50 shadow-sm">
+      <div className="bg-gradient-to-r from-blue-600 to-blue-800 py-2 sm:py-2.5 relative z-50 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between gap-2">
           <div className="flex items-center space-x-2">
             <span className="text-white/95 text-[10px] sm:text-xs font-semibold uppercase tracking-wide">Need Help? Chat with us 24×7 on WhatsApp</span>
@@ -53,7 +53,7 @@ export default function Navbar({
             href="https://wa.me/919999999999?text=Hello%20Netlyrakeys%20Support%2C%20I%20need%20help%20with%20a%20key%20purchase."
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-white hover:bg-[#EEEEEE] text-green-600 px-3.5 py-1 sm:py-1.5 text-[9px] sm:text-[10px] font-black uppercase tracking-wider transition-all duration-200 flex items-center space-x-1.5 shadow-sm hover:scale-105 active:scale-95 rounded-sm"
+            className="bg-white hover:bg-[#EEEEEE] text-green-600 px-3.5 py-1 sm:py-1.5 text-[9px] sm:text-[10px] font-black uppercase tracking-wider transition-all duration-200 flex items-center space-x-1.5 shadow-sm hover:scale-105 active:scale-95 "
             id="navbar-whatsapp-banner-link"
           >
             {/* WhatsApp Icon */}
@@ -75,7 +75,7 @@ export default function Navbar({
               onClick={() => { onTabChange('catalog'); onSearchChange(''); }}
               id="nav-logo"
             >
-              <div className="bg-gradient-to-tr from-[#EEEEEE] to-white border border-[#E2E8F0] p-2.5 rounded-xl flex items-center justify-center shadow-sm hover:shadow-md transition-shadow">
+              <div className="  p-2.5  flex items-center justify-center">
                 <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none">
                   <path d="M4 21V5.818C4 4.814 5.176 4.272 5.94 4.922L18.06 15.228C18.824 15.878 20 15.337 20 14.333V3" stroke="url(#primary-grad)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
                   <path d="M4 21L20 3" stroke="url(#secondary-grad)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -112,7 +112,7 @@ export default function Navbar({
                     onChange={(e) => onSearchChange(e.target.value)}
                     onFocus={() => setSearchFocused(true)}
                     onBlur={() => setTimeout(() => setSearchFocused(false), 200)}
-                    className="w-full pl-4.5 pr-11 h-11 bg-[#EEEEEE] border border-[#E2E8F0] focus:border-[#3b82f6] rounded-full text-xs font-semibold text-[#222831] placeholder-slate-400 transition-all duration-200 outline-none shadow-xs"
+                    className="w-full pl-4.5 pr-11 h-11 bg-[#EEEEEE] border border-[#E2E8F0] focus:border-[#3b82f6] text-xs font-semibold text-[#222831] placeholder-slate-400 transition-all duration-200 outline-none shadow-xs font-bold"
                     id="nav-search-input"
                     autoComplete="off"
                   />
@@ -130,7 +130,7 @@ export default function Navbar({
                             animate={{ opacity: 1, y: 0, scale: 1 }}
                             exit={{ opacity: 0, y: 10, scale: 0.98 }}
                             transition={{ duration: 0.15 }}
-                            className="absolute left-0 right-0 mt-2 bg-[#FFFFFF] border border-white/[0.08] rounded-2xl shadow-2xl overflow-hidden z-50 divide-y divide-white/5"
+                            className="absolute left-0 right-0 mt-2 bg-[#FFFFFF] border border-white/[0.08]  shadow-2xl overflow-hidden z-50 divide-y divide-white/5"
                             id="autocomplete-dropdown"
                           >
                             {suggestions.map((suggestion, idx) => (
@@ -165,8 +165,8 @@ export default function Navbar({
               {/* Catalog Button */}
               <button
                 onClick={() => onTabChange('catalog')}
-                className={`px-5 h-11 flex items-center justify-center rounded-lg text-xs font-bold uppercase tracking-widest transition-all duration-200 cursor-pointer shadow-xs ${activeTab === 'catalog'
-                  ? 'bg-blue-600 text-white hover:bg-blue-700'
+                className={`px-5 h-11 flex items-center justify-center  text-xs font-bold uppercase tracking-widest transition-all duration-200 cursor-pointer shadow-xs ${activeTab === 'catalog'
+                  ? 'bg-blue-600 text-white hover:bg-blue-700 '
                   : 'bg-[#EEEEEE] text-[#393E46] hover:bg-[#E2E8F0]'
                   }`}
                 id="nav-catalog-btn"
@@ -177,13 +177,16 @@ export default function Navbar({
               {/* Support/Activation Center Button */}
               <button
                 onClick={() => onTabChange('support')}
-                className={`px-4 h-11 flex items-center justify-center rounded-lg text-xs font-bold uppercase tracking-widest transition-all duration-200 cursor-pointer space-x-1.5 ${activeTab === 'support'
-                  ? 'text-[#3b82f6] bg-[#EEEEEE]'
-                  : 'text-[#393E46] hover:text-[#222831] hover:bg-[#EEEEEE]'
+                className={`px-4 h-11 flex items-center justify-center  text-xs font-bold uppercase tracking-widest transition-all duration-200 cursor-pointer space-x-1.5 ${activeTab === 'support'
+                  ? 'text-slate-100 bg-blue-600'
+                  : 'text-[#393E46] hover:text-blue-600 hover:bg-[#EEEEEE] '
                   }`}
                 id="nav-support-btn"
               >
-                <HelpCircle className="h-4 w-4 text-blue-500" />
+                <HelpCircle className={`h-4 w-4 ${activeTab === 'support'
+                  ? ''
+                  : ''
+                  }`} />
                 <span>Support Center</span>
               </button>
 
@@ -191,7 +194,7 @@ export default function Navbar({
               {isAdmin && (
                 <button
                   onClick={() => onTabChange('admin')}
-                  className={`px-4 h-11 flex items-center justify-center rounded-lg text-xs font-bold uppercase tracking-widest transition-all duration-200 cursor-pointer space-x-1.5 ${activeTab === 'admin'
+                  className={`px-4 h-11 flex items-center justify-center  text-xs font-bold uppercase tracking-widest transition-all duration-200 cursor-pointer space-x-1.5 ${activeTab === 'admin'
                     ? 'text-[#3b82f6] bg-[#EEEEEE]'
                     : 'text-[#393E46] hover:text-[#222831] hover:bg-[#EEEEEE]'
                     }`}
@@ -205,13 +208,13 @@ export default function Navbar({
               {/* Shopping Cart Button */}
               <button
                 onClick={onCartClick}
-                className="relative w-11 h-11 flex items-center justify-center rounded-xl text-[#222831] hover:bg-[#EEEEEE] hover:text-[#3b82f6] transition-all duration-200 cursor-pointer border border-[#E2E8F0]"
+                className="relative w-11 h-11 flex items-center justify-center text-[#222831] hover:bg-[#EEEEEE] hover:text-[#3b82f6] transition-all duration-200 cursor-pointer "
                 aria-label="Cart"
                 id="nav-cart-btn"
               >
                 <ShoppingCart className="h-5.5 w-5.5" />
                 {cartCount > 0 && (
-                  <span className="absolute -top-1.5 -right-1.5 bg-blue-500 text-white font-bold text-[10px] h-5 w-5 rounded-full flex items-center justify-center shadow-xs">
+                  <span className="absolute -top-2.5 -right-1.5 rounded-full bg-blue-500 text-slate-100 font-bold text-[10px] h-5 w-5  flex items-center justify-center shadow-xs">
                     {cartCount}
                   </span>
                 )}
@@ -222,10 +225,10 @@ export default function Navbar({
                 <div className="relative">
                   <button
                     onClick={() => setDropdownOpen(!dropdownOpen)}
-                    className="flex items-center space-x-2 pl-1.5 pr-3 h-11 rounded-xl border border-[#E2E8F0] hover:bg-[#EEEEEE] transition-all duration-200 font-bold"
+                    className="flex items-center space-x-2 pl-1.5 pr-3 h-11  border border-[#E2E8F0] hover:bg-[#EEEEEE] transition-all duration-200 font-bold"
                     id="user-profile-menu-btn"
                   >
-                    <div className="h-8 w-8 rounded-lg bg-[#E2E8F0] text-[#3b82f6] flex items-center justify-center font-bold text-xs uppercase tracking-wider">
+                    <div className="h-8 w-8  bg-[#E2E8F0] text-[#3b82f6] flex items-center justify-center font-bold text-xs uppercase tracking-wider">
                       {displayName ? displayName.charAt(0).toUpperCase() : <User className="h-4 w-4" />}
                     </div>
                     <span className="hidden sm:inline text-xs font-bold uppercase tracking-widest text-[#222831] max-w-[100px] truncate">
@@ -244,7 +247,7 @@ export default function Navbar({
                           animate={{ opacity: 1, y: 0, scale: 1 }}
                           exit={{ opacity: 0, y: 10, scale: 0.95 }}
                           transition={{ duration: 0.15 }}
-                          className="absolute right-0 mt-2 w-56 rounded-2xl bg-[#FFFFFF] border border-white/[0.08] shadow-2xl py-2 z-40 text-white"
+                          className="absolute right-0 mt-2 w-56  bg-[#FFFFFF] border border-white/[0.08] shadow-2xl py-2 z-40 text-white"
                           id="user-dropdown-panel"
                         >
                           <div className="px-4 py-3 border-b border-white/[0.08] mb-1">
@@ -300,10 +303,10 @@ export default function Navbar({
               ) : (
                 <button
                   onClick={onLoginClick}
-                  className="bg-white hover:bg-[#EEEEEE] text-[#222831] border border-[#E2E8F0] px-5 h-11 rounded-xl text-xs font-bold uppercase tracking-widest transition-all duration-200 flex items-center justify-center space-x-1.5 cursor-pointer shadow-xs"
+                  className="bg-white hover:bg-[#EEEEEE] text-[#222831] hover:text-blue-600 border border-[#E2E8F0] px-5 h-11  text-xs font-bold uppercase tracking-widest transition-all duration-200 flex items-center justify-center space-x-1.5 cursor-pointer shadow-xs font-bold"
                   id="login-register-btn"
                 >
-                  <User className="h-4 w-4 text-[#393E46]" />
+
                   <span>Login</span>
                 </button>
               )}

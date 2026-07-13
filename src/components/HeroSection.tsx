@@ -73,8 +73,8 @@ export default function HeroSection({ onPromoClick }: HeroSectionProps) {
   }, []);
 
   return (
-    // min-h-[calc(100vh-64px)]
-    <div className="relative bg-[#F6F6F6] overflow-hidden min-h-[60vh] flex items-center border-b border-[#E2E8F0] " id="hero-banner">
+    // min-h-[calc(100vh-64px)]  bg-[#F6F6F6]
+    <div className="relative   bg-gradient-to-br from-[#0575E6] to-[#021B79] overflow-hidden min-h-[60vh] flex items-center border-b border-[#E2E8F0] " id="hero-banner">
 
 
       {/* Subtle brand glow effects */}
@@ -86,30 +86,30 @@ export default function HeroSection({ onPromoClick }: HeroSectionProps) {
 
           {/* LEFT SIDE (existing content) */}
           <div className="w-full lg:w-[45%] shrink-0 space-y-6">
-            <div className="inline-flex items-center space-x-2 bg-white border border-[#E2E8F0] px-3.5 py-1.5 rounded-full shadow-xs">
-              <Sparkles className="h-4 w-4 text-[#3b82f6]" />
-              <span className="text-[#393E46] text-[9px] font-black uppercase tracking-widest">UP TO 85% DISCOUNT SALE ACTIVE</span>
+            <div className="inline-flex items-center space-x-2 bg-white border border-[#E2E8F0] px-3.5 py-1.5  shadow-xs">
+              {/* <Sparkles className="h-4 w-4 text-[#3b82f6]" /> */}
+              <span className="text-blue-700 text-[9px] font-black uppercase tracking-widest">UP TO 85% DISCOUNT SALE ACTIVE</span>
             </div>
 
-            <h1 className="text-3xl sm:text-5xl font-black text-[#222831] leading-tight tracking-tight">
+            <h1 className="text-3xl sm:text-5xl font-black bg-clip-text text-transparent bg-gradient-to-r from-[#F0F8FF] to-blue-400 leading-tight tracking-tight">
               Premium Digital Keys. <br />
-              <span className="text-blue-600 font-serif italic font-bold">
+              <span className="text-slate-100 font-serif italic font-bold">
                 100% Secure & Genuine.
               </span>
             </h1>
 
-            <p className="text-xs sm:text-sm text-[#393E46] leading-relaxed font-normal">
+            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
               Get fully-licensed, lifetime retail activation software keys for Operating Systems, high-end Antivirus suites, and productive Office suites instantly with automated delivery.
             </p>
 
             <div className="flex flex-wrap gap-4 pt-2">
-              <div className="flex items-center space-x-2 bg-white border border-[#E2E8F0] rounded-2xl px-4 py-3 text-[#222831] text-xs font-bold shadow-xs">
-                <Zap className="h-4.5 w-4.5 text-[#3b82f6] fill-[#3b82f6]/10" />
-                <span className="tracking-wide">Instant Keys Delivery</span>
+              <div className="flex items-center space-x-2 bg-white border border-[#E2E8F0] px-4 py-3 text-[#222831] text-xs font-bold shadow-xs">
+                <Zap className="h-4.5 w-4.5 text-blue-700 fill-[#3b82f6]/10" />
+                <span className="tracking-wide text-blue-700">Instant Keys Delivery</span>
               </div>
-              <div className="flex items-center space-x-2 bg-white border border-[#E2E8F0] rounded-2xl px-4 py-3 text-[#222831] text-xs font-bold shadow-xs">
-                <ShieldCheck className="h-4.5 w-4.5 text-[#3b82f6]" />
-                <span className="tracking-wide">Microsoft Certified Original</span>
+              <div className="flex items-center space-x-2 bg-white border border-[#E2E8F0] px-4 py-3 text-[#222831] text-xs font-bold shadow-xs">
+                <ShieldCheck className="h-4.5 w-4.5 text-blue-700 fill-[#3b82f6]/10" />
+                <span className="tracking-wide text-blue-700">Microsoft Certified Original</span>
               </div>
             </div>
           </div>
@@ -117,7 +117,7 @@ export default function HeroSection({ onPromoClick }: HeroSectionProps) {
           {/* RIGHT SIDE (new promotional grid) */}
           {/* RIGHT SIDE (Carousel Card) */}
           <div className="w-full lg:w-[55%] flex-grow">
-            <div className="bg-gradient-to-br from-blue-500 to-blue-900 rounded-[2rem] p-6 md:p-10 relative overflow-hidden shadow-2xl flex flex-col justify-between h-[450px] sm:h-[500px]">
+            <div className="bg-gradient-to-br from-blue-300 to-blue-600  p-6 md:p-10 relative overflow-hidden shadow-2xl flex flex-col justify-between h-[450px] sm:h-[500px]">
 
               {/* Text Content */}
               <div className="z-10 text-center sm:text-left space-y-4 max-w-lg">
@@ -141,7 +141,7 @@ export default function HeroSection({ onPromoClick }: HeroSectionProps) {
                 {/* Left Arrow */}
                 <button
                   onClick={prevProductSlide}
-                  className="absolute left-2 sm:left-6 z-30 p-2 sm:p-3 bg-black/20 hover:bg-black/40 rounded-full text-white backdrop-blur-md transition-colors shadow-lg"
+                  className="absolute left-2 sm:left-6 z-30 p-2 sm:p-3 bg-black/20 hover:bg-black/40  text-white backdrop-blur-md transition-colors shadow-lg"
                 >
                   <ChevronLeft className="w-6 h-6" />
                 </button>
@@ -190,7 +190,7 @@ export default function HeroSection({ onPromoClick }: HeroSectionProps) {
                 {/* Right Arrow */}
                 <button
                   onClick={nextProductSlide}
-                  className="absolute right-2 sm:right-6 z-30 p-2 sm:p-3 bg-black/20 hover:bg-black/40 rounded-full text-white backdrop-blur-md transition-colors shadow-lg"
+                  className="absolute right-2 sm:right-6 z-30 p-2 sm:p-3 bg-black/20 hover:bg-black/40 text-white backdrop-blur-md transition-colors shadow-lg"
                 >
                   <ChevronRight className="w-6 h-6" />
                 </button>

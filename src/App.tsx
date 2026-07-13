@@ -52,6 +52,7 @@ import AdminPanel from './components/AdminPanel';
 import SupportPage from './components/SupportPage';
 import HeroSection from './components/HeroSection';
 import ChatBotWidget from './components/ChatBotWidget';
+import Footer from './components/Footer';
 
 // Libs & Types
 import { db, auth, handleFirestoreError, OperationType } from './lib/firebase';
@@ -291,8 +292,8 @@ const premiumCategories = [
     icon: Monitor,
     badge: 'POPULAR',
     bgClass: (isActive: boolean) => isActive
-      ? 'bg-[#EFF6FF] border-[#3B82F6] shadow-[0_8px_30px_rgba(59,130,246,0.12)]'
-      : 'bg-[#EFF6FF]/65 border-[#EFF6FF] hover:bg-[#EFF6FF]/90 hover:border-[#BFDBFE] hover:shadow-[0_8px_25px_rgba(59,130,246,0.06)]',
+      ? 'bg-blue-400 border-[#3B82F6] shadow-[0_8px_30px_rgba(59,130,246,0.12)]'
+      : 'bg-blue-300 border-[#EFF6FF] hover:bg-blue-400 hover:border-blue-500 hover:shadow-[0_8px_25px_rgba(59,130,246,0.06)]',
     iconColorClass: 'text-blue-500',
     badgeClass: 'bg-[#EFF6FF] border-[#BFDBFE]/60 text-blue-600',
     illustration: WindowsIllustration
@@ -303,8 +304,8 @@ const premiumCategories = [
     icon: FileText,
     badge: 'BEST SELLER',
     bgClass: (isActive: boolean) => isActive
-      ? 'bg-[#FFF7ED] border-[#F97316] shadow-[0_8px_30px_rgba(249,115,22,0.12)]'
-      : 'bg-[#FFF7ED]/65 border-[#FFF7ED] hover:bg-[#FFF7ED]/90 hover:border-[#FED7AA] hover:shadow-[0_8px_25px_rgba(249,115,22,0.06)]',
+      ? 'bg-orange-400 border-[#F97316] shadow-[0_8px_30px_rgba(249,115,22,0.12)]'
+      : 'bg-orange-300 border-[#FFF7ED] hover:bg-orange-400 hover:border-orange-500 hover:shadow-[0_8px_25px_rgba(249,115,22,0.06)]',
     iconColorClass: 'text-orange-500',
     badgeClass: 'bg-[#FFF7ED] border-[#FED7AA]/60 text-orange-600',
     illustration: OfficeIllustration
@@ -315,8 +316,8 @@ const premiumCategories = [
     icon: ShieldCheck,
     badge: 'ESSENTIAL',
     bgClass: (isActive: boolean) => isActive
-      ? 'bg-[#F0FDF4] border-[#10B981] shadow-[0_8px_30px_rgba(16,185,129,0.12)]'
-      : 'bg-[#F0FDF4]/65 border-[#F0FDF4] hover:bg-[#F0FDF4]/90 hover:border-[#A7F3D0] hover:shadow-[0_8px_25px_rgba(16,185,129,0.06)]',
+      ? 'bg-emerald-400 border-[#10B981] shadow-[0_8px_30px_rgba(16,185,129,0.12)]'
+      : 'bg-emerald-300 border-[#F0FDF4] hover:bg-emerald-400 hover:border-emerald-500 hover:shadow-[0_8px_25px_rgba(16,185,129,0.06)]',
     iconColorClass: 'text-emerald-500',
     badgeClass: 'bg-[#F0FDF4] border-[#A7F3D0]/60 text-emerald-600',
     illustration: SecurityIllustration
@@ -327,8 +328,8 @@ const premiumCategories = [
     icon: Palette,
     badge: 'TRENDING',
     bgClass: (isActive: boolean) => isActive
-      ? 'bg-[#FAF5FF] border-[#8B5CF6] shadow-[0_8px_30px_rgba(139,92,246,0.12)]'
-      : 'bg-[#FAF5FF]/65 border-[#FAF5FF] hover:bg-[#FAF5FF]/90 hover:border-[#E9D5FF] hover:shadow-[0_8px_25px_rgba(139,92,246,0.06)]',
+      ? 'bg-purple-400 border-[#8B5CF6] shadow-[0_8px_30px_rgba(139,92,246,0.12)]'
+      : 'bg-purple-300 border-[#FAF5FF] hover:bg-purple-400 hover:border-purple-500 hover:shadow-[0_8px_25px_rgba(139,92,246,0.06)]',
     iconColorClass: 'text-purple-500',
     badgeClass: 'bg-[#FAF5FF] border-[#E9D5FF]/60 text-purple-600',
     illustration: CreativeIllustration
@@ -339,8 +340,8 @@ const premiumCategories = [
     icon: Terminal,
     badge: 'PRO',
     bgClass: (isActive: boolean) => isActive
-      ? 'bg-[#F0FDFA] border-[#0D9488] shadow-[0_8px_30px_rgba(13,148,136,0.12)]'
-      : 'bg-[#F0FDFA]/65 border-[#F0FDFA] hover:bg-[#F0FDFA]/90 hover:border-[#99F6E4] hover:shadow-[0_8px_25px_rgba(13,148,136,0.06)]',
+      ? 'bg-teal-400 border-[#0D9488] shadow-[0_8px_30px_rgba(13,148,136,0.12)]'
+      : 'bg-teal-300 border-[#F0FDFA] hover:bg-teal-400 hover:border-teal-500 hover:shadow-[0_8px_25px_rgba(13,148,136,0.06)]',
     iconColorClass: 'text-teal-500',
     badgeClass: 'bg-[#F0FDFA] border-[#99F6E4]/60 text-teal-600',
     illustration: DeveloperIllustration
@@ -351,8 +352,8 @@ const premiumCategories = [
     icon: Globe,
     badge: 'SECURE',
     bgClass: (isActive: boolean) => isActive
-      ? 'bg-[#F0F9FF] border-[#0EA5E9] shadow-[0_8px_30px_rgba(14,165,233,0.12)]'
-      : 'bg-[#F0F9FF]/65 border-[#F0F9FF] hover:bg-[#F0F9FF]/90 hover:border-[#BAE6FD] hover:shadow-[0_8px_25px_rgba(14,165,233,0.06)]',
+      ? 'bg-sky-400 border-[#0EA5E9] shadow-[0_8px_30px_rgba(14,165,233,0.12)]'
+      : 'bg-sky-300 border-[#F0F9FF] hover:bg-sky-400 hover:border-sky-500 hover:shadow-[0_8px_25px_rgba(14,165,233,0.06)]',
     iconColorClass: 'text-sky-500',
     badgeClass: 'bg-[#F0F9FF] border-[#BAE6FD]/60 text-sky-600',
     illustration: VpnIllustration
@@ -363,8 +364,8 @@ const premiumCategories = [
     icon: Gamepad2,
     badge: 'HOT',
     bgClass: (isActive: boolean) => isActive
-      ? 'bg-[#FDF2F8] border-[#EC4899] shadow-[0_8px_30px_rgba(236,72,153,0.12)]'
-      : 'bg-[#FDF2F8]/65 border-[#FDF2F8] hover:bg-[#FDF2F8]/90 hover:border-[#FBCFE8] hover:shadow-[0_8px_25px_rgba(236,72,153,0.06)]',
+      ? 'bg-pink-400 border-[#EC4899] shadow-[0_8px_30px_rgba(236,72,153,0.12)]'
+      : 'bg-pink-300 border-[#FDF2F8] hover:bg-pink-400 hover:border-pink-500 hover:shadow-[0_8px_25px_rgba(236,72,153,0.06)]',
     iconColorClass: 'text-pink-500',
     badgeClass: 'bg-[#FDF2F8] border-[#FBCFE8]/60 text-pink-600',
     illustration: GamingIllustration
@@ -375,8 +376,8 @@ const premiumCategories = [
     icon: Building2,
     badge: 'CORPORATE',
     bgClass: (isActive: boolean) => isActive
-      ? 'bg-[#F0FDF4] border-[#0F766E] shadow-[0_8px_30px_rgba(15,118,110,0.12)]'
-      : 'bg-[#F0FDF4]/65 border-[#F0FDF4] hover:bg-[#F0FDF4]/90 hover:border-[#A7F3D0] hover:shadow-[0_8px_25px_rgba(15,118,110,0.06)]',
+      ? 'bg-green-400 border-[#0F766E] shadow-[0_8px_30px_rgba(15,118,110,0.12)]'
+      : 'bg-green-300 border-[#F0FDF4] hover:bg-green-400 hover:border-green-500 hover:shadow-[0_8px_25px_rgba(15,118,110,0.06)]',
     iconColorClass: 'text-teal-700',
     badgeClass: 'bg-[#F0FDF4] border-[#A7F3D0]/60 text-teal-700',
     illustration: BusinessIllustration
@@ -915,7 +916,7 @@ export default function App() {
   ];
 
   return (
-    <div className="min-h-screen bg-blue-100 text-[#CBD5E1] font-sans flex flex-col selection:bg-[#3b82f6] selection:text-white" id="main-app">
+    <div className="min-h-screen bg-blue-50 text-[#CBD5E1] font-sans flex flex-col selection:bg-[#3b82f6] selection:text-white" id="main-app">
 
       {/* Toast Alert Banner */}
       <AnimatePresence>
@@ -971,9 +972,9 @@ export default function App() {
               <div className="space-y-4">
                 <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-2">
                   <div className="space-y-1">
-                    <h3 className="text-sm font-bold text-[#222831] uppercase tracking-widest flex items-center space-x-2">
-                      <Sparkles className="h-4 w-4 text-[#3b82f6]" />
-                      <span>Premium Software Categories</span>
+                    <h3 className="text-xl font-bold text-[#222831] uppercase tracking-widest flex items-center space-x-2">
+                      {/* <Sparkles className="h-4 w-4 text-[#3b82f6]" /> */}
+                      <span>Popular Categories</span>
                     </h3>
                     <p className="text-[11px] text-[#393E46]">Select a category below to explore digital key licenses</p>
                   </div>
@@ -983,10 +984,10 @@ export default function App() {
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.95 }}
                       onClick={() => setSelectedCategory('All')}
-                      className="text-[10px] uppercase font-mono font-bold tracking-widest text-rose-600 bg-rose-50 border border-rose-200 px-3 py-1.5 rounded-xl hover:bg-rose-100 hover:border-rose-300 transition-all duration-200 cursor-pointer flex items-center space-x-1"
+                      className="text-[10px] uppercase rounded font-mono font-bold tracking-widest text-blue-700 bg-slate-50 border border-blue-200 px-3 py-1.5   hover:text-slate-100 hover:bg-blue-700 hover:border-blue-300 transition-all duration-200 cursor-pointer flex items-center space-x-1"
                     >
                       <span>Show All</span>
-                      <X className="h-3.5 w-3.5" />
+                      {/* <X className="h-3.5 w-3.5" /> */}
                     </motion.button>
                   )}
                 </div>
@@ -1006,7 +1007,7 @@ export default function App() {
                         }}
                         whileTap={{ scale: 0.985 }}
                         transition={{ duration: 0.3, ease: "easeInOut" }}
-                        className={`relative h-[150px] rounded-3xl p-5 flex flex-col justify-between transition-all duration-300 border cursor-pointer select-none overflow-hidden group ${cat.bgClass(isActive)}`}
+                        className={`relative h-[150px] rounded-xl p-5 flex flex-col justify-between transition-all duration-300 border cursor-pointer select-none overflow-hidden group ${cat.bgClass(isActive)}`}
                       >
                         {/* Background illustration graphic */}
                         <div className="absolute right-[-10px] top-4 bottom-4 w-[130px] flex items-center justify-center opacity-90 group-hover:scale-105 transition-all duration-300 z-10 pointer-events-none">
@@ -1019,7 +1020,7 @@ export default function App() {
                             <cat.icon className={`h-5 w-5 ${cat.iconColorClass}`} />
                           </div>
                           {cat.badge && (
-                            <span className={`text-[9px] uppercase font-sans font-extrabold tracking-wider px-2.5 py-0.5 rounded-full border transition-all duration-300 ${cat.badgeClass}`}>
+                            <span className={`relative -mt-3 -mr-3 text-[9px] uppercase font-sans font-extrabold tracking-wider px-2.5 py-0.5 rounded-md border transition-all duration-300 mb-3 ${cat.badgeClass}`}>
                               {cat.badge}
                             </span>
                           )}
@@ -1221,122 +1222,7 @@ export default function App() {
       </main>
 
       {/* Professional digital keys shop footer */}
-      <footer className="bg-[#1A1F26] text-[#CBD5E1] border-t border-[#2A313C] shrink-0 pt-16 pb-8 font-sans" id="store-footer">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
-
-            {/* Brand Column */}
-            <div className="lg:col-span-2 space-y-6">
-              <div className="flex items-center space-x-3">
-                <div className="bg-gradient-to-tr from-[#EEEEEE] to-white border border-[#E2E8F0] p-2.5 rounded-xl flex items-center justify-center shadow-sm">
-                  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none">
-                    <path d="M4 21V5.818C4 4.814 5.176 4.272 5.94 4.922L18.06 15.228C18.824 15.878 20 15.337 20 14.333V3" stroke="url(#primary-grad-footer)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                    <path d="M4 21L20 3" stroke="url(#secondary-grad-footer)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                    <defs>
-                      <linearGradient id="primary-grad-footer" x1="4" y1="3" x2="20" y2="21" gradientUnits="userSpaceOnUse">
-                        <stop stopColor="#3B82F6" />
-                        <stop offset="1" stopColor="#1E3A8A" />
-                      </linearGradient>
-                      <linearGradient id="secondary-grad-footer" x1="20" y1="3" x2="4" y2="21" gradientUnits="userSpaceOnUse">
-                        <stop stopColor="#60A5FA" />
-                        <stop offset="1" stopColor="#2563EB" />
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                </div>
-                <div className="text-[26px] font-black tracking-tight text-white leading-none flex items-center">
-                  Nexus<span className="font-light text-[#3b82f6]">Keys</span>
-                </div>
-              </div>
-              <p className="text-sm text-[#94A3B8] leading-relaxed max-w-sm">
-                A premium, fully responsive retail license store offering authenticated genuine keys at massive wholesale discount price structures. Built for security, speed, and reliability.
-              </p>
-
-              {/* Trust Badges */}
-              <div className="flex items-center space-x-3 pt-2">
-                <div className="flex items-center space-x-1.5 bg-[#222831] px-3 py-1.5 rounded-lg border border-white/5 shadow-inner">
-                  <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-white/80">256-Bit SSL</span>
-                </div>
-                <div className="flex items-center space-x-1.5 bg-[#222831] px-3 py-1.5 rounded-lg border border-white/5 shadow-inner">
-                  <Monitor className="w-4 h-4 text-blue-400" />
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-white/80">Authorized</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Quick Links */}
-            <div>
-              <h4 className="text-white font-bold tracking-widest text-xs uppercase mb-6">Quick Links</h4>
-              <ul className="space-y-3 text-sm">
-                <li><a href="#" onClick={(e) => { e.preventDefault(); setActiveTab('catalog'); }} className="hover:text-blue-400 transition-colors">Home</a></li>
-                <li><a href="#" onClick={(e) => { e.preventDefault(); setActiveTab('catalog'); }} className="hover:text-blue-400 transition-colors">Browse Catalog</a></li>
-                <li><a href="#" onClick={(e) => { e.preventDefault(); setActiveTab('orders'); }} className="hover:text-blue-400 transition-colors">Track Order</a></li>
-                <li><a href="#" onClick={(e) => { e.preventDefault(); setActiveTab('support'); }} className="hover:text-blue-400 transition-colors">Support Center</a></li>
-              </ul>
-            </div>
-
-            {/* Categories */}
-            <div>
-              <h4 className="text-white font-bold tracking-widest text-xs uppercase mb-6">Categories</h4>
-              <ul className="space-y-3 text-sm">
-                <li><a href="#" onClick={(e) => { e.preventDefault(); handlePromoClick('Microsoft Windows Keys'); }} className="hover:text-blue-400 transition-colors">Windows Keys</a></li>
-                <li><a href="#" onClick={(e) => { e.preventDefault(); handlePromoClick('Microsoft Office Keys'); }} className="hover:text-blue-400 transition-colors">Office Licenses</a></li>
-                <li><a href="#" onClick={(e) => { e.preventDefault(); handlePromoClick('Antivirus & Security'); }} className="hover:text-blue-400 transition-colors">Antivirus & Security</a></li>
-                <li><a href="#" onClick={(e) => { e.preventDefault(); handlePromoClick('Developer Tools'); }} className="hover:text-blue-400 transition-colors">Developer Tools</a></li>
-              </ul>
-            </div>
-
-            {/* Support / Contact */}
-            <div className="space-y-6">
-              <h4 className="text-white font-bold tracking-widest text-xs uppercase mb-6">Need Help?</h4>
-
-              <div className="bg-[#222831] border border-[#3b82f6]/20 p-5 rounded-xl relative overflow-hidden group hover:border-[#3b82f6]/40 transition-colors" id="footer-whatsapp-column">
-                <div className="absolute top-0 right-0 h-16 w-16 bg-emerald-500/10 rounded-full blur-xl group-hover:bg-emerald-500/20 transition-colors" />
-
-                <ul className="space-y-2.5 mb-5 relative z-10">
-                  <li className="flex items-center space-x-2.5 text-xs font-semibold text-white/80">
-                    <Zap className="w-4 h-4 text-amber-400" />
-                    <span>Instant Digital Delivery</span>
-                  </li>
-                  <li className="flex items-center space-x-2.5 text-xs font-semibold text-white/80">
-                    <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                    <span>Secure Checkout</span>
-                  </li>
-                  <li className="flex items-center space-x-2.5 text-xs font-semibold text-white/80">
-                    <MessageSquare className="w-4 h-4 text-blue-400" />
-                    <span>24/7 Expert Support</span>
-                  </li>
-                </ul>
-
-                <a
-                  href="https://wa.me/919999999999?text=Hello%20NexusKeys%20Support%2C%20I%20need%20help%20with%20a%20key%20purchase."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full bg-[#10B981] hover:bg-[#059669] text-white font-black text-[10px] uppercase tracking-widest py-3 rounded-lg transition-all duration-200 flex items-center justify-center space-x-2 shadow-md relative z-10"
-                >
-                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-4.846c1.6.95 3.182 1.449 4.825 1.451 5.436 0 9.86-4.42 9.863-9.864.001-2.637-1.03-5.114-2.905-6.99C16.656 1.882 14.183 1.05 11.54 1.05 6.105 1.05 1.681 5.47 1.677 10.908c-.001 1.745.453 3.449 1.317 4.957l-1.018 3.715 3.804-.998zm11.233-7.24c-.312-.156-1.848-.912-2.129-1.015-.282-.102-.487-.156-.69.156-.204.311-.785.983-.96 1.186-.177.204-.355.228-.668.072-.312-.156-1.32-.486-2.515-1.551-.93-.829-1.558-1.854-1.74-2.165-.183-.312-.02-.481.136-.636.14-.139.312-.365.469-.547.156-.183.208-.312.312-.52.105-.208.053-.391-.026-.547-.079-.156-.69-1.661-.944-2.274-.249-.597-.502-.516-.69-.526-.178-.009-.383-.011-.587-.011-.204 0-.537.076-.818.384-.282.311-1.077 1.051-1.077 2.561 0 1.51 1.099 2.97 1.253 3.177.154.204 2.162 3.299 5.241 4.628.732.315 1.304.503 1.751.644.735.233 1.402.2 1.93.121.588-.087 1.848-.755 2.11-1.468.263-.712.263-1.32.184-1.448-.079-.118-.282-.172-.593-.328z" />
-                  </svg>
-                  <span>Chat on WhatsApp</span>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          {/* Bottom Bar */}
-          <div className="pt-8 border-t border-[#2A313C] flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-xs text-[#94A3B8]">
-              &copy; {new Date().getFullYear()} NexusKeys Marketplace. All rights reserved. All product titles and trademarks belong to their respective publishers.
-            </p>
-            <div className="flex space-x-6 text-xs text-[#94A3B8]">
-              <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-              <a href="#" className="hover:text-white transition-colors">Refund Policy</a>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer setActiveTab={setActiveTab} handlePromoClick={handlePromoClick} />
 
       {/* Side slide Cart drawer */}
       <CartDrawer
