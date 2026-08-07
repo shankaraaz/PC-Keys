@@ -46,11 +46,11 @@ export default function Navbar({
       <div className="bg-gradient-to-r from-blue-600 to-blue-800 py-2 sm:py-2.5 relative z-50 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between gap-2">
           <div className="flex items-center space-x-2">
-            <span className="text-white/95 text-[10px] sm:text-xs font-semibold uppercase tracking-wide">Need Help? Chat with us 24×7 on WhatsApp</span>
+            <span className="text-white/95 text-[10px] sm:text-xs font-semibold uppercase tracking-wide">Need Help? Chat with us 24×7 on WhatsApp (+91 7715933711)</span>
           </div>
 
           <a
-            href="https://wa.me/919999999999?text=Hello%20Netlyrakeys%20Support%2C%20I%20need%20help%20with%20a%20key%20purchase."
+            href="https://wa.me/917715933711?text=Hello%20PC%20Key%20Zone%20Support%2C%20I%20need%20help%20with%20a%20key%20purchase."
             target="_blank"
             rel="noopener noreferrer"
             className="bg-white hover:bg-[#EEEEEE] text-green-600 px-3.5 py-1 sm:py-1.5 text-[9px] sm:text-[10px] font-black uppercase tracking-wider transition-all duration-200 flex items-center space-x-1.5 shadow-sm hover:scale-105 active:scale-95 "
@@ -75,25 +75,10 @@ export default function Navbar({
               onClick={() => { onTabChange('catalog'); onSearchChange(''); }}
               id="nav-logo"
             >
-              <div className="  p-2.5  flex items-center justify-center">
-                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none">
-                  <path d="M4 21V5.818C4 4.814 5.176 4.272 5.94 4.922L18.06 15.228C18.824 15.878 20 15.337 20 14.333V3" stroke="url(#primary-grad)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                  <path d="M4 21L20 3" stroke="url(#secondary-grad)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                  <defs>
-                    <linearGradient id="primary-grad" x1="4" y1="3" x2="20" y2="21" gradientUnits="userSpaceOnUse">
-                      <stop stopColor="#3B82F6" />
-                      <stop offset="1" stopColor="#1E3A8A" />
-                    </linearGradient>
-                    <linearGradient id="secondary-grad" x1="20" y1="3" x2="4" y2="21" gradientUnits="userSpaceOnUse">
-                      <stop stopColor="#60A5FA" />
-                      <stop offset="1" stopColor="#2563EB" />
-                    </linearGradient>
-                  </defs>
-                </svg>
-              </div>
+              <img src="/PC-Key-Zone-logo.png" alt="PC Key Zone" className="h-12 w-auto object-contain" />
               <div>
-                <div className="text-[26px] font-black tracking-tight text-[#222831] leading-none flex items-center">
-                  Nexus<span className="font-light text-[#3b82f6]">Keys</span>
+                <div className="text-2xl font-black tracking-tight text-[#3b82f6] leading-none flex items-center">
+                  PC<span className="text-[#222831]">Key</span><span >Zone</span>
                 </div>
                 {/* <div className="flex items-center space-x-1 text-[9px] text-[#393E46] font-bold tracking-widest uppercase mt-0.5">
                   <span className="bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent">Premium Software Licensing</span>

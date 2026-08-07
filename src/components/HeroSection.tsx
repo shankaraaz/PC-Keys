@@ -109,7 +109,8 @@ export default function HeroSection({ onPromoClick }: HeroSectionProps) {
               </div>
               <div className="flex items-center space-x-2 bg-white border border-[#E2E8F0] px-4 py-3 text-[#222831] text-xs font-bold shadow-xs">
                 <ShieldCheck className="h-4.5 w-4.5 text-blue-700 fill-[#3b82f6]/10" />
-                <span className="tracking-wide text-blue-700">Microsoft Certified Original</span>
+                {/* <span className="tracking-wide text-blue-700">Microsoft Certified Original</span> */}
+                <span className="tracking-wide text-blue-700">Secure & Genuine</span>
               </div>
             </div>
           </div>

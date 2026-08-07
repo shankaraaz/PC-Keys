@@ -16,24 +16,9 @@ export default function Footer({ setActiveTab, handlePromoClick }: FooterProps) 
           {/* Brand Column */}
           <div className="lg:col-span-2 space-y-6">
             <div className="flex items-center space-x-3">
-              <div className="bg-gradient-to-tr from-[#EEEEEE] to-white border border-[#E2E8F0] p-2.5 rounded-xl flex items-center justify-center shadow-sm">
-                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none">
-                  <path d="M4 21V5.818C4 4.814 5.176 4.272 5.94 4.922L18.06 15.228C18.824 15.878 20 15.337 20 14.333V3" stroke="url(#primary-grad-footer)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                  <path d="M4 21L20 3" stroke="url(#secondary-grad-footer)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                  <defs>
-                    <linearGradient id="primary-grad-footer" x1="4" y1="3" x2="20" y2="21" gradientUnits="userSpaceOnUse">
-                      <stop stopColor="#3B82F6" />
-                      <stop offset="1" stopColor="#1E3A8A" />
-                    </linearGradient>
-                    <linearGradient id="secondary-grad-footer" x1="20" y1="3" x2="4" y2="21" gradientUnits="userSpaceOnUse">
-                      <stop stopColor="#60A5FA" />
-                      <stop offset="1" stopColor="#2563EB" />
-                    </linearGradient>
-                  </defs>
-                </svg>
-              </div>
+              <img src="/PC-Key-Zone-For-Dark.png" alt="PC Key Zone" className="h-12 w-auto object-contain" />
               <div className="text-[26px] font-black tracking-tight text-white leading-none flex items-center">
-                Nexus<span className="font-light text-[#3b82f6]">Keys</span>
+                PC Key<span className="font-light text-[#3b82f6] ml-1.5">Zone</span>
               </div>
             </div>
             <p className="text-sm text-[#94A3B8] leading-relaxed max-w-sm">
@@ -98,7 +83,7 @@ export default function Footer({ setActiveTab, handlePromoClick }: FooterProps) 
               </ul>
 
               <a
-                href="https://wa.me/919999999999?text=Hello%20NexusKeys%20Support%2C%20I%20need%20help%20with%20a%20key%20purchase."
+                href="https://wa.me/917715933711?text=Hello%20PC%20Key%20Zone%20Support%2C%20I%20need%20help%20with%20a%20key%20purchase."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full bg-[#10B981] hover:bg-[#059669] text-white font-black text-[10px] uppercase tracking-widest py-3 rounded-lg transition-all duration-200 flex items-center justify-center space-x-2 shadow-md relative z-10"
@@ -115,7 +100,7 @@ export default function Footer({ setActiveTab, handlePromoClick }: FooterProps) 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-[#2A313C] flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs text-[#94A3B8]">
-            &copy; {new Date().getFullYear()} NexusKeys Marketplace. All rights reserved. All product titles and trademarks belong to their respective publishers.
+            &copy; {new Date().getFullYear()} PC Key Zone Marketplace. All rights reserved. All product titles and trademarks belong to their respective publishers.
           </p>
           <div className="flex space-x-6 text-xs text-[#94A3B8]">
             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>

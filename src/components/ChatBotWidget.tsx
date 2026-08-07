@@ -134,11 +134,11 @@ export default function ChatBotWidget() {
       >
         {isOpen ? <X size={26} /> : <MessageCircle size={26} />}
 
-        {!isOpen && (
+        {/* {!isOpen && (
           <span className="absolute top-0 right-0 h-3.5 w-3.5 bg-rose-500 rounded-full border-2 border-white flex items-center justify-center">
             <span className="block h-1.5 w-1.5 rounded-full bg-white animate-pulse" />
           </span>
-        )}
+        )} */}
       </motion.button>
     </div>
   );
