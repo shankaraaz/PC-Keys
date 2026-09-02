@@ -9,9 +9,9 @@ interface FooterProps {
 
 export default function Footer({ setActiveTab, handlePromoClick }: FooterProps) {
   return (
-    <footer className="bg-[#1A1F26] text-[#CBD5E1] border-t border-[#2A313C] shrink-0 pt-16 pb-8 font-sans" id="store-footer">
+    <footer className="bg-[#1A1F26] text-[#CBD5E1] border-t border-[#2A313C] shrink-0 pt-12 pb-8 font-sans" id="store-footer">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-8">
 
           {/* Brand Column */}
           <div className="lg:col-span-2 space-y-6">

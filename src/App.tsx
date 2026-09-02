@@ -1280,46 +1280,46 @@ export default function App() {
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
-              className="relative bg-[#090909] rounded-3xl max-w-sm w-full p-8 shadow-2xl border border-white/10 z-10 space-y-6"
+              className="relative bg-white  max-w-sm w-full p-8 shadow-2xl border border-slate-200 z-10 space-y-6"
             >
-              <button
+              {/* <button
                 onClick={() => setLoginModalOpen(false)}
-                className="absolute top-4 right-4 p-1.5 rounded-lg text-white/40 hover:text-white hover:bg-white/5 transition-all duration-200 cursor-pointer"
+                className="absolute top-4 right-4 p-1.5  text-slate-400 hover:text-slate-600  transition-all duration-200 cursor-pointer"
               >
                 <X className="h-5 w-5" />
-              </button>
+              </button> */}
 
               <div className="text-center space-y-2">
-                <div className="bg-white/5 text-blue-400 h-12 w-12 rounded-2xl flex items-center justify-center mx-auto border border-white/10 shadow-sm">
+                <div className="bg-blue-50 text-blue-500 h-12 w-12 rounded-full flex items-center justify-center mx-auto border border-blue-100 shadow-sm mb-3">
                   <UserIcon className="h-6 w-6" />
                 </div>
-                <h3 className="text-lg font-light text-white tracking-tight">Access User Management</h3>
-                <p className="text-xs text-white/40 max-w-[240px] mx-auto leading-relaxed font-light">
-                  Sign in to securely access your license activation codes and save order history.
+                <h3 className="text-lg font-bold text-slate-800 tracking-tight">Welcome Back!</h3>
+                <p className="text-xs text-slate-500 max-w-[260px] mx-auto leading-relaxed">
+                  Sign in or create an account to securely access your license activation codes.
                 </p>
               </div>
 
-              <div className="space-y-4">
+              <div className="space-y-3">
                 {/* 1. Official Google Sign-In */}
                 <button
                   onClick={handleGoogleLogin}
-                  className="w-full bg-white hover:bg-white/90 text-black font-bold text-[10px] uppercase tracking-widest py-3 rounded-xl transition-all duration-200 flex items-center justify-center space-x-2 shadow-sm cursor-pointer"
+                  className="w-full bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 font-semibold text-[14px] py-3 transition-all duration-200 flex items-center justify-center space-x-3 shadow-sm cursor-pointer"
                 >
                   {/* Google SVG G logo */}
-                  <svg className="h-4 w-4" viewBox="0 0 24 24">
+                  <svg className="h-5 w-5" viewBox="0 0 24 24">
                     <path fill="#EA4335" d="M12 5.04c1.66 0 3.2.57 4.38 1.69l3.27-3.27C17.67 1.47 15 0 12 0 7.32 0 3.32 2.69 1.42 6.6l3.86 2.99C6.18 6.74 8.87 5.04 12 5.04z" />
                     <path fill="#4285F4" d="M23.49 12.27c0-.81-.07-1.59-.2-2.36H12v4.51h6.46c-.29 1.48-1.14 2.73-2.4 3.58l3.76 2.91c2.2-2.03 3.67-5.01 3.67-8.64z" />
                     <path fill="#FBBC05" d="M5.28 14.51c-.24-.71-.38-1.47-.38-2.26s.14-1.55.38-2.26L1.42 7c-.78 1.56-1.22 3.32-1.22 5.2s.44 3.64 1.22 5.2l3.86-2.99z" />
                     <path fill="#34A853" d="M12 24c3.24 0 5.97-1.08 7.96-2.91l-3.76-2.91c-1.04.7-2.38 1.11-4.2 1.11-3.13 0-5.82-1.7-6.72-4.55L1.42 17.4C3.32 21.31 7.32 24 12 24z" />
                   </svg>
-                  <span>Sign In with Google</span>
+                  <span>Continue with Google</span>
                 </button>
 
                 {/* Divider */}
-                <div className="flex items-center space-x-2 text-white/10 my-2">
-                  <div className="flex-grow border-t border-white/10" />
-                  <span className="text-[9px] font-bold uppercase tracking-widest text-white/30">or trial demo</span>
-                  <div className="flex-grow border-t border-white/10" />
+                <div className="flex items-center space-x-3 text-slate-300 my-3">
+                  <div className="flex-grow border-t border-slate-200" />
+                  <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-widest">Or Use Email</span>
+                  <div className="flex-grow border-t border-slate-200" />
                 </div>
 
                 {/* 2. Mock Guest/Demo Login */}
@@ -1327,16 +1327,16 @@ export default function App() {
                   <div>
                     <input
                       type="text"
-                      placeholder="Demo Name"
+                      placeholder="Full Name"
                       value={demoLoginName}
                       onChange={(e) => setDemoLoginName(e.target.value)}
-                      className="w-full px-4 py-2.5 bg-white/5 border border-white/10 rounded-xl text-xs font-semibold text-white outline-none placeholder:text-white/20 focus:border-blue-400/50"
+                      className="w-full px-4 py-2.5 bg-white border border-slate-300  text-sm font-medium text-slate-900 outline-none placeholder:text-slate-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
                     />
                   </div>
                   <div className="space-y-1">
                     <input
                       type="text"
-                      placeholder="Demo Email"
+                      placeholder="Email Address"
                       value={demoLoginEmail}
                       onChange={(e) => {
                         setDemoLoginEmail(e.target.value);
@@ -1344,20 +1344,20 @@ export default function App() {
                           setDemoLoginEmailError('');
                         }
                       }}
-                      className={`w-full px-4 py-2.5 bg-white/5 border ${demoLoginEmailError ? 'border-rose-500 focus:border-rose-500' : 'border-white/10 focus:border-blue-400/50'
-                        } rounded-xl text-xs font-semibold text-white outline-none placeholder:text-white/20`}
+                      className={`w-full px-4 py-2.5 bg-white border ${demoLoginEmailError ? 'border-rose-500 focus:border-rose-500 focus:ring-rose-500' : 'border-slate-300 focus:border-blue-500 focus:ring-blue-500'
+                        }  text-sm font-medium text-slate-900 outline-none placeholder:text-slate-400 focus:ring-1 transition-all`}
                     />
                     {demoLoginEmailError && (
-                      <p className="text-[10px] text-rose-400 font-bold tracking-wide pl-1 animate-pulse" id="demo-email-error-text">
+                      <p className="text-[11px] text-rose-500 font-medium tracking-wide pl-1 animate-pulse" id="demo-email-error-text">
                         {demoLoginEmailError}
                       </p>
                     )}
                   </div>
                   <button
                     type="submit"
-                    className="w-full bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-[10px] uppercase tracking-widest py-3 rounded-xl transition-all duration-200 shadow-md cursor-pointer"
+                    className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold text-[14px] py-3  transition-all duration-200 shadow-md cursor-pointer mt-1"
                   >
-                    Instant Trial Account
+                    Continue with Email
                   </button>
                 </form>
               </div>
