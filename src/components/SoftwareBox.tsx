@@ -140,7 +140,7 @@ export default function SoftwareBox({ product, isHovered = false, size = 'normal
       brandEdition = 'Professional';
       cardGraphic = <WindowsLogo color="#ffffff" />;
       customOverlay = (
-        <div className="absolute inset-x-2.5 top-[38%] bottom-6.5 bg-white/5 border border-white/10 rounded-xl backdrop-blur-md p-2 flex flex-col justify-between" />
+        <div className="absolute inset-x-2.5 top-[38%] bottom-6.5 bg-white/5 border border-white/10  backdrop-blur-md p-2 flex flex-col justify-between" />
       );
       bottomBadge = 'RETAIL DIGITAL KEY';
     } else if (isWin11 && isEnterprise) {
@@ -152,7 +152,7 @@ export default function SoftwareBox({ product, isHovered = false, size = 'normal
       brandEdition = 'Enterprise MAK';
       cardGraphic = <WindowsLogo color="#22d3ee" />;
       customOverlay = (
-        <div className="absolute inset-x-2.5 top-[38%] bottom-6.5 border border-cyan-500/25 bg-cyan-950/10 rounded-xl shadow-[inset_0_0_8px_rgba(6,182,212,0.15)] backdrop-blur-xs p-2 flex flex-col justify-between" />
+        <div className="absolute inset-x-2.5 top-[38%] bottom-6.5 border border-cyan-500/25 bg-cyan-950/10 shadow-[inset_0_0_8px_rgba(6,182,212,0.15)] backdrop-blur-xs p-2 flex flex-col justify-between" />
       );
       bottomBadge = 'VOLUME LICENSE';
     } else if (isWin11 && !isPro && !isEnterprise) {
@@ -229,12 +229,12 @@ export default function SoftwareBox({ product, isHovered = false, size = 'normal
     deviceLimit = 'Subscription Key';
     cardGraphic = <CodeIcon />;
     customOverlay = (
-      <div className="absolute inset-x-2.5 top-[38%] bottom-6.5 bg-[#020617] border border-emerald-500/15 rounded-xl p-2 flex flex-col justify-between font-mono">
+      <div className="absolute inset-x-2.5 top-[38%] bottom-6.5 bg-[#020617] border border-emerald-500/15 p-2 flex flex-col justify-between font-mono">
         {/* Code line patterns */}
         <div className="space-y-1 opacity-45">
-          <div className="h-1 w-12 bg-emerald-400 rounded-xs" />
-          <div className="h-1 w-16 bg-cyan-400 rounded-xs" />
-          <div className="h-1 w-8 bg-purple-400 rounded-xs" />
+          <div className="h-1 w-12 bg-emerald-400 " />
+          <div className="h-1 w-16 bg-cyan-400 " />
+          <div className="h-1 w-8 bg-purple-400 " />
         </div>
       </div>
     );
@@ -289,7 +289,7 @@ export default function SoftwareBox({ product, isHovered = false, size = 'normal
 
   // Render the Premium 3D Box
   return (
-    <div 
+    <div
       className="premium-3d-box-container relative preserve-3d select-none pointer-events-none"
       style={{
         width: `${W}px`,
@@ -299,8 +299,8 @@ export default function SoftwareBox({ product, isHovered = false, size = 'normal
       }}
     >
       {/* 3D Box Ambient glow shadow backdrop */}
-      <div 
-        className="absolute inset-0 rounded-2xl blur-2xl opacity-40 transition-all duration-500"
+      <div
+        className="absolute inset-0  blur-2xl opacity-40 transition-all duration-500"
         style={{
           backgroundColor: glowColor,
           transform: `translateZ(-10px) scale(${isHovered ? 1.15 : 0.95})`,
@@ -308,14 +308,14 @@ export default function SoftwareBox({ product, isHovered = false, size = 'normal
       />
 
       {/* 3D Soft Shadow Floor */}
-      <div 
-        className="absolute rounded-full blur-md transition-all duration-500 bg-black/45"
+      <div
+        className="absolute  blur-md transition-all duration-500 bg-black/45"
         style={{
           width: '85%',
           height: '14px',
           bottom: '-12px',
           left: '7.5%',
-          transform: `translateZ(-${T/2}px) rotateX(90deg) scale(${isHovered ? 0.85 : 1})`,
+          transform: `translateZ(-${T / 2}px) rotateX(90deg) scale(${isHovered ? 0.85 : 1})`,
           opacity: isHovered ? 0.5 : 0.85,
           boxShadow: '0 10px 20px rgba(0,0,0,0.6)',
         }}
@@ -325,16 +325,16 @@ export default function SoftwareBox({ product, isHovered = false, size = 'normal
       <div
         className="w-full h-full preserve-3d transition-all duration-500 ease-out"
         style={{
-          transform: isHovered 
-            ? `rotateY(-14deg) rotateX(3deg) translateY(-10px) scale(1.03)` 
+          transform: isHovered
+            ? `rotateY(-14deg) rotateX(3deg) translateY(-10px) scale(1.03)`
             : `rotateY(-23deg) rotateX(6deg)`,
         }}
       >
         {/* 1. FRONT FACE */}
-        <div 
-          className={`absolute inset-0 ${coverBg} rounded-xl border border-white/10 overflow-hidden flex flex-col justify-between p-3.5 text-left preserve-3d`}
+        <div
+          className={`absolute inset-0 ${coverBg} border border-white/10 overflow-hidden flex flex-col justify-between p-3.5 text-left preserve-3d`}
           style={{
-            transform: `translateZ(${T/2}px)`,
+            transform: `translateZ(${T / 2}px)`,
             boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.15), 0 10px 25px rgba(0,0,0,0.2)',
           }}
         >
@@ -352,7 +352,7 @@ export default function SoftwareBox({ product, isHovered = false, size = 'normal
               </>
             ) : (
               <>
-                <div className={`w-2 h-2 rounded-xs ${isLight ? 'bg-slate-800' : 'bg-white'} flex items-center justify-center p-[1px] shrink-0`}>
+                <div className={`w-2 h-2  ${isLight ? 'bg-slate-800' : 'bg-white'} flex items-center justify-center p-[1px] shrink-0`}>
                   {cardGraphic}
                 </div>
                 <span className={`text-[6px] font-extrabold uppercase tracking-widest ${isLight ? 'text-[#393E46]' : 'text-white/45'}`}>
@@ -410,14 +410,13 @@ export default function SoftwareBox({ product, isHovered = false, size = 'normal
 
           {/* Bottom details & badges */}
           <div className="space-y-1 z-10 relative mt-auto shrink-0">
-            <span className={`inline-block text-[6px] font-black uppercase tracking-widest px-1.5 py-0.5 rounded shadow-xs ${
-              isLight 
-                ? 'bg-[#EEEEEE] text-[#393E46] border border-slate-300' 
-                : 'bg-white/10 text-white border border-white/15'
-            }`}>
+            <span className={`inline-block text-[6px] font-black uppercase tracking-widest px-1.5 py-0.5  shadow-xs ${isLight
+              ? 'bg-[#EEEEEE] text-[#393E46] border border-slate-300'
+              : 'bg-white/10 text-white border border-white/15'
+              }`}>
               {deviceLimit}
             </span>
-            
+
             <div className={`flex justify-between items-center text-[5px] font-bold tracking-widest ${isLight ? 'text-[#393E46]' : 'text-white/45'} border-t ${isLight ? 'border-[#EEEEEE]' : 'border-white/10'} pt-1`}>
               <span>{bottomBadge}</span>
               <span>GENUINE</span>
@@ -425,7 +424,7 @@ export default function SoftwareBox({ product, isHovered = false, size = 'normal
           </div>
 
           {/* Glossy Plastic Wrapping Reflection sweep layer */}
-          <div 
+          <div
             className="absolute inset-0 pointer-events-none z-20"
             style={{
               background: 'linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 45%, rgba(255,255,255,0.02) 45%, rgba(255,255,255,0.12) 100%)',
@@ -434,11 +433,11 @@ export default function SoftwareBox({ product, isHovered = false, size = 'normal
         </div>
 
         {/* 2. RIGHT SIDE FACE (SPINE) */}
-        <div 
+        <div
           className={`absolute top-0 bottom-0 ${spineBg} flex flex-col justify-between py-3.5 items-center`}
           style={{
             width: `${T}px`,
-            transform: `translateZ(${T/2}px) rotateY(90deg)`,
+            transform: `translateZ(${T / 2}px) rotateY(90deg)`,
             transformOrigin: 'left',
             left: '100%',
             borderLeft: '1px solid rgba(255,255,255,0.08)',
@@ -448,7 +447,7 @@ export default function SoftwareBox({ product, isHovered = false, size = 'normal
         >
           {/* Vertical text along spine */}
           <div className="flex-1 flex items-center justify-center w-full overflow-hidden">
-            <span 
+            <span
               className="text-[6.5px] font-black tracking-widest uppercase text-white/50 whitespace-nowrap block"
               style={{
                 transform: 'rotate(90deg)',
@@ -477,11 +476,11 @@ export default function SoftwareBox({ product, isHovered = false, size = 'normal
         </div>
 
         {/* 3. TOP FACE */}
-        <div 
+        <div
           className={`${spineBg} absolute left-0 right-0`}
           style={{
             height: `${T}px`,
-            transform: `translateZ(${T/2}px) rotateX(-90deg)`,
+            transform: `translateZ(${T / 2}px) rotateX(-90deg)`,
             transformOrigin: 'top',
             top: '0px',
             borderBottom: '1px solid rgba(255,255,255,0.1)',

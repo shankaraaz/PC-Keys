@@ -53,6 +53,9 @@ import SupportPage from './components/SupportPage';
 import HeroSection from './components/HeroSection';
 import ChatBotWidget from './components/ChatBotWidget';
 import Footer from './components/Footer';
+import PrivacyPolicy from './components/PrivacyPolicy';
+import TermsOfService from './components/TermsOfService';
+import RefundPolicy from './components/RefundPolicy';
 
 // Libs & Types
 import { db, auth, handleFirestoreError, OperationType } from './lib/firebase';
@@ -317,7 +320,7 @@ const premiumCategories = [
     badge: 'ESSENTIAL',
     bgClass: (isActive: boolean) => isActive
       ? 'bg-emerald-400 border-[#10B981] shadow-[0_8px_30px_rgba(16,185,129,0.12)]'
-      : 'bg-emerald-300 border-[#F0FDF4] hover:bg-emerald-400 hover:border-emerald-500 hover:shadow-[0_8px_25px_rgba(16,185,129,0.06)]',
+      : 'bg-emerald-300 border-[#F0FDF4] hover:bg-emerald-500 hover:border-emerald-600 hover:shadow-[0_8px_25px_rgba(16,185,129,0.06)]',
     iconColorClass: 'text-emerald-500',
     badgeClass: 'bg-[#F0FDF4] border-[#A7F3D0]/60 text-emerald-600',
     illustration: SecurityIllustration
@@ -405,7 +408,7 @@ export default function App() {
   const [cartOpen, setCartOpen] = useState(false);
 
   // Navigation state
-  const [activeTab, setActiveTab] = useState<'catalog' | 'orders' | 'checkout' | 'admin' | 'support'>('catalog');
+  const [activeTab, setActiveTab] = useState<'catalog' | 'orders' | 'checkout' | 'admin' | 'support' | 'privacy' | 'terms' | 'refund'>('catalog');
   const [orders, setOrders] = useState<Order[]>([]);
   const [isLoadingOrders, setIsLoadingOrders] = useState(false);
 
@@ -1002,10 +1005,10 @@ export default function App() {
                         key={cat.id}
                         onClick={() => setSelectedCategory(isActive ? 'All' : cat.id)}
                         whileHover={{
-                          y: -6,
+                          y: -0,
                           boxShadow: "0 20px 40px rgba(0,0,0,0.08)"
                         }}
-                        whileTap={{ scale: 0.985 }}
+                        whileTap={{ scale: 0.90 }}
                         transition={{ duration: 0.3, ease: "easeInOut" }}
                         className={`relative h-[150px] rounded-xl p-5 flex flex-col justify-between transition-all duration-300 border cursor-pointer select-none overflow-hidden group ${cat.bgClass(isActive)}`}
                       >
@@ -1130,19 +1133,20 @@ export default function App() {
 
               {/* Trust badges footer strip */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-10 border-t border-white/[0.08]" id="trust-banner-strip">
-                <div className="bg-[#FFFFFF]/60 p-5 rounded-2xl border border-white/[0.08] flex items-start space-x-3 hover:border-white/15 transition-all duration-300">
+                <div className="bg-[#FFFFFF]/60 p-5 rounded-xl border border-white/[0.08] flex items-start space-x-3 hover:border-white/15 transition-all duration-300">
                   <div className="p-2.5 bg-white/5 text-[#3b82f6] rounded-xl shrink-0">
                     <ShieldCheck className="h-6 w-6" />
                   </div>
                   <div>
                     <h4 className="text-sm font-medium text-white">Genuine Sourced Keys</h4>
-                    <p className="text-xs text-[#94A3B8] mt-1.5 leading-relaxed font-light">
-                      Sourced direct from verified Microsoft and developer authorized channels with full original validation certificates.
+                    <p className="text-xs  text-[#94A3B8] mt-1.5 leading-relaxed font-light">
+                      {/* Sourced direct from verified Microsoft and developer authorized channels with full original validation certificates. */}
+                      From Verified Microsoft & Developer Authorized Channels.
                     </p>
                   </div>
                 </div>
 
-                <div className="bg-[#FFFFFF]/60 p-5 rounded-2xl border border-white/[0.08] flex items-start space-x-3 hover:border-white/15 transition-all duration-300">
+                <div className="bg-[#FFFFFF]/60 p-5 rounded-xl border border-white/[0.08] flex items-start space-x-3 hover:border-white/15 transition-all duration-300">
                   <div className="p-2.5 bg-white/5 text-[#3b82f6] rounded-xl shrink-0">
                     <Zap className="h-6 w-6" />
                   </div>
@@ -1154,12 +1158,12 @@ export default function App() {
                   </div>
                 </div>
 
-                <div className="bg-[#FFFFFF]/60 p-5 rounded-2xl border border-white/[0.08] flex items-start space-x-3 hover:border-white/15 transition-all duration-300">
+                <div className="bg-[#FFFFFF]/60 p-5 rounded-xl border border-white/[0.08] flex items-start space-x-3 hover:border-white/15 transition-all duration-300">
                   <div className="p-2.5 bg-white/5 text-[#3b82f6] rounded-xl shrink-0">
                     <MessageSquare className="h-6 w-6" />
                   </div>
                   <div>
-                    <h4 className="text-sm font-medium text-white">24/7 Expert Support</h4>
+                    <h4 className="text-sm font-medium text-white">24/7 Quick Support</h4>
                     <p className="text-xs text-[#94A3B8] mt-1.5 leading-relaxed font-light">
                       Experienced technician assistance for troubleshooting or guide clarifications anytime.
                     </p>
@@ -1197,6 +1201,18 @@ export default function App() {
             currentUserEmail={user?.email || demoUser?.email || null}
             onBackToCatalog={() => setActiveTab('catalog')}
           />
+        )}
+
+        {activeTab === 'privacy' && (
+          <PrivacyPolicy />
+        )}
+
+        {activeTab === 'terms' && (
+          <TermsOfService />
+        )}
+
+        {activeTab === 'refund' && (
+          <RefundPolicy />
         )}
 
         {activeTab === 'admin' && (

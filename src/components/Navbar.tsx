@@ -67,7 +67,7 @@ export default function Navbar({
 
       <nav className="bg-white border-b border-[#E2E8F0] shadow-xs" id="store-navbar">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
+          <div className="flex justify-between items-center h-17">
 
             {/* Logo */}
             <div
@@ -75,9 +75,9 @@ export default function Navbar({
               onClick={() => { onTabChange('catalog'); onSearchChange(''); }}
               id="nav-logo"
             >
-              <img src="/PC-Key-Zone-logo.png" alt="PC Key Zone" className="h-12 w-auto object-contain" />
+              <img src="/PC-Key-Zone-logo.png" alt="PC Key Zone" className="h-10 w-auto object-contain" />
               <div>
-                <div className="text-2xl font-black tracking-tight text-[#3b82f6] leading-none flex items-center">
+                <div className="text-[24px] font-black tracking-tight text-[#3b82f6] leading-none flex items-center">
                   PC<span className="text-[#222831]">Key</span><span >Zone</span>
                 </div>
                 {/* <div className="flex items-center space-x-1 text-[9px] text-[#393E46] font-bold tracking-widest uppercase mt-0.5">
@@ -97,7 +97,7 @@ export default function Navbar({
                     onChange={(e) => onSearchChange(e.target.value)}
                     onFocus={() => setSearchFocused(true)}
                     onBlur={() => setTimeout(() => setSearchFocused(false), 200)}
-                    className="w-full pl-4.5 pr-11 h-11 bg-[#EEEEEE] border border-[#E2E8F0] focus:border-[#3b82f6] text-xs font-semibold text-[#222831] placeholder-slate-400 transition-all duration-200 outline-none shadow-xs font-bold"
+                    className="w-full pl-4.5 pr-10 h-10 bg-[#EEEEEE] border border-[#E2E8F0] focus:border-[#3b82f6] text-xs font-semibold text-[#222831] placeholder-slate-400 transition-all duration-200 outline-none shadow-xs font-bold"
                     id="nav-search-input"
                     autoComplete="off"
                   />
@@ -126,7 +126,7 @@ export default function Navbar({
                                   onSearchChange(suggestion);
                                   setSearchFocused(false);
                                 }}
-                                className="w-full text-left px-4.5 py-3.5 hover:bg-[#EEEEEE] text-xs text-white/80 hover:text-white flex items-center justify-between transition-colors font-semibold uppercase tracking-wider cursor-pointer"
+                                className="w-full text-left px-4.5 py-3 hover:bg-[#EEEEEE] text-xs text-white/80 hover:text-white flex items-center justify-between transition-colors font-semibold uppercase tracking-wider cursor-pointer"
                               >
                                 <div className="flex items-center space-x-2.5">
                                   <Search className="h-3.5 w-3.5 text-[#3b82f6] shrink-0" />
@@ -150,7 +150,7 @@ export default function Navbar({
               {/* Catalog Button */}
               <button
                 onClick={() => onTabChange('catalog')}
-                className={`px-5 h-11 flex items-center justify-center  text-xs font-bold uppercase tracking-widest transition-all duration-200 cursor-pointer shadow-xs ${activeTab === 'catalog'
+                className={`px-5 h-10 flex items-center justify-center  text-xs font-bold uppercase tracking-widest transition-all duration-200 cursor-pointer shadow-xs ${activeTab === 'catalog'
                   ? 'bg-blue-600 text-white hover:bg-blue-700 '
                   : 'bg-[#EEEEEE] text-[#393E46] hover:bg-[#E2E8F0]'
                   }`}
@@ -162,7 +162,7 @@ export default function Navbar({
               {/* Support/Activation Center Button */}
               <button
                 onClick={() => onTabChange('support')}
-                className={`px-4 h-11 flex items-center justify-center  text-xs font-bold uppercase tracking-widest transition-all duration-200 cursor-pointer space-x-1.5 ${activeTab === 'support'
+                className={`px-4 h-10 flex items-center justify-center  text-xs font-bold uppercase tracking-widest transition-all duration-200 cursor-pointer space-x-1.5 ${activeTab === 'support'
                   ? 'text-slate-100 bg-blue-600'
                   : 'text-[#393E46] hover:text-blue-600 hover:bg-[#EEEEEE] '
                   }`}
@@ -179,7 +179,7 @@ export default function Navbar({
               {isAdmin && (
                 <button
                   onClick={() => onTabChange('admin')}
-                  className={`px-4 h-11 flex items-center justify-center  text-xs font-bold uppercase tracking-widest transition-all duration-200 cursor-pointer space-x-1.5 ${activeTab === 'admin'
+                  className={`px-4 h-10 flex items-center justify-center  text-xs font-bold uppercase tracking-widest transition-all duration-200 cursor-pointer space-x-1.5 ${activeTab === 'admin'
                     ? 'text-[#3b82f6] bg-[#EEEEEE]'
                     : 'text-[#393E46] hover:text-[#222831] hover:bg-[#EEEEEE]'
                     }`}
@@ -193,7 +193,7 @@ export default function Navbar({
               {/* Shopping Cart Button */}
               <button
                 onClick={onCartClick}
-                className="relative w-11 h-11 flex items-center justify-center text-[#222831] hover:bg-[#EEEEEE] hover:text-[#3b82f6] transition-all duration-200 cursor-pointer "
+                className="relative w-11 h-10 flex items-center justify-center text-[#222831] hover:bg-[#EEEEEE] hover:text-[#3b82f6] transition-all duration-200 cursor-pointer "
                 aria-label="Cart"
                 id="nav-cart-btn"
               >
@@ -210,7 +210,7 @@ export default function Navbar({
                 <div className="relative">
                   <button
                     onClick={() => setDropdownOpen(!dropdownOpen)}
-                    className="flex items-center space-x-2 pl-1.5 pr-3 h-11  border border-[#E2E8F0] hover:bg-[#EEEEEE] transition-all duration-200 font-bold"
+                    className="flex items-center space-x-2 pl-1.5 pr-3 h-10  border border-[#E2E8F0] hover:bg-[#EEEEEE] transition-all duration-200 font-bold"
                     id="user-profile-menu-btn"
                   >
                     <div className="h-8 w-8  bg-[#E2E8F0] text-[#3b82f6] flex items-center justify-center font-bold text-xs uppercase tracking-wider">
@@ -288,7 +288,7 @@ export default function Navbar({
               ) : (
                 <button
                   onClick={onLoginClick}
-                  className="bg-white hover:bg-[#EEEEEE] text-[#222831] hover:text-blue-600 border border-[#E2E8F0] px-5 h-11  text-xs font-bold uppercase tracking-widest transition-all duration-200 flex items-center justify-center space-x-1.5 cursor-pointer shadow-xs font-bold"
+                  className="bg-white hover:bg-[#EEEEEE] text-[#222831] hover:text-blue-600 border border-[#E2E8F0] px-5 h-10  text-xs font-bold uppercase tracking-widest transition-all duration-200 flex items-center justify-center space-x-1.5 cursor-pointer shadow-xs font-bold"
                   id="login-register-btn"
                 >
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { 
+import {
   HelpCircle, MessageCircle, Mail, ShieldCheck, FileText, Search, ChevronDown, ChevronUp,
   Cpu, Key, Laptop, Send, Clock, User, AlertCircle, RefreshCw, ClipboardCheck, PhoneCall
 } from 'lucide-react';
@@ -27,7 +27,7 @@ interface SupportTicket {
 
 export default function SupportPage({ orders, currentUserEmail, onBackToCatalog }: SupportPageProps) {
   const [supportTab, setSupportTab] = useState<'track' | 'tickets' | 'guides' | 'remote'>('track');
-  
+
   // Order Tracking State
   const [trackInput, setTrackInput] = useState('');
   const [trackedOrder, setTrackedOrder] = useState<Order | null>(null);
@@ -81,8 +81,8 @@ export default function SupportPage({ orders, currentUserEmail, onBackToCatalog 
 
     // Search local orders state
     const cleanId = trackInput.trim().toUpperCase();
-    const found = orders.find(o => 
-      o.id.toUpperCase() === cleanId || 
+    const found = orders.find(o =>
+      o.id.toUpperCase() === cleanId ||
       o.paymentDetails?.transactionId?.toUpperCase() === cleanId
     );
 
@@ -115,7 +115,7 @@ export default function SupportPage({ orders, currentUserEmail, onBackToCatalog 
 
     setTicketSubject('');
     setTicketMessage('');
-    setTicketSuccess(`Support ticket ${newTicket.id} has been submitted! Our support team will reply within 5-15 minutes.`);
+    setTicketSuccess(`Support ticket ${newTicket.id} has been submitted! Our support team will reply within 10-20 minutes.`);
 
     // Simulate smart automatic activation assistant response
     setTimeout(() => {
@@ -206,10 +206,10 @@ export default function SupportPage({ orders, currentUserEmail, onBackToCatalog 
       status: 'Open',
       createdAt: new Date().toISOString(),
       messages: [
-        { 
-          sender: 'user', 
-          text: `Requesting remote install on ${remoteSoftware}. ID: ${remoteId}. Details: ${remoteDetails || 'No special details'}`, 
-          timestamp: new Date().toISOString() 
+        {
+          sender: 'user',
+          text: `Requesting remote install on ${remoteSoftware}. ID: ${remoteId}. Details: ${remoteDetails || 'No special details'}`,
+          timestamp: new Date().toISOString()
         },
         {
           sender: 'agent',
@@ -283,15 +283,15 @@ export default function SupportPage({ orders, currentUserEmail, onBackToCatalog 
     }
   ];
 
-  const filteredGuides = guides.filter(g => 
-    g.title.toLowerCase().includes(guideSearch.toLowerCase()) || 
+  const filteredGuides = guides.filter(g =>
+    g.title.toLowerCase().includes(guideSearch.toLowerCase()) ||
     g.category.toLowerCase().includes(guideSearch.toLowerCase()) ||
     g.steps.some(s => s.toLowerCase().includes(guideSearch.toLowerCase()))
   );
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 text-white" id="support-page-container">
-      
+
       {/* Support Header */}
       <div className="text-center space-y-3 mb-10">
         <h2 className="text-3xl font-extrabold tracking-tight bg-gradient-to-r from-[#3b82f6] to-[#3b82f6] bg-clip-text text-transparent">
@@ -303,21 +303,23 @@ export default function SupportPage({ orders, currentUserEmail, onBackToCatalog 
 
         {/* Support badges */}
         <div className="flex flex-wrap justify-center gap-3.5 pt-4">
-          <div className="bg-[#FFFFFF] border border-white/[0.08] px-4 py-2 rounded-2xl flex items-center space-x-2">
+          <div className="bg-[#FFFFFF] border border-white/[0.08] px-4 py-2.5  flex items-center space-x-2">
             <Clock className="h-4 w-4 text-[#3b82f6]" />
-            <span className="text-xs font-mono font-bold uppercase tracking-wider text-white/80">Average Response: &lt; 5 mins</span>
+            <span className="text-xs font-mono font-bold uppercase tracking-wider text-white/80">Average Response: &lt; 10 mins</span>
           </div>
-          <div className="bg-[#FFFFFF] border border-white/[0.08] px-4 py-2 rounded-2xl flex items-center space-x-2">
+          <div className="bg-[#FFFFFF] border border-white/[0.08] px-4 py-2.5 flex items-center space-x-2">
             <ShieldCheck className="h-4 w-4 text-emerald-400" />
             <span className="text-xs font-mono font-bold uppercase tracking-wider text-white/80">100% Genuine Guarantee</span>
           </div>
-          <a 
-            href="https://wa.me/919876543210" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="bg-emerald-950/20 hover:bg-emerald-900/30 border border-emerald-500/20 px-4 py-2 rounded-2xl flex items-center space-x-2 transition-colors cursor-pointer"
+          <a
+            href="https://wa.me/917715933711"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-emerald-950/20 hover:bg-emerald-900/30 border border-emerald-500/20 px-4 py-2 flex items-center space-x-2 transition-colors cursor-pointer"
           >
-            <MessageCircle className="h-4 w-4 text-emerald-400" />
+            <svg className="w-4 h-4 text-green-600 fill-current" viewBox="0 0 24 24">
+              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-4.846c1.6.95 3.182 1.449 4.825 1.451 5.436 0 9.86-4.42 9.863-9.864.001-2.637-1.03-5.114-2.905-6.99C16.656 1.882 14.183 1.05 11.54 1.05 6.105 1.05 1.681 5.47 1.677 10.908c-.001 1.745.453 3.449 1.317 4.957l-1.018 3.715 3.804-.998zm11.233-7.24c-.312-.156-1.848-.912-2.129-1.015-.282-.102-.487-.156-.69.156-.204.311-.785.983-.96 1.186-.177.204-.355.228-.668.072-.312-.156-1.32-.486-2.515-1.551-.93-.829-1.558-1.854-1.74-2.165-.183-.312-.02-.481.136-.636.14-.139.312-.365.469-.547.156-.183.208-.312.312-.52.105-.208.053-.391-.026-.547-.079-.156-.69-1.661-.944-2.274-.249-.597-.502-.516-.69-.526-.178-.009-.383-.011-.587-.011-.204 0-.537.076-.818.384-.282.311-1.077 1.051-1.077 2.561 0 1.51 1.099 2.97 1.253 3.177.154.204 2.162 3.299 5.241 4.628.732.315 1.304.503 1.751.644.735.233 1.402.2 1.93.121.588-.087 1.848-.755 2.11-1.468.263-.712.263-1.32.184-1.448-.079-.118-.282-.172-.593-.328z" />
+            </svg>
             <span className="text-xs font-mono font-bold uppercase tracking-wider text-emerald-400">WhatsApp Support (Live)</span>
           </a>
         </div>
@@ -325,16 +327,15 @@ export default function SupportPage({ orders, currentUserEmail, onBackToCatalog 
 
       {/* Grid Tabs layout */}
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-        
+
         {/* Navigation panel */}
         <div className="col-span-1 space-y-2.5">
           <button
             onClick={() => { setSupportTab('track'); setTrackError(''); setTrackedOrder(null); }}
-            className={`w-full text-left p-4 rounded-2xl border transition-all flex items-center space-x-3 cursor-pointer ${
-              supportTab === 'track' 
-                ? 'bg-[#3b82f6]/10 border-[#3b82f6]/30 text-[#3b82f6]' 
-                : 'bg-[#FFFFFF] border-white/[0.08] text-[#CBD5E1] hover:text-white hover:bg-[#FFFFFF]'
-            }`}
+            className={`w-full text-left p-4 rounded border transition-all flex items-center space-x-3 cursor-pointer ${supportTab === 'track'
+              ? 'bg-[#3b82f6]/10 border-[#3b82f6]/30 text-[#3b82f6]'
+              : 'bg-[#FFFFFF] border-white/[0.08] text-[#CBD5E1] hover:text-white hover:bg-[#FFFFFF]'
+              }`}
           >
             <Search className="h-5 w-5 shrink-0" />
             <div className="truncate">
@@ -345,11 +346,10 @@ export default function SupportPage({ orders, currentUserEmail, onBackToCatalog 
 
           <button
             onClick={() => { setSupportTab('tickets'); setTicketSuccess(''); }}
-            className={`w-full text-left p-4 rounded-2xl border transition-all flex items-center space-x-3 cursor-pointer ${
-              supportTab === 'tickets' 
-                ? 'bg-[#3b82f6]/10 border-[#3b82f6]/30 text-[#3b82f6]' 
-                : 'bg-[#FFFFFF] border-white/[0.08] text-[#CBD5E1] hover:text-white hover:bg-[#FFFFFF]'
-            }`}
+            className={`w-full text-left p-4 rounded border transition-all flex items-center space-x-3 cursor-pointer ${supportTab === 'tickets'
+              ? 'bg-[#3b82f6]/10 border-[#3b82f6]/30 text-[#3b82f6]'
+              : 'bg-[#FFFFFF] border-white/[0.08] text-[#CBD5E1] hover:text-white hover:bg-[#FFFFFF]'
+              }`}
           >
             <HelpCircle className="h-5 w-5 shrink-0" />
             <div className="truncate">
@@ -360,11 +360,10 @@ export default function SupportPage({ orders, currentUserEmail, onBackToCatalog 
 
           <button
             onClick={() => setSupportTab('guides')}
-            className={`w-full text-left p-4 rounded-2xl border transition-all flex items-center space-x-3 cursor-pointer ${
-              supportTab === 'guides' 
-                ? 'bg-[#3b82f6]/10 border-[#3b82f6]/30 text-[#3b82f6]' 
-                : 'bg-[#FFFFFF] border-white/[0.08] text-[#CBD5E1] hover:text-white hover:bg-[#FFFFFF]'
-            }`}
+            className={`w-full text-left p-4 rounded border transition-all flex items-center space-x-3 cursor-pointer ${supportTab === 'guides'
+              ? 'bg-[#3b82f6]/10 border-[#3b82f6]/30 text-[#3b82f6]'
+              : 'bg-[#FFFFFF] border-white/[0.08] text-[#CBD5E1] hover:text-white hover:bg-[#FFFFFF]'
+              }`}
           >
             <Key className="h-5 w-5 shrink-0" />
             <div className="truncate">
@@ -375,11 +374,10 @@ export default function SupportPage({ orders, currentUserEmail, onBackToCatalog 
 
           <button
             onClick={() => { setSupportTab('remote'); setRemoteSuccess(false); }}
-            className={`w-full text-left p-4 rounded-2xl border transition-all flex items-center space-x-3 cursor-pointer ${
-              supportTab === 'remote' 
-                ? 'bg-[#3b82f6]/10 border-[#3b82f6]/30 text-[#3b82f6]' 
-                : 'bg-[#FFFFFF] border-white/[0.08] text-[#CBD5E1] hover:text-white hover:bg-[#FFFFFF]'
-            }`}
+            className={`w-full text-left p-4 rounded border transition-all flex items-center space-x-3 cursor-pointer ${supportTab === 'remote'
+              ? 'bg-[#3b82f6]/10 border-[#3b82f6]/30 text-[#3b82f6]'
+              : 'bg-[#FFFFFF] border-white/[0.08] text-[#CBD5E1] hover:text-white hover:bg-[#FFFFFF]'
+              }`}
           >
             <Laptop className="h-5 w-5 shrink-0" />
             <div className="truncate">
@@ -388,23 +386,23 @@ export default function SupportPage({ orders, currentUserEmail, onBackToCatalog 
             </div>
           </button>
 
-          <div className="p-4 rounded-2xl border border-white/[0.08] bg-[#EEEEEE] space-y-3 pt-6">
-            <h4 className="text-[10px] font-bold text-white/30 uppercase tracking-widest">Other Support channels</h4>
-            
-            <a 
-              href="mailto:support@netlyrakeys.com"
+          <div className="p-4 rounded border border-white/[0.08] bg-white space-y-3 pt-6">
+            <h4 className="text-[10px] font-bold text-slate-800 uppercase tracking-widest">Other Support channels</h4>
+
+            <a
+              href="mailto:support@pckeyzone.com"
               className="flex items-center space-x-2 text-xs text-[#CBD5E1] hover:text-[#3b82f6] transition-colors"
             >
               <Mail className="h-4 w-4 text-[#3b82f6]" />
-              <span>support@netlyrakeys.com</span>
+              <span>support@pckeyzone.com</span>
             </a>
 
             <div className="pt-2 flex items-center space-x-2 text-xs text-[#CBD5E1]">
-              <Cpu className="h-4 w-4 text-[#3b82f6]" />
+              <FileText className="h-4 w-4 text-[#3b82f6]" />
               <span>GST Invoices Available</span>
             </div>
 
-            <div className="text-[9px] text-white/30 leading-normal">
+            <div className="text-[10px] text-slate-400 leading-normal">
               For corporate or bulk discounts (&gt;5 licenses), please open a ticket under the Bulk Business department.
             </div>
           </div>
@@ -412,13 +410,13 @@ export default function SupportPage({ orders, currentUserEmail, onBackToCatalog 
 
         {/* Content Panel */}
         <div className="col-span-1 lg:col-span-3">
-          
+
           {/* TAB 1: TRACK ORDER */}
           {supportTab === 'track' && (
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="bg-[#FFFFFF] border border-white/[0.08] rounded-3xl p-6 sm:p-8 space-y-6"
+              className="bg-[#FFFFFF] border border-white/[0.08] rounded p-6 sm:p-8 space-y-6"
             >
               <div className="space-y-2">
                 <h3 className="text-lg font-bold text-white uppercase tracking-wider font-mono">Live Order tracking & Key Delivery</h3>
@@ -434,18 +432,18 @@ export default function SupportPage({ orders, currentUserEmail, onBackToCatalog 
                   value={trackInput}
                   onChange={(e) => setTrackInput(e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && handleTrackOrder()}
-                  className="flex-1 bg-[#EEEEEE] border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-white font-mono uppercase tracking-wider outline-none focus:border-[#3b82f6] placeholder-white/20"
+                  className="flex-1 bg-[#EEEEEE] border border-white/[0.08] rounded px-4 py-3 text-sm text-white font-mono uppercase tracking-wider outline-none focus:border-[#3b82f6] placeholder-white/20"
                 />
                 <button
                   onClick={handleTrackOrder}
-                  className="brand-gradient-btn text-white px-5 rounded-xl text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer"
+                  className="brand-gradient-btn text-white px-5 rounded text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer"
                 >
                   Lookup
                 </button>
               </div>
 
               {trackError && (
-                <div className="bg-rose-950/20 border border-rose-500/20 p-4 rounded-xl flex items-start space-x-3 text-xs text-rose-300">
+                <div className="bg-rose-950/20 border border-rose-500/20 p-4 rounded flex items-start space-x-3 text-xs text-rose-300">
                   <AlertCircle className="h-4.5 w-4.5 shrink-0 mt-0.5" />
                   <span>{trackError}</span>
                 </div>
@@ -453,7 +451,7 @@ export default function SupportPage({ orders, currentUserEmail, onBackToCatalog 
 
               {trackedOrder ? (
                 <div className="space-y-6 border-t border-white/5 pt-6 animate-fadeIn" id="tracked-order-results">
-                  <div className="flex flex-wrap items-center justify-between gap-4 bg-[#EEEEEE] p-4 rounded-2xl border border-white/[0.08]">
+                  <div className="flex flex-wrap items-center justify-between gap-4 bg-[#EEEEEE] p-4 rounded border border-white/[0.08]">
                     <div>
                       <div className="text-[10px] font-mono text-white/40 uppercase">Order ID Reference</div>
                       <div className="text-sm font-bold text-white font-mono uppercase mt-0.5">{trackedOrder.id}</div>
@@ -478,9 +476,9 @@ export default function SupportPage({ orders, currentUserEmail, onBackToCatalog 
 
                   <div className="space-y-4">
                     <h4 className="text-xs font-bold uppercase tracking-wider text-white">Your Purchased Licenses</h4>
-                    
+
                     {trackedOrder.items.map((item, idx) => (
-                      <div key={idx} className="bg-[#EEEEEE] border border-white/[0.08] rounded-2xl p-4.5 space-y-4">
+                      <div key={idx} className="bg-[#EEEEEE] border border-white/[0.08] rounded p-4.5 space-y-4">
                         <div className="flex justify-between items-start">
                           <div>
                             <h5 className="text-xs font-bold text-white uppercase tracking-wider">{item.title}</h5>
@@ -492,7 +490,7 @@ export default function SupportPage({ orders, currentUserEmail, onBackToCatalog 
                         </div>
 
                         {/* Allocated keys box */}
-                        <div className="bg-[#EEEEEE] p-3.5 rounded-xl border border-white/[0.08] space-y-2">
+                        <div className="bg-[#EEEEEE] p-3.5 rounded border border-white/[0.08] space-y-2">
                           <div className="text-[9px] font-mono text-white/40 uppercase tracking-widest">Digital Keys / Login Information</div>
                           {item.licenseKeys && item.licenseKeys.length > 0 ? (
                             <div className="space-y-2 font-mono">
@@ -517,7 +515,7 @@ export default function SupportPage({ orders, currentUserEmail, onBackToCatalog 
                         </div>
 
                         {/* Step-by-step activation accordion inside tracker */}
-                        <div className="bg-[#EEEEEE] p-4 rounded-xl border border-white/[0.08] space-y-2">
+                        <div className="bg-[#EEEEEE] p-4 rounded border border-white/[0.08] space-y-2">
                           <div className="text-[10px] font-bold text-[#3b82f6] uppercase tracking-widest flex items-center space-x-1">
                             <ClipboardCheck className="h-3.5 w-3.5" />
                             <span>Step-By-Step Activation Guide</span>
@@ -546,7 +544,7 @@ export default function SupportPage({ orders, currentUserEmail, onBackToCatalog 
                   </div>
 
                   {/* GST invoice prompt in tracked order */}
-                  <div className="bg-[#EEEEEE] border border-white/[0.08] p-4.5 rounded-2xl flex items-center justify-between">
+                  <div className="bg-[#EEEEEE] border border-white/[0.08] p-4.5 rounded flex items-center justify-between">
                     <div className="space-y-0.5">
                       <div className="text-xs font-bold text-white">Need a GST Invoice for this order?</div>
                       <p className="text-[10px] text-white/50">Submit your business GST Details to download custom compliant tax invoices.</p>
@@ -558,14 +556,14 @@ export default function SupportPage({ orders, currentUserEmail, onBackToCatalog 
                         setTicketSubject(`GST Invoice Request for Order ${trackedOrder.id}`);
                         setTicketMessage(`Please generate a GST tax invoice with the following details:\n\nCompany Name:\nGSTIN Number:\nBilling Address:\nState/UT:`);
                       }}
-                      className="brand-gradient-btn text-white font-bold text-[10px] uppercase tracking-wider py-2 px-3.5 rounded-xl cursor-pointer"
+                      className="brand-gradient-btn text-white font-bold text-[10px] uppercase tracking-wider py-2 px-3.5 rounded cursor-pointer"
                     >
                       Request Invoice
                     </button>
                   </div>
                 </div>
               ) : (
-                <div className="border border-white/[0.08] rounded-2xl bg-[#EEEEEE] p-6 text-center space-y-2.5">
+                <div className="border border-white/[0.08] rounded bg-[#EEEEEE] p-6 text-center space-y-2.5">
                   <FileText className="h-8 w-8 text-white/20 mx-auto" />
                   <p className="text-xs text-white/60">No tracked order selected. Input your reference to pull live server logs.</p>
                 </div>
@@ -575,13 +573,13 @@ export default function SupportPage({ orders, currentUserEmail, onBackToCatalog 
 
           {/* TAB 2: TICKET SUPPORT DESK */}
           {supportTab === 'tickets' && (
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               className="space-y-6"
             >
-              <div className="bg-[#FFFFFF] border border-white/[0.08] rounded-3xl p-6 sm:p-8 space-y-6">
-                
+              <div className="bg-[#FFFFFF] border border-white/[0.08] rounded p-6 sm:p-8 space-y-6">
+
                 <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/[0.08] pb-4">
                   <div className="space-y-1">
                     <h3 className="text-lg font-bold text-white uppercase tracking-wider font-mono">Create Support Ticket</h3>
@@ -589,19 +587,19 @@ export default function SupportPage({ orders, currentUserEmail, onBackToCatalog 
                       Submit details of licensing, activation flags, or remote assistance requests.
                     </p>
                   </div>
-                  
+
                   {/* View Tickets List button toggle if has tickets */}
-                  {tickets.length > 0 && (
+                  {/* {tickets.length > 0 && (
                     <div className="flex gap-2">
                       <span className="bg-[#3b82f6]/10 border border-[#3b82f6]/20 text-[#3b82f6] rounded-full px-3 py-1 text-[10px] font-mono uppercase font-bold flex items-center">
                         {tickets.length} Active Tickets
                       </span>
                     </div>
-                  )}
+                  )} */}
                 </div>
 
                 {ticketSuccess && (
-                  <div className="bg-emerald-950/20 border border-emerald-500/20 p-4 rounded-xl flex items-start space-x-3 text-xs text-emerald-300">
+                  <div className="bg-emerald-950/20 border border-emerald-500/20 p-4 rounded flex items-start space-x-3 text-xs text-emerald-300">
                     <ShieldCheck className="h-4.5 w-4.5 shrink-0 mt-0.5 text-emerald-400" />
                     <span>{ticketSuccess}</span>
                   </div>
@@ -609,11 +607,11 @@ export default function SupportPage({ orders, currentUserEmail, onBackToCatalog 
 
                 {/* Main ticket list & chat panel */}
                 <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
-                  
+
                   {/* Sidebar with previous tickets */}
-                  <div className="md:col-span-2 space-y-3 bg-[#EEEEEE] p-3 rounded-2xl border border-white/[0.08]">
+                  <div className="md:col-span-2 space-y-3 bg-[#EEEEEE] p-3 rounded border border-white/[0.08]">
                     <h4 className="text-[10px] font-bold text-white/30 uppercase tracking-widest px-1">Your Tickets History</h4>
-                    
+
                     {tickets.length === 0 ? (
                       <div className="p-4 text-center text-xs text-white/40">No tickets generated yet.</div>
                     ) : (
@@ -621,21 +619,19 @@ export default function SupportPage({ orders, currentUserEmail, onBackToCatalog 
                         <button
                           key={t.id}
                           onClick={() => setSelectedTicket(t)}
-                          className={`w-full text-left p-3 rounded-xl border transition-all space-y-2 ${
-                            selectedTicket?.id === t.id 
-                              ? 'bg-[#3b82f6]/10 border-[#3b82f6]/30' 
-                              : 'bg-[#FFFFFF] border-white/[0.08] hover:bg-[#FFFFFF]'
-                          }`}
+                          className={`w-full text-left p-3 rounded border transition-all space-y-2 ${selectedTicket?.id === t.id
+                            ? 'bg-[#3b82f6]/10 border-[#3b82f6]/30'
+                            : 'bg-[#FFFFFF] border-white/[0.08] hover:bg-[#FFFFFF]'
+                            }`}
                         >
                           <div className="flex items-center justify-between">
                             <span className="text-[10px] font-mono text-[#94A3B8] font-bold">{t.id}</span>
-                            <span className={`text-[8px] font-mono font-bold uppercase px-2 py-0.5 rounded border ${
-                              t.status === 'Resolved' 
-                                ? 'bg-emerald-950/50 text-emerald-400 border-emerald-500/20' 
-                                : t.status === 'InProgress'
+                            <span className={`text-[8px] font-mono font-bold uppercase px-2 py-0.5 rounded border ${t.status === 'Resolved'
+                              ? 'bg-emerald-950/50 text-emerald-400 border-emerald-500/20'
+                              : t.status === 'InProgress'
                                 ? 'bg-amber-950/50 text-amber-400 border-amber-500/20'
                                 : 'bg-blue-950/50 text-blue-400 border-blue-500/20'
-                            }`}>
+                              }`}>
                               {t.status}
                             </span>
                           </div>
@@ -651,17 +647,17 @@ export default function SupportPage({ orders, currentUserEmail, onBackToCatalog 
 
                   {/* Main active ticket panel or create form */}
                   <div className="md:col-span-3">
-                    
+
                     {selectedTicket ? (
-                      <div className="bg-[#EEEEEE] rounded-2xl border border-white/[0.08] p-4.5 space-y-4 h-full flex flex-col justify-between">
-                        
+                      <div className="bg-[#EEEEEE] rounded border border-white/[0.08] p-4.5 space-y-4 h-full flex flex-col justify-between">
+
                         {/* Conversation Header */}
                         <div className="border-b border-white/[0.08] pb-3 flex items-center justify-between">
                           <div>
                             <span className="text-[10px] font-mono text-[#3b82f6] font-bold">{selectedTicket.id}</span>
                             <h4 className="text-xs font-bold text-white uppercase tracking-wide mt-0.5">{selectedTicket.subject}</h4>
                           </div>
-                          <button 
+                          <button
                             onClick={() => setSelectedTicket(null)}
                             className="text-[10px] font-mono uppercase text-white/40 hover:text-white"
                           >
@@ -672,15 +668,14 @@ export default function SupportPage({ orders, currentUserEmail, onBackToCatalog 
                         {/* Message log */}
                         <div className="space-y-3.5 max-h-[220px] overflow-y-auto py-2.5 flex-1 pr-1">
                           {selectedTicket.messages.map((m, mIdx) => (
-                            <div 
-                              key={mIdx} 
+                            <div
+                              key={mIdx}
                               className={`flex flex-col space-y-1 ${m.sender === 'user' ? 'items-end' : 'items-start'}`}
                             >
-                              <div className={`text-xs px-3.5 py-2.5 rounded-2xl max-w-[85%] leading-relaxed ${
-                                m.sender === 'user' 
-                                  ? 'bg-[#3b82f6] text-white rounded-tr-none font-medium' 
-                                  : 'bg-[#FFFFFF] border border-white/[0.08] text-white/90 rounded-tl-none font-light'
-                              }`}>
+                              <div className={`text-xs px-3.5 py-2.5 rounded max-w-[85%] leading-relaxed ${m.sender === 'user'
+                                ? 'bg-[#3b82f6] text-white rounded-tr-none font-medium'
+                                : 'bg-[#FFFFFF] border border-white/[0.08] text-white/90 rounded-tl-none font-light'
+                                }`}>
                                 {m.text}
                               </div>
                               <span className="text-[8px] text-white/30 font-mono">
@@ -698,11 +693,11 @@ export default function SupportPage({ orders, currentUserEmail, onBackToCatalog 
                             value={replyMessage}
                             onChange={(e) => setReplyMessage(e.target.value)}
                             onKeyDown={(e) => e.key === 'Enter' && handleReplyTicket(selectedTicket.id)}
-                            className="flex-1 bg-[#FFFFFF] border border-white/[0.08] rounded-xl px-3 py-2 text-xs text-white outline-none focus:border-[#3b82f6]"
+                            className="flex-1 bg-[#FFFFFF] border border-white/[0.08] rounded px-3 py-2 text-xs text-white outline-none focus:border-[#3b82f6]"
                           />
                           <button
                             onClick={() => handleReplyTicket(selectedTicket.id)}
-                            className="brand-gradient-btn text-white p-2.5 rounded-xl transition-colors cursor-pointer"
+                            className="brand-gradient-btn text-white p-2.5 rounded transition-colors cursor-pointer"
                           >
                             <Send className="h-4 w-4" />
                           </button>
@@ -717,7 +712,7 @@ export default function SupportPage({ orders, currentUserEmail, onBackToCatalog 
                             <select
                               value={ticketDepartment}
                               onChange={(e) => setTicketDepartment(e.target.value)}
-                              className="w-full bg-[#EEEEEE] border border-white/[0.08] rounded-xl p-3 text-xs text-white outline-none focus:border-[#3b82f6]"
+                              className="w-full bg-[#EEEEEE] border border-white/[0.08] rounded p-3 text-xs text-white outline-none focus:border-[#3b82f6]"
                             >
                               <option value="Activation Assistance">Activation Assistance</option>
                               <option value="Remote Installation Support">Remote Installation Support</option>
@@ -735,7 +730,7 @@ export default function SupportPage({ orders, currentUserEmail, onBackToCatalog 
                               placeholder="E.G. Windows 11 Key not validating"
                               value={ticketSubject}
                               onChange={(e) => setTicketSubject(e.target.value)}
-                              className="w-full bg-[#EEEEEE] border border-white/[0.08] rounded-xl p-3 text-xs text-white outline-none focus:border-[#3b82f6]"
+                              className="w-full bg-[#EEEEEE] border border-white/[0.08] rounded p-3 text-xs text-white outline-none focus:border-[#3b82f6]"
                             />
                           </div>
                         </div>
@@ -748,13 +743,13 @@ export default function SupportPage({ orders, currentUserEmail, onBackToCatalog 
                             placeholder="Please provide your order ID (if any) and paste the exact error code or issue details. Our certified developers are standing by."
                             value={ticketMessage}
                             onChange={(e) => setTicketMessage(e.target.value)}
-                            className="w-full bg-[#EEEEEE] border border-white/[0.08] rounded-xl p-3 text-xs text-white outline-none focus:border-[#3b82f6] resize-none"
+                            className="w-full bg-[#EEEEEE] border border-white/[0.08] rounded p-3 text-xs text-white outline-none focus:border-[#3b82f6] resize-none"
                           />
                         </div>
 
                         <button
                           type="submit"
-                          className="w-full brand-gradient-btn text-white font-bold text-xs uppercase tracking-widest py-3.5 px-4 rounded-xl transition-all duration-200 cursor-pointer text-center"
+                          className="w-full brand-gradient-btn text-white font-bold text-xs uppercase tracking-widest py-3.5 px-4 rounded transition-all duration-200 cursor-pointer text-center"
                         >
                           Submit Support Ticket
                         </button>
@@ -771,10 +766,10 @@ export default function SupportPage({ orders, currentUserEmail, onBackToCatalog 
 
           {/* TAB 3: ACTIVATION GUIDES */}
           {supportTab === 'guides' && (
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="bg-[#FFFFFF] border border-white/[0.08] rounded-3xl p-6 sm:p-8 space-y-6"
+              className="bg-[#FFFFFF] border border-white/[0.08] rounded p-6 sm:p-8 space-y-6"
             >
               <div className="flex flex-wrap justify-between items-center gap-4">
                 <div className="space-y-1">
@@ -783,7 +778,7 @@ export default function SupportPage({ orders, currentUserEmail, onBackToCatalog 
                     Verify official setup files, redeem commands, and register licenses smoothly.
                   </p>
                 </div>
-                
+
                 {/* Search guides */}
                 <div className="relative max-w-xs w-full">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-white/30">
@@ -794,26 +789,26 @@ export default function SupportPage({ orders, currentUserEmail, onBackToCatalog 
                     placeholder="Search guides..."
                     value={guideSearch}
                     onChange={(e) => setGuideSearch(e.target.value)}
-                    className="w-full pl-9 pr-3 py-2 bg-[#EEEEEE] border border-white/[0.08] rounded-xl text-xs text-white outline-none focus:border-[#3b82f6]"
+                    className="w-full pl-9 pr-3 py-2 bg-[#EEEEEE] border border-white/[0.08] rounded text-xs text-white outline-none focus:border-[#3b82f6]"
                   />
                 </div>
               </div>
 
               {/* Guides Accordion list */}
-              <div className="space-y-3.5">
+              <div className="space-y-3">
                 {filteredGuides.length === 0 ? (
                   <div className="p-8 text-center text-xs text-white/40">No matching activation guides found. Try keywords like Windows or Office.</div>
                 ) : (
                   filteredGuides.map((guide, idx) => {
                     const isOpen = activeGuideIndex === idx;
                     return (
-                      <div key={idx} className="border border-white/[0.08] bg-[#EEEEEE] rounded-2xl overflow-hidden">
+                      <div key={idx} className="border border-white/[0.08] bg-[#EEEEEE] rounded overflow-hidden">
                         <button
                           onClick={() => setActiveGuideIndex(isOpen ? null : idx)}
                           className="w-full p-4 text-left flex justify-between items-center hover:bg-[#FFFFFF] transition-colors cursor-pointer"
                         >
                           <div className="space-y-1">
-                            <span className="text-[8px] font-mono font-bold bg-[#FFFFFF] text-[#3b82f6] border border-white/[0.08] px-2 py-0.5 rounded uppercase">
+                            <span className="text-[8px] font-bold text-[#3b82f6] uppercase">
                               {guide.category}
                             </span>
                             <h4 className="text-xs font-bold text-white uppercase tracking-wider">{guide.title}</h4>
@@ -841,11 +836,11 @@ export default function SupportPage({ orders, currentUserEmail, onBackToCatalog 
                               </div>
 
                               {guide.tip && (
-                                <div className="bg-amber-950/20 border border-amber-500/20 p-3.5 rounded-xl flex items-start space-x-2.5 text-amber-300">
-                                  <AlertCircle className="h-4.5 w-4.5 shrink-0 mt-0.5 text-amber-400" />
+                                <div className="bg-amber-300/20 border border-amber-500/20 p-3.5 rounded flex items-start space-x-2.5 text-amber-300">
+                                  <AlertCircle className="h-4.5 w-4.5 shrink-0 mt-0.5 text-amber-600" />
                                   <div>
-                                    <span className="font-bold text-[10px] uppercase block tracking-wider mb-0.5">Activation Tip</span>
-                                    <p className="text-[11px] leading-relaxed">{guide.tip}</p>
+                                    <span className="font-bold text-[10px] uppercase block tracking-wider mb-0.5 text-amber-600">Activation Tip</span>
+                                    <p className="text-[11px] leading-relaxed text-amber-800">{guide.tip}</p>
                                   </div>
                                 </div>
                               )}
@@ -863,10 +858,10 @@ export default function SupportPage({ orders, currentUserEmail, onBackToCatalog 
 
           {/* TAB 4: REMOTE INSTALLATION SETUP */}
           {supportTab === 'remote' && (
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="bg-[#FFFFFF] border border-white/[0.08] rounded-3xl p-6 sm:p-8 space-y-6"
+              className="bg-[#FFFFFF] border border-white/[0.08] rounded p-6 sm:p-8 space-y-6"
             >
               <div className="space-y-2">
                 <h3 className="text-lg font-bold text-white uppercase tracking-wider font-mono">1-On-1 Remote Installation Support</h3>
@@ -876,7 +871,7 @@ export default function SupportPage({ orders, currentUserEmail, onBackToCatalog 
               </div>
 
               {remoteSuccess ? (
-                <div className="bg-emerald-950/20 border border-emerald-500/20 p-6 rounded-2xl text-center space-y-3">
+                <div className="bg-emerald-950/20 border border-emerald-500/20 p-6 rounded text-center space-y-3">
                   <ShieldCheck className="h-10 w-10 text-emerald-400 mx-auto" />
                   <h4 className="text-sm font-bold text-white uppercase tracking-wider font-mono">Remote Assistance Request Queued!</h4>
                   <p className="text-xs text-white/60 max-w-md mx-auto leading-normal">
@@ -899,11 +894,10 @@ export default function SupportPage({ orders, currentUserEmail, onBackToCatalog 
                           key={sw}
                           type="button"
                           onClick={() => setRemoteSoftware(sw)}
-                          className={`py-3 px-3 border rounded-xl font-mono text-[10px] font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer ${
-                            remoteSoftware === sw
-                              ? 'border-[#3b82f6] bg-[#3b82f6]/10 text-[#3b82f6]'
-                              : 'border-white/[0.08] bg-[#EEEEEE] text-[#CBD5E1] hover:text-white hover:bg-[#FFFFFF]'
-                          }`}
+                          className={`py-3 px-3 border rounded font-mono text-[10px] font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer ${remoteSoftware === sw
+                            ? 'border-[#3b82f6] bg-[#3b82f6]/10 text-[#3b82f6]'
+                            : 'border-white/[0.08] bg-[#EEEEEE] text-[#CBD5E1] hover:text-white hover:bg-[#FFFFFF]'
+                            }`}
                         >
                           {sw}
                         </button>
@@ -920,7 +914,7 @@ export default function SupportPage({ orders, currentUserEmail, onBackToCatalog 
                         placeholder="E.G. 102 984 204"
                         value={remoteId}
                         onChange={(e) => setRemoteId(e.target.value)}
-                        className="w-full bg-[#EEEEEE] border border-white/[0.08] rounded-xl p-3 text-xs text-white font-mono outline-none focus:border-[#3b82f6]"
+                        className="w-full bg-[#EEEEEE] border border-white/[0.08] rounded p-3 text-xs text-white font-mono outline-none focus:border-[#3b82f6]"
                       />
                     </div>
 
@@ -931,7 +925,7 @@ export default function SupportPage({ orders, currentUserEmail, onBackToCatalog 
                         placeholder="Secure temporary pass"
                         value={remotePass}
                         onChange={(e) => setRemotePass(e.target.value)}
-                        className="w-full bg-[#EEEEEE] border border-white/[0.08] rounded-xl p-3 text-xs text-white font-mono outline-none focus:border-[#3b82f6]"
+                        className="w-full bg-[#EEEEEE] border border-white/[0.08] rounded p-3 text-xs text-white font-mono outline-none focus:border-[#3b82f6]"
                       />
                     </div>
                   </div>
@@ -943,11 +937,11 @@ export default function SupportPage({ orders, currentUserEmail, onBackToCatalog 
                       placeholder="E.G. Upgrading from Win 11 Home to Pro using BIND license code, need activation help."
                       value={remoteDetails}
                       onChange={(e) => setRemoteDetails(e.target.value)}
-                      className="w-full bg-[#EEEEEE] border border-white/[0.08] rounded-xl p-3 text-xs text-white outline-none focus:border-[#3b82f6] resize-none"
+                      className="w-full bg-[#EEEEEE] border border-white/[0.08] rounded p-3 text-xs text-white outline-none focus:border-[#3b82f6] resize-none"
                     />
                   </div>
 
-                  <div className="bg-[#EEEEEE] p-3.5 rounded-xl border border-white/[0.08] flex items-start space-x-2.5 text-[10px] text-[#94A3B8]">
+                  <div className="bg-[#EEEEEE] p-3.5 rounded border border-white/[0.08] flex items-start space-x-2.5 text-[10px] text-[#94A3B8]">
                     <ShieldCheck className="h-4.5 w-4.5 text-[#3b82f6] shrink-0 mt-0.5" />
                     <p className="leading-normal">
                       Security Guarantee: Remote connections are strictly encrypted and controlled. You can terminate the session at any time with a mouse drag. Our developers will never download or touch files unrelated to activation.
@@ -956,7 +950,7 @@ export default function SupportPage({ orders, currentUserEmail, onBackToCatalog 
 
                   <button
                     type="submit"
-                    className="w-full brand-gradient-btn text-white font-bold text-xs uppercase tracking-widest py-3.5 px-4 rounded-xl transition-all duration-200 cursor-pointer text-center"
+                    className="w-full brand-gradient-btn text-white font-bold text-xs uppercase tracking-widest py-3.5 px-4 rounded transition-all duration-200 cursor-pointer text-center"
                   >
                     Request Live Remote Assistance
                   </button>
